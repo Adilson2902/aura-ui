@@ -1,5 +1,5 @@
-@import "@aura/core/styles/tokens.css";
-@import "@aura/core/styles/primitives.css";
+@import "../../core/styles/tokens.css";
+@import "../../core/styles/primitives.css";
 
 @theme {
   --color-aura-surface: hsl(var(--aura-surface));

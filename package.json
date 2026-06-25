@@ -10,6 +10,7 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "storybook": "pnpm --filter @aura/storybook dev",
+    "build:storybook": "pnpm --filter @aura/storybook build",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm build && changeset publish"

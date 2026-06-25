@@ -20,6 +20,13 @@ pnpm dev
 
 Docs: [http://localhost:3000](http://localhost:3000)
 
+Storybook: [http://localhost:6006](http://localhost:6006)
+
+```bash
+pnpm storybook          # dev
+pnpm build:storybook      # estático em apps/storybook/storybook-static
+```
+
 ## Estrutura
 
 ```
