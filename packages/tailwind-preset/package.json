@@ -1,0 +1,23 @@
+{
+  "name": "@aura/tailwind-preset",
+  "version": "0.1.0",
+  "description": "Preset Tailwind v4 + utilitários 3D do Aura UI",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/preset.css",
+    "./plugin": {
+      "types": "./dist/plugin.d.ts",
+      "import": "./dist/plugin.js"
+    }
+  },
+  "files": ["src", "dist"],
+  "scripts": {
+    "build": "tsup src/plugin.ts --format esm --dts",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  }
+}

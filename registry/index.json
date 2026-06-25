@@ -1,0 +1,61 @@
+{
+  "$schema": "./schema.json",
+  "name": "aura",
+  "homepage": "https://aura-ui.dev",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "files": [{ "path": "registry/ui/button.tsx", "type": "registry:ui" }],
+      "dependencies": ["class-variance-authority", "@radix-ui/react-slot"],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "files": [{ "path": "registry/ui/card.tsx", "type": "registry:ui" }],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "files": [{ "path": "registry/ui/input.tsx", "type": "registry:ui" }],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "files": [{ "path": "registry/lib/utils.ts", "type": "registry:lib" }]
+    },
+    {
+      "name": "card-3d",
+      "type": "registry:effect",
+      "files": [{ "path": "registry/effects/card-3d.tsx", "type": "registry:effect" }],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "spotlight",
+      "type": "registry:effect",
+      "files": [{ "path": "registry/effects/spotlight.tsx", "type": "registry:effect" }],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "shine-border",
+      "type": "registry:effect",
+      "files": [{ "path": "registry/effects/shine-border.tsx", "type": "registry:effect" }],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "animated-shiny-text",
+      "type": "registry:effect",
+      "files": [{ "path": "registry/effects/animated-shiny-text.tsx", "type": "registry:effect" }],
+      "registryDependencies": ["utils"]
+    },
+    {
+      "name": "aurora-background",
+      "type": "registry:effect",
+      "files": [{ "path": "registry/effects/aurora-background.tsx", "type": "registry:effect" }],
+      "registryDependencies": ["utils"]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+@import "@aura/tailwind-preset";
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: hsl(var(--aura-surface));
+  color: hsl(var(--aura-surface-foreground));
+  font-family: system-ui, -apple-system, sans-serif;
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@aura/example-landing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Exemplo landing — Fase 4",
+  "scripts": {
+    "dev": "echo \"Use apps/docs por enquanto\"",
+    "build": "echo \"placeholder\""
+  }
+}

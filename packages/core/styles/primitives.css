@@ -1,0 +1,53 @@
+@import "./tokens.css";
+
+.aura-surface {
+  background: hsl(var(--aura-surface));
+  color: hsl(var(--aura-surface-foreground));
+  border-radius: var(--aura-radius);
+  border: 1px solid hsl(var(--aura-border));
+  box-shadow: var(--aura-elevation-2);
+  background-image: linear-gradient(
+    180deg,
+    hsl(0 0% 100% / 0.08) 0%,
+    transparent 40%
+  );
+}
+
+.aura-glass {
+  background: hsl(var(--aura-surface) / var(--aura-glass-alpha));
+  backdrop-filter: blur(var(--aura-glass-blur));
+  -webkit-backdrop-filter: blur(var(--aura-glass-blur));
+  border: 1px solid hsl(var(--aura-border) / 0.5);
+  border-radius: var(--aura-radius);
+  box-shadow: var(--aura-elevation-2);
+}
+
+.aura-tilt {
+  transform-style: preserve-3d;
+  perspective: var(--aura-perspective);
+  transition: transform var(--aura-dur) var(--aura-ease-spring);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .aura-tilt:hover {
+    transform: rotateX(2deg) rotateY(-2deg) translateZ(calc(var(--aura-depth) * 4));
+  }
+}
+
+.aura-press {
+  transition: transform var(--aura-dur-fast) var(--aura-ease-spring), box-shadow var(--aura-dur-fast);
+}
+
+.aura-press:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: var(--aura-elevation-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aura-tilt,
+  .aura-press {
+    transition: none;
+    transform: none !important;
+  }
+}

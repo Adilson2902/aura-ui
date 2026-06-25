@@ -1,0 +1,54 @@
+:root {
+  /* superfície / profundidade */
+  --aura-surface: 0 0% 100%;
+  --aura-surface-foreground: 222 47% 11%;
+  --aura-muted: 210 40% 96%;
+  --aura-muted-foreground: 215 16% 47%;
+
+  --aura-elevation-0: 0 0 0 0 transparent;
+  --aura-elevation-1: 0 1px 2px hsl(222 47% 11% / 0.06), 0 1px 1px hsl(222 47% 11% / 0.04);
+  --aura-elevation-2: 0 4px 12px hsl(222 47% 11% / 0.08), 0 2px 4px hsl(222 47% 11% / 0.04);
+  --aura-elevation-3: 0 12px 32px hsl(222 47% 11% / 0.12), 0 4px 8px hsl(222 47% 11% / 0.06);
+  --aura-elevation-4: 0 20px 48px hsl(222 47% 11% / 0.16), 0 8px 16px hsl(222 47% 11% / 0.08);
+  --aura-elevation-5: 0 32px 64px hsl(222 47% 11% / 0.2), 0 12px 24px hsl(222 47% 11% / 0.1);
+
+  --aura-depth: 1px;
+  --aura-light-x: 50%;
+  --aura-light-y: 0%;
+  --aura-glass-blur: 12px;
+  --aura-glass-alpha: 0.6;
+
+  /* cor / brand */
+  --aura-primary: 222 89% 56%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 262 83% 58%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 222 89% 56%;
+  --aura-border: 214 32% 91%;
+  --aura-destructive: 0 84% 60%;
+  --aura-destructive-foreground: 0 0% 100%;
+
+  /* motion */
+  --aura-ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --aura-dur-fast: 120ms;
+  --aura-dur: 240ms;
+  --aura-perspective: 1000px;
+  --aura-tilt-max: 12deg;
+
+  /* raio */
+  --aura-radius: 0.75rem;
+
+  /* mapeamento opcional Toolspace (--ts-*) */
+  --ts-color-primary: hsl(var(--aura-primary));
+  --ts-color-accent: hsl(var(--aura-accent));
+}
+
+.dark {
+  --aura-surface: 222 47% 7%;
+  --aura-surface-foreground: 210 40% 98%;
+  --aura-muted: 217 33% 17%;
+  --aura-muted-foreground: 215 20% 65%;
+  --aura-border: 217 33% 22%;
+  --aura-primary: 217 91% 60%;
+  --aura-accent: 262 83% 65%;
+}
