@@ -7,10 +7,7 @@ import { themeCommand } from "./commands/theme.js";
 
 const program = new Command();
 
-program
-  .name("aura")
-  .description("Aura UI CLI — design system 3D (modelo shadcn)")
-  .version("0.1.0");
+program.name("aura").description("Aura UI CLI — design system 3D (modelo shadcn)").version("0.1.0");
 
 program
   .command("init")
@@ -28,9 +25,6 @@ program
   .argument("<component>", "Compara cópia local com registry upstream")
   .action(diffCommand);
 
-program
-  .command("theme")
-  .description("Gera overrides de tokens de marca")
-  .action(themeCommand);
+program.command("theme").description("Gera overrides de tokens de marca").action(themeCommand);
 
 program.parse();

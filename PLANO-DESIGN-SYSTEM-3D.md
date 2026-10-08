@@ -9,13 +9,14 @@
 
 ## 1. Visão e princípios
 
-| Referência | O que herdamos | O que melhoramos |
-|---|---|---|
-| **shadcn/ui** | Código copiado pro projeto (não black-box), Radix, a11y, `cn()`, CLI | Adicionamos camada 3D + tokens de profundidade e motion nativos |
-| **Magic UI** | Catálogo de efeitos (shimmer, beams, marquee, spotlight) | Tokenizados, com `prefers-reduced-motion` e SSR-safe por padrão |
-| **Aceternity UI** | Efeitos 3D, card tilt, background gradients, scroll reveal | Performance (GPU/`will-change`), tipados, sem copiar-colar frágil |
+| Referência        | O que herdamos                                                       | O que melhoramos                                                  |
+| ----------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| **shadcn/ui**     | Código copiado pro projeto (não black-box), Radix, a11y, `cn()`, CLI | Adicionamos camada 3D + tokens de profundidade e motion nativos   |
+| **Magic UI**      | Catálogo de efeitos (shimmer, beams, marquee, spotlight)             | Tokenizados, com `prefers-reduced-motion` e SSR-safe por padrão   |
+| **Aceternity UI** | Efeitos 3D, card tilt, background gradients, scroll reveal           | Performance (GPU/`will-change`), tipados, sem copiar-colar frágil |
 
 **Princípios inegociáveis**
+
 1. **Ownership** — `npx aura add button` copia o componente pro repo do usuário (como shadcn), não esconde em `node_modules`.
 2. **3D real, não decorativo** — profundidade vem de tokens (`--elevation`, `--depth`, luz direcional), não de sombras aleatórias.
 3. **Acessível por padrão** — Radix primitives, foco visível, `aria-*`, e **todo efeito respeita `prefers-reduced-motion`**.
@@ -90,6 +91,7 @@ Contrato em CSS variables (`packages/core/styles/tokens.css`), tema trocável:
 ```
 
 **Primitivas 3D reutilizáveis** (classes utilitárias do preset):
+
 - `.aura-surface` — superfície com luz direcional + borda highlight (top) + sombra ambiente (bottom).
 - `.aura-glass` — glassmorphism (backdrop-blur + borda interna luminosa).
 - `.aura-tilt` — perspective + tilt no hover/pointer (com fallback reduced-motion).
@@ -102,6 +104,7 @@ Temas de marca = só sobrescrever as vars (igual ao padrão `--ts-*` que o Tools
 ## 5. Catálogo de componentes (todos os "bases")
 
 ### 5.1 Primitivos / Form
+
 - [ ] Button (variants: solid, soft, outline, ghost, glass, **3d** com `aura-press`)
 - [ ] Input, Textarea, NumberField, OTP/PinInput
 - [ ] Select, Combobox/Autocomplete, MultiSelect, Command (⌘K)
@@ -111,17 +114,20 @@ Temas de marca = só sobrescrever as vars (igual ao padrão `--ts-*` que o Tools
 - [ ] FileUpload / Dropzone, ColorPicker, TagsInput
 
 ### 5.2 Layout / Estrutura
+
 - [ ] Box/Stack/Row/Grid/Container/Section
 - [ ] Card (+ variantes glass/3d/spotlight), Surface, Panel
 - [ ] Separator, AspectRatio, ScrollArea, Resizable, Splitter
 - [ ] Sidebar/AppShell, Navbar, Breadcrumb, Pagination
 
 ### 5.3 Overlays
+
 - [ ] Dialog/Modal, Drawer/Sheet, Popover, Tooltip, HoverCard
 - [ ] DropdownMenu, ContextMenu, Menubar
 - [ ] Toast/Sonner, AlertDialog, CommandPalette
 
 ### 5.4 Data display
+
 - [ ] Table + DataTable (sort/filter/paginação/seleção — TanStack Table)
 - [ ] Tabs, Accordion, Collapsible, Disclosure
 - [ ] Avatar/AvatarGroup, Badge, Chip, Tag, Kbd
@@ -130,6 +136,7 @@ Temas de marca = só sobrescrever as vars (igual ao padrão `--ts-*` que o Tools
 - [ ] Carousel (Embla), Charts (wrapper sobre Recharts/visx)
 
 ### 5.5 Feedback / Status
+
 - [ ] Alert/Callout, Banner, Toast, Loading states, ErrorState
 
 > Meta de cobertura: **paridade com shadcn/ui** + extras (Combobox, DataTable, Command, AppShell prontos).
@@ -141,24 +148,29 @@ Temas de marca = só sobrescrever as vars (igual ao padrão `--ts-*` que o Tools
 `packages/effects` — cada um: tipado, SSR-safe, `prefers-reduced-motion`, lazy quando pesado.
 
 **3D / pointer**
+
 - [ ] `Card3D` / `TiltCard` — tilt com glare/holographic (Aceternity-class, mas tokenizado)
 - [ ] `Spotlight` / `MagicCard` — gradiente seguindo o cursor + borda luminosa
 - [ ] `MovingBorder` / `ShineBorder` / `BorderBeam`
 - [ ] `GlowCard`, `GlassCard`, `LayeredCard` (parallax de camadas internas)
 
 **Texto**
+
 - [ ] `AnimatedShinyText`, `TextShimmer`, `GradientText`
 - [ ] `TextReveal` (scroll), `Typewriter`, `SplitText` / `WordRotate`, `NumberTicker`
 
 **Background**
+
 - [ ] `AuroraBackground`, `BackgroundBeams`, `GridPattern` / `DotPattern`
 - [ ] `Meteors`, `Particles`, `Ripple`, `WarpGrid`, `Spotlight` global
 
 **Movimento / listas**
+
 - [ ] `Marquee` (logos), `AnimatedList`, `OrbitingCircles`, `AnimatedBeam` (conectar nós)
 - [ ] `Dock` (macOS-like), `BentoGrid`, `Lamp` header, `HeroParallax`
 
 **Scroll**
+
 - [ ] `ScrollReveal`, `StickyScroll`, `ContainerScroll` (laptop/phone mock), `Parallax`
 
 > Cada efeito tem prop `as`/`asChild` e degradação graciosa: sem JS = layout estático válido.
@@ -204,22 +216,28 @@ npx aura theme           # gerador de tema (escolhe brand/raio/elevação) -> es
 ## 10. Roadmap por fases
 
 **Fase 0 — Fundação (semana 1)**
+
 - Monorepo (pnpm + turbo), `core` (cn, tokens.css, ThemeProvider), `tailwind-preset` com utilitários 3D, Storybook.
 
 **Fase 1 — Primitivos + 5 efeitos âncora (sem 2–3)**
+
 - Button/Input/Card/Dialog/Tabs/Select/Tooltip + `Card3D`, `Spotlight`, `ShineBorder`, `AnimatedShinyText`, `AuroraBackground`.
 - CLI mínima (`init`, `add`) + registry.
 
 **Fase 2 — Cobertura completa de componentes (sem 4–6)**
+
 - Form completo, DataTable, Command, AppShell, overlays, data display.
 
 **Fase 3 — Efeitos avançados + 3D real (sem 7–8)**
+
 - Aceternity-class (HeroParallax, StickyScroll, BentoGrid, AnimatedBeam) + subpacote `@aura/three`.
 
 **Fase 4 — Docs + DX (sem 9–10)**
+
 - Site de docs, props auto, playground, `aura diff`, `aura theme`, guia de migração.
 
 **Fase 5 — Polimento + release (sem 11–12)**
+
 - Chromatic/axe/Playwright em CI, Changesets, `v0.1.0` no npm, landing pública.
 
 ---
@@ -242,4 +260,7 @@ npx aura theme           # gerador de tema (escolhe brand/raio/elevação) -> es
 - [ ] SSR sem flash/hydration warning
 - [ ] Story + exemplo na doc + entrada no registry da CLI
 - [ ] Testes unit + (visual se houver animação)
+
+```
+
 ```

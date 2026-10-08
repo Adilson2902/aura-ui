@@ -2,7 +2,14 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@aura/ui/*": ["../../packages/ui/src/*"],
+      "@aura/effects": ["../../packages/effects/src/index.ts"],
+      "@aura/effects/*": ["../../packages/effects/src/*"],
+      "@aura/core": ["../../packages/core/src/index.ts"],
+      "@aura/core/*": ["../../packages/core/src/*"]
+    }
   },
-  "include": ["../stories", ".storybook"]
+  "include": ["stories", ".storybook"]
 }

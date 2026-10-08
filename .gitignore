@@ -8,3 +8,8 @@ dist
 .env.local
 coverage
 storybook-static
+*.tsbuildinfo
+
+# configs de agente/IDE com credenciais locais (MCP keys)
+.cursor/
+.devin/

@@ -3,8 +3,9 @@ import { Providers } from "@/components/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Aura UI — Design System 3D",
-  description: "Biblioteca UI standalone com profundidade real, a11y e CLI estilo shadcn."
+  title: "Aura UI — Componentes modernos, interações reais",
+  description:
+    "Explore componentes React, efeitos de profundidade, formulários e tabelas interativas. Prévias funcionais e exemplos de código para criar do seu jeito."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

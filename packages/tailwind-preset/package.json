@@ -1,6 +1,6 @@
 {
-  "name": "@aura/tailwind-preset",
-  "version": "0.1.0",
+  "name": "aura-ui-tailwind",
+  "version": "0.1.1",
   "description": "Preset Tailwind v4 + utilitários 3D do Aura UI",
   "license": "MIT",
   "type": "module",
@@ -11,13 +11,43 @@
       "import": "./dist/plugin.js"
     }
   },
-  "files": ["src", "dist"],
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
     "build": "tsup src/plugin.ts --format esm --dts",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
     "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "tailwindcss": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aura-ui/aura-ui.git",
+    "directory": "packages/tailwind-preset"
+  },
+  "homepage": "https://github.com/aura-ui/aura-ui#readme",
+  "bugs": {
+    "url": "https://github.com/aura-ui/aura-ui.git/issues"
+  },
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "preset",
+    "3d",
+    "design-system"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
   }
 }

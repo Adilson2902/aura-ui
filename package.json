@@ -5,20 +5,31 @@
   "description": "Aura UI — design system 3D standalone (shadcn + Magic UI + Aceternity)",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "build": "turbo run build",
+    "build": "pnpm build:all",
+    "build:all": "pnpm --filter aura-ui-core build && pnpm --filter aura-ui-components build && pnpm --filter aura-ui-effects build && pnpm --filter aura-ui-tailwind build && pnpm --filter aura-ui-three build && pnpm --filter aura-ui-cli build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "storybook": "pnpm --filter @aura/storybook dev",
-    "build:storybook": "pnpm --filter @aura/storybook build",
+    "lint": "turbo run lint && eslint .",
+    "lint:eslint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "pnpm -r --filter \"./packages/*\" test",
+    "storybook": "pnpm --filter @adilsonmatos/storybook dev",
+    "build:storybook": "pnpm --filter @adilsonmatos/storybook build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm build:all && changeset publish",
+    "publish:all": "pnpm build:all && node scripts/publish-all.cjs",
+    "prepublishOnly": "pnpm build:all"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.10",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.3",
+    "prettier": "^3.6.2",
     "turbo": "^2.3.3",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.39.0"
   },
   "engines": {
     "node": ">=20"

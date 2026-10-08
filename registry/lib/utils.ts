@@ -1,1 +1,1 @@
-export { cn } from "@aura/core";
+export { cn } from "aura-ui-core";

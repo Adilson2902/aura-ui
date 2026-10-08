@@ -1,26 +1,62 @@
 {
-  "name": "@aura/three",
-  "version": "0.1.0",
-  "description": "Cenas 3D opcionais com React Three Fiber (subpacote)",
+  "name": "aura-ui-three",
+  "version": "0.1.1",
+  "description": "Cenas 3D opcionais do Aura UI com React Three Fiber",
   "license": "MIT",
   "type": "module",
-  "private": true,
+  "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean --external react --external react-dom --external three --external @react-three/fiber --external aura-ui-core --external aura-ui-core/client",
+    "dev": "tsup src/index.ts --format esm --watch --external react --external react-dom --external three --external @react-three/fiber --external aura-ui-core --external aura-ui-core/client",
     "lint": "tsc --noEmit"
   },
   "peerDependencies": {
+    "aura-ui-core": "workspace:^",
+    "@react-three/fiber": "^9.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
-    "@react-three/fiber": "^9.0.0",
     "three": "^0.171.0"
   },
+  "peerDependenciesMeta": {
+    "@react-three/fiber": {
+      "optional": true
+    },
+    "three": {
+      "optional": true
+    }
+  },
   "devDependencies": {
+    "@react-three/fiber": "^9.0.0",
+    "@types/react": "^19.0.2",
+    "@types/three": "^0.171.0",
+    "react": "^19.0.0",
+    "three": "^0.171.0",
+    "tsup": "^8.3.5",
     "typescript": "^5.7.2"
+  },
+  "keywords": [
+    "react",
+    "three",
+    "react-three-fiber",
+    "3d",
+    "aura-ui",
+    "ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aura-ui/aura-ui.git",
+    "directory": "packages/three"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

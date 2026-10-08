@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [
+    ["aura-ui-core", "aura-ui-components", "aura-ui-effects", "aura-ui-three", "aura-ui-tailwind", "aura-ui-cli"]
+  ],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": ["@aura/storybook", "docs", "landing", "figma-local-mcp"]
+}

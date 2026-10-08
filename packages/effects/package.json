@@ -1,6 +1,6 @@
 {
-  "name": "@aura/effects",
-  "version": "0.1.0",
+  "name": "aura-ui-effects",
+  "version": "0.1.1",
   "description": "Efeitos 3D e motion do Aura UI",
   "license": "MIT",
   "type": "module",
@@ -9,26 +9,148 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./card-3d": {
+      "types": "./dist/card-3d.d.ts",
+      "import": "./dist/card-3d.js"
+    },
+    "./spotlight": {
+      "types": "./dist/spotlight.d.ts",
+      "import": "./dist/spotlight.js"
+    },
+    "./shine-border": {
+      "types": "./dist/shine-border.d.ts",
+      "import": "./dist/shine-border.js"
+    },
+    "./animated-shiny-text": {
+      "types": "./dist/animated-shiny-text.d.ts",
+      "import": "./dist/animated-shiny-text.js"
+    },
+    "./aurora-background": {
+      "types": "./dist/aurora-background.d.ts",
+      "import": "./dist/aurora-background.js"
+    },
+    "./glow-orb": {
+      "types": "./dist/glow-orb.d.ts",
+      "import": "./dist/glow-orb.js"
+    },
+    "./marquee": {
+      "types": "./dist/marquee.d.ts",
+      "import": "./dist/marquee.js"
+    },
+    "./border-beam": {
+      "types": "./dist/border-beam.d.ts",
+      "import": "./dist/border-beam.js"
+    },
+    "./shimmer-button": {
+      "types": "./dist/shimmer-button.d.ts",
+      "import": "./dist/shimmer-button.js"
+    },
+    "./blur-fade": {
+      "types": "./dist/blur-fade.d.ts",
+      "import": "./dist/blur-fade.js"
+    },
+    "./number-ticker": {
+      "types": "./dist/number-ticker.d.ts",
+      "import": "./dist/number-ticker.js"
+    },
+    "./ripple": {
+      "types": "./dist/ripple.d.ts",
+      "import": "./dist/ripple.js"
+    },
+    "./layered-card": {
+      "types": "./dist/layered-card.d.ts",
+      "import": "./dist/layered-card.js"
+    },
+    "./glass-card": {
+      "types": "./dist/glass-card.d.ts",
+      "import": "./dist/glass-card.js"
+    },
+    "./moving-border": {
+      "types": "./dist/moving-border.d.ts",
+      "import": "./dist/moving-border.js"
+    },
+    "./orbiting-circles": {
+      "types": "./dist/orbiting-circles.d.ts",
+      "import": "./dist/orbiting-circles.js"
+    },
+    "./meteors": {
+      "types": "./dist/meteors.d.ts",
+      "import": "./dist/meteors.js"
+    },
+    "./perspective-grid": {
+      "types": "./dist/perspective-grid.d.ts",
+      "import": "./dist/perspective-grid.js"
+    },
+    "./bento-grid": {
+      "types": "./dist/bento-grid.d.ts",
+      "import": "./dist/bento-grid.js"
+    },
+    "./animated-beam": {
+      "types": "./dist/animated-beam.d.ts",
+      "import": "./dist/animated-beam.js"
+    },
+    "./hero-parallax": {
+      "types": "./dist/hero-parallax.d.ts",
+      "import": "./dist/hero-parallax.js"
+    },
+    "./sticky-scroll": {
+      "types": "./dist/sticky-scroll.d.ts",
+      "import": "./dist/sticky-scroll.js"
+    },
+    "./float": {
+      "types": "./dist/float.d.ts",
+      "import": "./dist/float.js"
     }
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@aura/core": "workspace:*",
+    "aura-ui-core": "workspace:*",
     "motion": "^11.15.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.2",
     "react": "^19.0.0",
     "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aura-ui/aura-ui.git",
+    "directory": "packages/effects"
+  },
+  "homepage": "https://github.com/aura-ui/aura-ui#readme",
+  "bugs": {
+    "url": "https://github.com/aura-ui/aura-ui.git/issues"
+  },
+  "keywords": [
+    "react",
+    "animation",
+    "effects",
+    "3d",
+    "aceternity",
+    "magic-ui",
+    "motion"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

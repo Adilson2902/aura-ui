@@ -1,13 +1,16 @@
 {
-  "name": "aura",
-  "version": "0.1.0",
+  "name": "aura-ui-cli",
+  "version": "0.1.1",
   "description": "CLI Aura UI — init, add, diff, theme",
   "license": "MIT",
   "type": "module",
   "bin": {
+    "aura-ui": "./dist/index.js",
     "aura": "./dist/index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",
     "dev": "tsup src/index.ts --format esm --watch",
@@ -24,5 +27,28 @@
     "@types/node": "^22.10.2",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aura-ui/aura-ui.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/aura-ui/aura-ui#readme",
+  "bugs": {
+    "url": "https://github.com/aura-ui/aura-ui.git/issues"
+  },
+  "keywords": [
+    "cli",
+    "shadcn",
+    "registry",
+    "scaffold",
+    "design-system",
+    "3d"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

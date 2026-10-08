@@ -1,5 +1,11 @@
+@import "tailwindcss";
 @import "../../core/styles/tokens.css";
 @import "../../core/styles/primitives.css";
+@import "../../core/styles/themes.css";
+
+/* Escaneia os componentes da lib em busca de classes */
+@source "../../ui/src";
+@source "../../effects/src";
 
 @theme {
   --color-aura-surface: hsl(var(--aura-surface));
@@ -7,27 +13,35 @@
   --color-aura-primary: hsl(var(--aura-primary));
   --color-aura-primary-foreground: hsl(var(--aura-primary-foreground));
   --color-aura-accent: hsl(var(--aura-accent));
+  --color-aura-accent-foreground: hsl(var(--aura-accent-foreground));
   --color-aura-muted: hsl(var(--aura-muted));
   --color-aura-muted-foreground: hsl(var(--aura-muted-foreground));
   --color-aura-border: hsl(var(--aura-border));
   --color-aura-ring: hsl(var(--aura-ring));
   --color-aura-destructive: hsl(var(--aura-destructive));
+  --color-aura-success: hsl(var(--aura-success));
+  --color-aura-success-foreground: hsl(var(--aura-success-foreground));
+  --color-aura-warning: hsl(var(--aura-warning));
+  --color-aura-warning-foreground: hsl(var(--aura-warning-foreground));
+  --color-aura-contrast: hsl(var(--aura-contrast));
+  --color-aura-cyber: hsl(var(--aura-cyber));
+
+  --font-aura: var(--aura-font-sans);
 
   --radius-aura: var(--aura-radius);
 
   --shadow-aura-1: var(--aura-elevation-1);
   --shadow-aura-2: var(--aura-elevation-2);
   --shadow-aura-3: var(--aura-elevation-3);
+  --shadow-aura-glow-primary: var(--aura-glow-primary);
+  --shadow-aura-glow-accent: var(--aura-glow-accent);
+  --shadow-aura-glow-cyber: var(--aura-glow-cyber);
 
   --ease-aura-spring: var(--aura-ease-spring);
   --animate-aura-shimmer: aura-shimmer 2.5s linear infinite;
+  --animate-aura-glow: aura-pulse-glow 3s ease-in-out infinite;
 }
 
-@keyframes aura-shimmer {
-  from {
-    background-position: 200% center;
-  }
-  to {
-    background-position: -200% center;
-  }
-}
+/* Keyframes aura-* vivem em aura-ui-core styles/primitives.css (importado acima):
+   os efeitos funcionam mesmo sem o preset Tailwind. As utilities
+   --animate-aura-* apenas referenciam esses keyframes pelo nome. */

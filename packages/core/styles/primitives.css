@@ -1,4 +1,174 @@
 @import "./tokens.css";
+@import "./themes.css";
+
+@keyframes aura-aurora-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(20%, -12%, 0) scale(1.15);
+  }
+}
+
+@keyframes aura-pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+/* Ângulo animável do feixe (BorderBeam). Sem suporte a @property: arco parado + borda base. */
+@property --aura-beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/*
+ * Sweep de brilho em loop perfeito.
+ * CONTRATO: gradiente periódico (cor 0% = cor 50% = cor 100%),
+ * `background-size: 200% 100%` e posição 0% -> 100%. Qualquer outro range
+ * (ex.: 200% -> -200%) deixa o fundo vazio em parte do ciclo.
+ */
+@keyframes aura-shimmer {
+  from {
+    background-position: 0% 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+/* Marquee: o trilho tem 2 metades idênticas; -50% fecha o loop sem snap. */
+@keyframes aura-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes aura-beam-spin {
+  to {
+    --aura-beam-angle: 360deg;
+  }
+}
+
+/* Sweep do ShimmerButton: faixa de 30% atravessa o botão (fora -> fora, sem snap). */
+@keyframes aura-shimmer-slide {
+  from {
+    transform: translateX(-120%) skewX(-12deg);
+  }
+  to {
+    transform: translateX(480%) skewX(-12deg);
+  }
+}
+
+/* Anel do Ripple: nasce no centro (translate embutido) e dissolve expandindo. */
+@keyframes aura-ripple-ring {
+  from {
+    transform: translate(-50%, -50%) scale(0.15);
+    opacity: 0.7;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Órbita: rotate 360 + counter-rotate do filho mantém o ícone ereto */
+@keyframes aura-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes aura-orbit-counter {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+/* Meteoros: caem na diagonal e dissolvem */
+@keyframes aura-meteor {
+  from {
+    transform: translate3d(0, -20vh, 0) rotate(215deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(40vw, 80vh, 0) rotate(215deg);
+    opacity: 0;
+  }
+}
+
+/* Borda rotativa Aceternity (conic) */
+@property --aura-border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@keyframes aura-border-rotate {
+  to { --aura-border-angle: 360deg; }
+}
+
+/* Grade em perspectiva infinita (chão 3D) */
+@keyframes aura-grid-scroll {
+  from { transform: perspective(400px) rotateX(60deg) translateY(0); }
+  to { transform: perspective(400px) rotateX(60deg) translateY(50%); }
+}
+
+/* Float suave para objetos 3D */
+@keyframes aura-float-y {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -12px, 0); }
+}
+
+/* Accordion open/close (grid-template-rows evita height:auto) */
+@keyframes aura-accordion-down {
+  from { grid-template-rows: 0fr; opacity: 0.6; }
+  to { grid-template-rows: 1fr; opacity: 1; }
+}
+@keyframes aura-accordion-up {
+  from { grid-template-rows: 1fr; opacity: 1; }
+  to { grid-template-rows: 0fr; opacity: 0.6; }
+}
+.aura-accordion-down {
+  display: grid;
+  grid-template-rows: 1fr;
+  animation: aura-accordion-down 200ms ease-out;
+}
+.aura-accordion-up {
+  display: grid;
+  grid-template-rows: 0fr;
+  animation: aura-accordion-up 200ms ease-out;
+}
+.aura-accordion-down > *,
+.aura-accordion-up > * {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="aura-aurora-drift"],
+  [style*="aura-pulse-glow"],
+  [style*="aura-shimmer"],
+  [style*="aura-marquee"],
+  [style*="aura-beam-spin"],
+  [style*="aura-ripple-ring"],
+  [style*="aura-orbit"],
+  [style*="aura-meteor"],
+  [style*="aura-border-rotate"],
+  [style*="aura-grid-scroll"],
+  [style*="aura-float-y"],
+  .animate-aura-shimmer,
+  .animate-aura-glow,
+  .animate-aura-orbit,
+  .animate-aura-meteor,
+  .animate-aura-border-rotate,
+  .animate-aura-float {
+    animation: none !important;
+  }
+}
 
 .aura-surface {
   background: hsl(var(--aura-surface));
@@ -6,13 +176,10 @@
   border-radius: var(--aura-radius);
   border: 1px solid hsl(var(--aura-border));
   box-shadow: var(--aura-elevation-2);
-  background-image: linear-gradient(
-    180deg,
-    hsl(0 0% 100% / 0.08) 0%,
-    transparent 40%
-  );
+  background-image: linear-gradient(180deg, hsl(0 0% 100% / 0.08) 0%, transparent 40%);
 }
 
+/* Glassmorphism DesignCode Style */
 .aura-glass {
   background: hsl(var(--aura-surface) / var(--aura-glass-alpha));
   backdrop-filter: blur(var(--aura-glass-blur));
@@ -22,6 +189,144 @@
   box-shadow: var(--aura-elevation-2);
 }
 
+.aura-glass-dc {
+  background: rgba(23, 27, 44, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--aura-radius);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), var(--aura-bevel-highlight);
+  color: #ffffff;
+}
+
+/* DesignCode Signature Gradient fills */
+.aura-gradient-primary {
+  background: var(--aura-gradient-primary);
+  color: #ffffff;
+}
+
+.aura-gradient-accent {
+  background: var(--aura-gradient-accent);
+  color: #ffffff;
+}
+
+.aura-gradient-cyber {
+  background: var(--aura-gradient-cyber);
+  color: #ffffff;
+}
+
+.aura-gradient-aurora {
+  background: var(--aura-gradient-aurora);
+  color: #ffffff;
+}
+
+/* DesignCode Inner Specular Bevel */
+.aura-bevel {
+  box-shadow: var(--aura-bevel-highlight), var(--aura-bevel-shadow);
+}
+
+/* DesignCode Glows */
+.aura-glow-primary {
+  box-shadow: var(--aura-glow-primary);
+}
+
+.aura-glow-accent {
+  box-shadow: var(--aura-glow-accent);
+}
+
+.aura-glow-cyber {
+  box-shadow: var(--aura-glow-cyber);
+}
+
+/* DesignCode Gradient Text */
+.aura-text-gradient-primary {
+  background: var(--aura-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.aura-text-gradient-accent {
+  background: var(--aura-gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.aura-text-gradient-cyber {
+  background: var(--aura-gradient-cyber);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.aura-text-gradient-aurora {
+  background: var(--aura-gradient-aurora);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== 3D Scene system ===== */
+/* Cena: cria o contexto de perspectiva para filhos em preserve-3d */
+.aura-scene {
+  perspective: var(--aura-perspective);
+  perspective-origin: var(--aura-light-x) var(--aura-light-y);
+  transform-style: preserve-3d;
+}
+
+.aura-scene-near {
+  perspective: var(--aura-perspective-near);
+}
+
+.aura-scene-far {
+  perspective: var(--aura-perspective-far);
+}
+
+/* Camada: filho de .aura-scene que aceita translateZ / rotate */
+.aura-layer {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.aura-depth-1 { transform: translateZ(var(--aura-depth-1)); }
+.aura-depth-2 { transform: translateZ(var(--aura-depth-2)); }
+.aura-depth-3 { transform: translateZ(var(--aura-depth-3)); }
+.aura-depth-4 { transform: translateZ(var(--aura-depth-4)); }
+.aura-depth-5 { transform: translateZ(var(--aura-depth-5)); }
+
+/* Elevação "plana" com luz superior + sombra inferior (pseudo-3D) */
+.aura-elevated {
+  box-shadow:
+    var(--aura-bevel-highlight),
+    0 1px 2px hsl(222 47% 11% / 0.06),
+    0 8px 24px hsl(222 47% 11% / 0.1);
+}
+
+.aura-elevated-strong {
+  box-shadow:
+    var(--aura-bevel-highlight),
+    0 2px 4px hsl(222 47% 11% / 0.08),
+    0 16px 48px hsl(222 47% 11% / 0.16),
+    var(--aura-bevel-shadow);
+}
+
+/* Vidro com especular que reage à luz do cursor */
+.aura-glass-specular {
+  position: relative;
+  overflow: hidden;
+}
+
+.aura-glass-specular::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--aura-light-x) var(--aura-light-y),
+    rgb(255 255 255 / var(--aura-specular)),
+    transparent 55%
+  );
+  mix-blend-mode: soft-light;
+}
+
+/* 3D Tilt & Interactions */
 .aura-tilt {
   transform-style: preserve-3d;
   perspective: var(--aura-perspective);
@@ -31,12 +336,15 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .aura-tilt:hover {
-    transform: rotateX(2deg) rotateY(-2deg) translateZ(calc(var(--aura-depth) * 4));
+    transform: rotateX(3deg) rotateY(-3deg) translateZ(calc(var(--aura-depth) * 6));
   }
 }
 
 .aura-press {
-  transition: transform var(--aura-dur-fast) var(--aura-ease-spring), box-shadow var(--aura-dur-fast);
+  transition:
+    transform var(--aura-dur-fast) var(--aura-ease-spring),
+    box-shadow var(--aura-dur-fast),
+    filter var(--aura-dur-fast);
 }
 
 .aura-press:active {

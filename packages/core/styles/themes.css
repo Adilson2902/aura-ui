@@ -1,0 +1,605 @@
+/**
+ * Temas Aura — contrato `data-theme` no <html> (estilo DaisyUI).
+ * Cada tema sobrescreve só tokens de marca / superfície.
+ * Modo escuro: acrescente a classe `.dark` OU use o par `-dark`.
+ */
+
+/* ===== aura (default — DesignCode purple/coral) ===== */
+:root,
+[data-theme="aura"] {
+  --aura-primary: 252 100% 67%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 348 100% 68%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 252 100% 67%;
+  --aura-cyber: 187 100% 50%;
+  --aura-gradient-primary: linear-gradient(135deg, #7857ff 0%, #2b85ff 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #ff5b79 0%, #ff9900 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #7857ff 0%, #2a85ff 35%, #00f2fe 70%, #43c6ac 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(120, 87, 255, 0.55);
+  --aura-glow-accent: 0 0 30px -5px rgba(255, 91, 121, 0.55);
+  --aura-glow-cyber: 0 0 30px -5px rgba(0, 242, 254, 0.55);
+}
+
+/* ===== midnight (deep space indigo) ===== */
+[data-theme="midnight"] {
+  --aura-surface: 226 41% 8%;
+  --aura-surface-foreground: 220 40% 96%;
+  --aura-muted: 228 32% 14%;
+  --aura-muted-foreground: 222 14% 68%;
+  --aura-border: 228 28% 20%;
+  --aura-primary: 217 91% 60%;
+  --aura-primary-foreground: 226 41% 8%;
+  --aura-accent: 271 91% 65%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 217 91% 60%;
+  --aura-gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 40%, #a78bfa 75%, #22d3ee 100%);
+  --aura-glow-primary: 0 0 32px -6px rgba(59, 130, 246, 0.55);
+}
+
+/* ===== ocean (teal / cyan) ===== */
+[data-theme="ocean"] {
+  --aura-primary: 189 94% 43%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 201 96% 45%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 189 94% 43%;
+  --aura-cyber: 168 76% 42%;
+  --aura-gradient-primary: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #2dd4bf 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #0ea5e9 0%, #22d3ee 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #0f766e 0%, #0891b2 40%, #67e8f9 75%, #a5f3fc 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(8, 145, 178, 0.5);
+}
+
+/* ===== forest (emerald / moss) ===== */
+[data-theme="forest"] {
+  --aura-primary: 152 76% 40%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 88 72% 42%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 152 76% 40%;
+  --aura-gradient-primary: linear-gradient(135deg, #059669 0%, #34d399 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #65a30d 0%, #a3e635 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #064e3b 0%, #059669 40%, #6ee7b7 75%, #d9f99d 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(5, 150, 105, 0.5);
+}
+
+/* ===== sunset (orange / rose) ===== */
+[data-theme="sunset"] {
+  --aura-primary: 24 94% 53%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 348 94% 58%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 24 94% 53%;
+  --aura-gradient-primary: linear-gradient(135deg, #f97316 0%, #fb7185 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #9a3412 0%, #f97316 35%, #fda4af 70%, #fde68a 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(249, 115, 22, 0.55);
+}
+
+/* ===== cyber (aqua / violet) ===== */
+[data-theme="cyber"] {
+  --aura-surface: 232 31% 8%;
+  --aura-surface-foreground: 190 100% 92%;
+  --aura-muted: 230 28% 14%;
+  --aura-muted-foreground: 188 20% 68%;
+  --aura-border: 188 30% 18%;
+  --aura-primary: 187 100% 50%;
+  --aura-primary-foreground: 232 31% 8%;
+  --aura-accent: 271 91% 65%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 187 100% 50%;
+  --aura-cyber: 187 100% 50%;
+  --aura-gradient-primary: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7c3aed 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #4c1d95 0%, #00f2fe 40%, #22d3ee 70%, #a78bfa 100%);
+  --aura-glow-primary: 0 0 32px -5px rgba(0, 242, 254, 0.6);
+  --aura-glow-cyber: 0 0 32px -5px rgba(0, 242, 254, 0.65);
+}
+
+/* ===== rose (pink / magenta) ===== */
+[data-theme="rose"] {
+  --aura-primary: 330 84% 56%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 292 84% 58%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 330 84% 56%;
+  --aura-gradient-primary: linear-gradient(135deg, #db2777 0%, #e879f9 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #f43f5e 0%, #c026d3 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #831843 0%, #db2777 35%, #f0abfc 70%, #fda4af 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(219, 39, 119, 0.55);
+}
+
+/* ===== nord (cold slate / frost) ===== */
+[data-theme="nord"] {
+  --aura-surface: 220 17% 93%;
+  --aura-surface-foreground: 222 22% 18%;
+  --aura-muted: 219 18% 86%;
+  --aura-muted-foreground: 220 12% 45%;
+  --aura-border: 218 16% 78%;
+  --aura-primary: 213 32% 52%;
+  --aura-primary-foreground: 220 17% 93%;
+  --aura-accent: 189 35% 52%;
+  --aura-accent-foreground: 220 17% 93%;
+  --aura-ring: 213 32% 52%;
+  --aura-gradient-primary: linear-gradient(135deg, #5e81ac 0%, #88c0d0 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #81a1c1 0%, #8fbcbb 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #2e3440 0%, #5e81ac 40%, #88c0d0 70%, #a3be8c 100%);
+  --aura-glow-primary: 0 0 28px -5px rgba(94, 129, 172, 0.45);
+}
+
+/* ===== mocha (warm coffee / cream) ===== */
+[data-theme="mocha"] {
+  --aura-surface: 30 30% 96%;
+  --aura-surface-foreground: 28 22% 18%;
+  --aura-muted: 28 24% 91%;
+  --aura-muted-foreground: 26 14% 42%;
+  --aura-border: 28 20% 82%;
+  --aura-primary: 20 82% 48%;
+  --aura-primary-foreground: 30 30% 96%;
+  --aura-accent: 16 72% 52%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 20 82% 48%;
+  --aura-gradient-primary: linear-gradient(135deg, #c2410c 0%, #f59e0b 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #b45309 0%, #fbbf24 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #7c2d12 0%, #ea580c 40%, #fdba74 70%, #fef3c7 100%);
+  --aura-glow-primary: 0 0 28px -5px rgba(194, 65, 12, 0.45);
+}
+
+/* ===== synthwave (dark neon) ===== */
+[data-theme="synthwave"] {
+  --aura-surface: 282 40% 10%;
+  --aura-surface-foreground: 280 80% 94%;
+  --aura-muted: 282 32% 16%;
+  --aura-muted-foreground: 280 20% 70%;
+  --aura-border: 282 28% 22%;
+  --aura-primary: 292 91% 65%;
+  --aura-primary-foreground: 282 40% 10%;
+  --aura-accent: 192 91% 58%;
+  --aura-accent-foreground: 282 40% 10%;
+  --aura-ring: 292 91% 65%;
+  --aura-cyber: 192 91% 58%;
+  --aura-gradient-primary: linear-gradient(135deg, #c026d3 0%, #22d3ee 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #f43f5e 0%, #22d3ee 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #701a75 0%, #c026d3 35%, #22d3ee 70%, #f0abfc 100%);
+  --aura-glow-primary: 0 0 36px -6px rgba(192, 38, 211, 0.65);
+  --aura-glow-accent: 0 0 36px -6px rgba(34, 211, 238, 0.55);
+}
+
+/* ===== amber (golden yellow) ===== */
+[data-theme="amber"] {
+  --aura-primary: 38 92% 44%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 24 94% 53%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 38 92% 44%;
+  --aura-cyber: 45 100% 55%;
+  --aura-gradient-primary: linear-gradient(135deg, #b45309 0%, #f59e0b 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #ea580c 0%, #fbbf24 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #fde047 0%, #f59e0b 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #78350f 0%, #d97706 40%, #fcd34d 70%, #fef9c3 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(217, 119, 6, 0.55);
+  --aura-glow-accent: 0 0 30px -5px rgba(234, 88, 12, 0.55);
+}
+
+/* ===== emerald (pure green) ===== */
+[data-theme="emerald"] {
+  --aura-primary: 160 84% 32%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 142 71% 35%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 160 84% 32%;
+  --aura-cyber: 158 84% 45%;
+  --aura-gradient-primary: linear-gradient(135deg, #047857 0%, #10b981 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #15803d 0%, #4ade80 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #022c22 0%, #047857 40%, #6ee7b7 70%, #d1fae5 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(5, 150, 105, 0.55);
+}
+
+/* ===== cherry (deep red) ===== */
+[data-theme="cherry"] {
+  --aura-primary: 350 84% 46%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 338 82% 56%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 350 84% 46%;
+  --aura-cyber: 350 100% 66%;
+  --aura-gradient-primary: linear-gradient(135deg, #b91c1c 0%, #f43f5e 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #be123c 0%, #fb7185 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #4c0519 0%, #be123c 40%, #fda4af 70%, #ffe4e6 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(190, 18, 60, 0.55);
+  --aura-glow-accent: 0 0 30px -5px rgba(244, 63, 94, 0.5);
+}
+
+/* ===== lavender (soft violet) ===== */
+[data-theme="lavender"] {
+  --aura-primary: 258 68% 58%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 280 70% 62%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 258 68% 58%;
+  --aura-cyber: 270 90% 70%;
+  --aura-gradient-primary: linear-gradient(135deg, #7c6cf0 0%, #a78bfa 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #d8b4fe 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #c4b5fd 0%, #8b5cf6 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #3b2a86 0%, #7c6cf0 40%, #d8b4fe 70%, #f5f3ff 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(139, 92, 246, 0.5);
+}
+
+/* ===== matrix (dark green terminal) ===== */
+[data-theme="matrix"] {
+  --aura-surface: 120 20% 5%;
+  --aura-surface-foreground: 120 60% 92%;
+  --aura-muted: 120 16% 11%;
+  --aura-muted-foreground: 120 14% 66%;
+  --aura-border: 120 18% 17%;
+  --aura-primary: 140 98% 42%;
+  --aura-primary-foreground: 120 20% 5%;
+  --aura-accent: 120 90% 52%;
+  --aura-accent-foreground: 120 20% 5%;
+  --aura-ring: 140 98% 42%;
+  --aura-cyber: 120 100% 50%;
+  --aura-contrast: 120 20% 5%;
+  --aura-gradient-primary: linear-gradient(135deg, #16a34a 0%, #4ade80 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #22c55e 0%, #86efac 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #052e16 0%, #16a34a 40%, #86efac 70%, #dcfce7 100%);
+  --aura-glow-primary: 0 0 32px -5px rgba(34, 197, 94, 0.6);
+  --aura-glow-cyber: 0 0 32px -5px rgba(74, 222, 128, 0.6);
+}
+
+/* ===== arctic (icy blue) ===== */
+[data-theme="arctic"] {
+  --aura-surface: 200 60% 98%;
+  --aura-surface-foreground: 211 45% 14%;
+  --aura-muted: 200 45% 92%;
+  --aura-muted-foreground: 202 18% 44%;
+  --aura-border: 200 35% 84%;
+  --aura-primary: 199 89% 42%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 187 75% 52%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 199 89% 42%;
+  --aura-cyber: 190 95% 60%;
+  --aura-gradient-primary: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #0891b2 0%, #67e8f9 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #7dd3fc 0%, #0ea5e9 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #082f49 0%, #0284c7 40%, #7dd3fc 70%, #e0f2fe 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(2, 132, 199, 0.5);
+}
+
+/* ===== desert (sand / terracotta) ===== */
+[data-theme="desert"] {
+  --aura-surface: 36 60% 97%;
+  --aura-surface-foreground: 26 35% 16%;
+  --aura-muted: 36 40% 91%;
+  --aura-muted-foreground: 28 18% 44%;
+  --aura-border: 34 30% 82%;
+  --aura-primary: 28 70% 44%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 42 85% 50%;
+  --aura-accent-foreground: 28 35% 16%;
+  --aura-ring: 28 70% 44%;
+  --aura-cyber: 40 100% 55%;
+  --aura-gradient-primary: linear-gradient(135deg, #c2410c 0%, #f59e0b 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #d97706 0%, #fcd34d 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #7c2d12 0%, #ea580c 40%, #fcd34d 70%, #fef3c7 100%);
+  --aura-glow-primary: 0 0 28px -5px rgba(194, 65, 12, 0.45);
+}
+
+/* ===== volcano (dark lava) ===== */
+[data-theme="volcano"] {
+  --aura-surface: 12 28% 7%;
+  --aura-surface-foreground: 20 85% 94%;
+  --aura-muted: 12 24% 13%;
+  --aura-muted-foreground: 14 20% 68%;
+  --aura-border: 12 26% 19%;
+  --aura-primary: 8 88% 54%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 27 95% 55%;
+  --aura-accent-foreground: 12 28% 7%;
+  --aura-ring: 8 88% 54%;
+  --aura-cyber: 32 100% 60%;
+  --aura-contrast: 12 28% 7%;
+  --aura-gradient-primary: linear-gradient(135deg, #dc2626 0%, #f97316 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #ea580c 0%, #fbbf24 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #fde047 0%, #f97316 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #450a0a 0%, #dc2626 35%, #f97316 70%, #fde047 100%);
+  --aura-glow-primary: 0 0 32px -5px rgba(220, 38, 38, 0.6);
+  --aura-glow-cyber: 0 0 32px -5px rgba(249, 115, 22, 0.6);
+}
+
+/* ===== grape (dark purple wine) ===== */
+[data-theme="grape"] {
+  --aura-surface: 270 32% 9%;
+  --aura-surface-foreground: 268 70% 94%;
+  --aura-muted: 270 26% 15%;
+  --aura-muted-foreground: 268 18% 68%;
+  --aura-border: 270 24% 21%;
+  --aura-primary: 275 85% 62%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 320 85% 60%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 275 85% 62%;
+  --aura-cyber: 290 95% 68%;
+  --aura-contrast: 270 32% 9%;
+  --aura-gradient-primary: linear-gradient(135deg, #7e22ce 0%, #a855f7 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #a21caf 0%, #f472b6 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #e879f9 0%, #a855f7 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #3b0764 0%, #7e22ce 40%, #e879f9 70%, #fae8ff 100%);
+  --aura-glow-primary: 0 0 32px -5px rgba(168, 85, 247, 0.6);
+}
+
+/* ===== mint (fresh mint) ===== */
+[data-theme="mint"] {
+  --aura-primary: 165 72% 38%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 140 62% 46%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 165 72% 38%;
+  --aura-cyber: 160 90% 50%;
+  --aura-gradient-primary: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #16a34a 0%, #86efac 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #5eead4 0%, #14b8a6 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #042f2e 0%, #0d9488 40%, #99f6e4 70%, #f0fdfa 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(13, 148, 136, 0.5);
+}
+
+/* ===== steel (cold neutral) ===== */
+[data-theme="steel"] {
+  --aura-surface: 220 14% 97%;
+  --aura-surface-foreground: 218 22% 14%;
+  --aura-muted: 218 14% 91%;
+  --aura-muted-foreground: 219 12% 42%;
+  --aura-border: 218 13% 82%;
+  --aura-primary: 215 25% 42%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 200 30% 52%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 215 25% 42%;
+  --aura-cyber: 197 60% 60%;
+  --aura-gradient-primary: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #4b6b8a 0%, #7f9db8 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #a5c4dd 0%, #5f88a8 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #1e293b 0%, #475569 40%, #94a3b8 70%, #e2e8f0 100%);
+  --aura-glow-primary: 0 0 26px -5px rgba(71, 85, 105, 0.4);
+}
+
+/* ===== peach (soft warm) ===== */
+[data-theme="peach"] {
+  --aura-surface: 28 100% 98%;
+  --aura-surface-foreground: 18 40% 16%;
+  --aura-muted: 26 80% 93%;
+  --aura-muted-foreground: 22 22% 45%;
+  --aura-border: 26 60% 85%;
+  --aura-primary: 18 90% 54%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 340 85% 62%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 18 90% 54%;
+  --aura-cyber: 25 100% 65%;
+  --aura-gradient-primary: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #f43f5e 0%, #fda4af 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #fdba74 0%, #f97316 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #9a3412 0%, #f97316 40%, #fda4af 70%, #fff7ed 100%);
+  --aura-glow-primary: 0 0 28px -5px rgba(249, 115, 22, 0.5);
+}
+
+/* ===== indigo (deep blue-violet) ===== */
+[data-theme="indigo"] {
+  --aura-primary: 243 65% 54%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 252 85% 64%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 243 65% 54%;
+  --aura-cyber: 230 95% 65%;
+  --aura-gradient-primary: linear-gradient(135deg, #4338ca 0%, #6366f1 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #4f46e5 0%, #818cf8 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #a5b4fc 0%, #4f46e5 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #1e1b4b 0%, #4338ca 40%, #a5b4fc 70%, #e0e7ff 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(99, 102, 241, 0.55);
+}
+
+/* ===== lime (acid green) ===== */
+[data-theme="lime"] {
+  --aura-primary: 84 81% 38%;
+  --aura-primary-foreground: 84 81% 8%;
+  --aura-accent: 100 82% 42%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 84 81% 38%;
+  --aura-cyber: 90 100% 50%;
+  --aura-gradient-primary: linear-gradient(135deg, #4d7c0f 0%, #a3e635 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #3f6212 0%, #84cc16 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #bef264 0%, #65a30d 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #1a2e05 0%, #4d7c0f 40%, #bef264 70%, #f7fee7 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(132, 204, 22, 0.55);
+}
+
+/* ===== sakura (soft pink) ===== */
+[data-theme="sakura"] {
+  --aura-surface: 340 100% 98%;
+  --aura-surface-foreground: 335 35% 16%;
+  --aura-muted: 340 70% 93%;
+  --aura-muted-foreground: 335 18% 45%;
+  --aura-border: 338 55% 86%;
+  --aura-primary: 335 82% 58%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 310 80% 62%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 335 82% 58%;
+  --aura-cyber: 330 100% 70%;
+  --aura-gradient-primary: linear-gradient(135deg, #e11d48 0%, #f472b6 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #db2777 0%, #e879f9 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #f9a8d4 0%, #ec4899 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #881337 0%, #e11d48 40%, #f9a8d4 70%, #fdf2f8 100%);
+  --aura-glow-primary: 0 0 28px -5px rgba(236, 72, 153, 0.5);
+}
+
+/* ===== obsidian (dark neutral) ===== */
+[data-theme="obsidian"] {
+  --aura-surface: 0 0% 7%;
+  --aura-surface-foreground: 0 0% 96%;
+  --aura-muted: 0 0% 13%;
+  --aura-muted-foreground: 0 0% 64%;
+  --aura-border: 0 0% 20%;
+  --aura-primary: 0 0% 98%;
+  --aura-primary-foreground: 0 0% 7%;
+  --aura-accent: 210 90% 60%;
+  --aura-accent-foreground: 0 0% 7%;
+  --aura-ring: 0 0% 70%;
+  --aura-cyber: 190 100% 60%;
+  --aura-contrast: 0 0% 7%;
+  --aura-gradient-primary: linear-gradient(135deg, #404040 0%, #e5e5e5 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #171717 0%, #525252 40%, #a3a3a3 70%, #f5f5f5 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(255, 255, 255, 0.35);
+}
+
+/* ===== solar (dark golden) ===== */
+[data-theme="solar"] {
+  --aura-surface: 40 28% 8%;
+  --aura-surface-foreground: 42 85% 94%;
+  --aura-muted: 40 22% 14%;
+  --aura-muted-foreground: 40 18% 68%;
+  --aura-border: 40 24% 20%;
+  --aura-primary: 45 100% 55%;
+  --aura-primary-foreground: 40 28% 8%;
+  --aura-accent: 25 100% 60%;
+  --aura-accent-foreground: 40 28% 8%;
+  --aura-ring: 45 100% 55%;
+  --aura-cyber: 50 100% 62%;
+  --aura-contrast: 40 28% 8%;
+  --aura-gradient-primary: linear-gradient(135deg, #eab308 0%, #fde047 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #f97316 0%, #facc15 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #fef08a 0%, #eab308 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #422006 0%, #a16207 35%, #fde047 70%, #fefce8 100%);
+  --aura-glow-primary: 0 0 32px -5px rgba(234, 179, 8, 0.6);
+}
+
+/* ===== aqua (turquoise) ===== */
+[data-theme="aqua"] {
+  --aura-primary: 174 72% 34%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 190 90% 44%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 174 72% 34%;
+  --aura-cyber: 175 90% 50%;
+  --aura-gradient-primary: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #0369a1 0%, #06b6d4 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #5eead4 0%, #06b6d4 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #042f2e 0%, #0f766e 40%, #6ee7b7 70%, #ccfbf1 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(15, 118, 110, 0.5);
+}
+
+/* ===== candy (playful pink/blue) ===== */
+[data-theme="candy"] {
+  --aura-primary: 320 95% 56%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 200 95% 58%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 320 95% 56%;
+  --aura-cyber: 190 100% 62%;
+  --aura-gradient-primary: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #22d3ee 0%, #ec4899 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #9d174d 0%, #ec4899 35%, #38bdf8 70%, #e0f2fe 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(236, 72, 153, 0.55);
+  --aura-glow-cyber: 0 0 30px -5px rgba(14, 165, 233, 0.55);
+}
+
+/* ===== mono (grayscale minimal) ===== */
+[data-theme="mono"] {
+  --aura-surface: 0 0% 99%;
+  --aura-surface-foreground: 0 0% 9%;
+  --aura-muted: 0 0% 95%;
+  --aura-muted-foreground: 0 0% 42%;
+  --aura-border: 0 0% 87%;
+  --aura-primary: 0 0% 9%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 0 0% 38%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 0 0% 30%;
+  --aura-cyber: 0 0% 20%;
+  --aura-gradient-primary: linear-gradient(135deg, #171717 0%, #525252 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #525252 0%, #a3a3a3 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #d4d4d4 0%, #525252 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #0a0a0a 0%, #404040 40%, #a3a3a3 70%, #e5e5e5 100%);
+  --aura-glow-primary: 0 0 24px -6px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== terminal (retro phosphor) ===== */
+[data-theme="terminal"] {
+  --aura-surface: 140 12% 6%;
+  --aura-surface-foreground: 140 55% 88%;
+  --aura-muted: 140 10% 12%;
+  --aura-muted-foreground: 140 14% 64%;
+  --aura-border: 140 12% 18%;
+  --aura-primary: 140 88% 48%;
+  --aura-primary-foreground: 140 12% 6%;
+  --aura-accent: 140 70% 60%;
+  --aura-accent-foreground: 140 12% 6%;
+  --aura-ring: 140 88% 48%;
+  --aura-cyber: 140 100% 55%;
+  --aura-contrast: 140 12% 6%;
+  --aura-gradient-primary: linear-gradient(135deg, #15803d 0%, #4ade80 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #22c55e 0%, #86efac 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #bbf7d0 0%, #22c55e 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #052e16 0%, #166534 40%, #86efac 70%, #f0fdf4 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(34, 197, 94, 0.55);
+  --aura-glow-cyber: 0 0 30px -5px rgba(74, 222, 128, 0.55);
+}
+
+/* ===== bubblegum (pink/blue pastel pop) ===== */
+[data-theme="bubblegum"] {
+  --aura-surface: 300 100% 98%;
+  --aura-surface-foreground: 300 35% 15%;
+  --aura-muted: 300 70% 93%;
+  --aura-muted-foreground: 300 18% 44%;
+  --aura-border: 300 55% 85%;
+  --aura-primary: 325 100% 62%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 260 100% 70%;
+  --aura-accent-foreground: 0 0% 100%;
+  --aura-ring: 325 100% 62%;
+  --aura-cyber: 280 100% 70%;
+  --aura-gradient-primary: linear-gradient(135deg, #ec4899 0%, #d946ef 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #e879f9 0%, #a855f7 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #701a75 0%, #db2777 35%, #c084fc 70%, #fae8ff 100%);
+  --aura-glow-primary: 0 0 30px -5px rgba(217, 70, 239, 0.5);
+}
+
+/* ===== caramel (warm brown / gold) ===== */
+[data-theme="caramel"] {
+  --aura-surface: 32 45% 96%;
+  --aura-surface-foreground: 28 35% 14%;
+  --aura-muted: 32 35% 90%;
+  --aura-muted-foreground: 28 20% 42%;
+  --aura-border: 30 28% 80%;
+  --aura-primary: 30 60% 38%;
+  --aura-primary-foreground: 0 0% 100%;
+  --aura-accent: 36 85% 48%;
+  --aura-accent-foreground: 28 35% 14%;
+  --aura-ring: 30 60% 38%;
+  --aura-cyber: 38 100% 55%;
+  --aura-gradient-primary: linear-gradient(135deg, #92400e 0%, #d97706 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #b45309 0%, #f59e0b 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #fcd34d 0%, #b45309 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #451a03 0%, #92400e 40%, #fbbf24 70%, #fef3c7 100%);
+  --aura-glow-primary: 0 0 28px -5px rgba(146, 64, 14, 0.45);
+}
+
+/* Escuro genérico para temas claros */
+.dark {
+  --aura-surface: 232 31% 8%;
+  --aura-surface-foreground: 210 40% 98%;
+  --aura-muted: 230 25% 15%;
+  --aura-muted-foreground: 220 15% 65%;
+  --aura-border: 230 20% 20%;
+}

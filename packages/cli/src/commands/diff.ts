@@ -22,11 +22,7 @@ export async function diffCommand(component: string) {
   );
 
   for (const file of item.files) {
-    const dest = path.join(
-      cwd,
-      config.aliases.ui.replace("@/", "src/"),
-      path.basename(file.path)
-    );
+    const dest = path.join(cwd, config.aliases.ui.replace("@/", "src/"), path.basename(file.path));
     const exists = await fs.pathExists(dest);
     p.log.info(`${exists ? pc.yellow("local") : pc.red("ausente")} → ${dest}`);
   }

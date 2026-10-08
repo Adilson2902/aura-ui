@@ -1,5 +1,5 @@
 {
-  "name": "@aura/docs",
+  "name": "@adilsonmatos/docs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aura/core": "workspace:*",
-    "@aura/effects": "workspace:*",
-    "@aura/tailwind-preset": "workspace:*",
-    "@aura/ui": "workspace:*",
+    "aura-ui-core": "workspace:*",
+    "aura-ui-effects": "workspace:*",
+    "aura-ui-tailwind": "workspace:*",
+    "aura-ui-components": "workspace:*",
     "next": "^15.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

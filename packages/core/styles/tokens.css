@@ -13,30 +13,66 @@
   --aura-elevation-5: 0 32px 64px hsl(222 47% 11% / 0.2), 0 12px 24px hsl(222 47% 11% / 0.1);
 
   --aura-depth: 1px;
+  --aura-depth-1: 2px;
+  --aura-depth-2: 6px;
+  --aura-depth-3: 12px;
+  --aura-depth-4: 24px;
+  --aura-depth-5: 48px;
   --aura-light-x: 50%;
   --aura-light-y: 0%;
-  --aura-glass-blur: 12px;
+  --aura-glass-blur: 16px;
   --aura-glass-alpha: 0.6;
+  --aura-specular: 0.35;
+  --aura-tilt-max: 12deg;
+  --aura-orbit-duration: 20s;
+  --aura-orbit-radius: 120px;
 
   /* cor / brand */
-  --aura-primary: 222 89% 56%;
+  --aura-primary: 252 100% 67%; /* #7857FF DesignCode Purple */
   --aura-primary-foreground: 0 0% 100%;
-  --aura-accent: 262 83% 58%;
+  --aura-accent: 348 100% 68%;  /* #FF5B79 DesignCode Coral */
   --aura-accent-foreground: 0 0% 100%;
-  --aura-ring: 222 89% 56%;
+  --aura-ring: 252 100% 67%;
   --aura-border: 214 32% 91%;
   --aura-destructive: 0 84% 60%;
   --aura-destructive-foreground: 0 0% 100%;
+  --aura-success: 160 84% 39%;
+  --aura-success-foreground: 0 0% 100%;
+  --aura-warning: 38 92% 50%;
+  --aura-warning-foreground: 232 31% 8%;
+
+  /* tinta escura p/ preenchimentos claros (cyber) — igual nos dois temas */
+  --aura-contrast: 232 31% 8%;
+  --aura-cyber: 187 100% 50%; /* #00F2FE DesignCode Aqua */
+
+  /* tipografia da marca */
+  --aura-font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* DesignCode UI Signature Gradients */
+  --aura-gradient-primary: linear-gradient(135deg, #7857FF 0%, #2B85FF 100%);
+  --aura-gradient-accent: linear-gradient(135deg, #FF5B79 0%, #FF9900 100%);
+  --aura-gradient-cyber: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+  --aura-gradient-aurora: linear-gradient(135deg, #7857FF 0%, #2A85FF 35%, #00F2FE 70%, #43C6AC 100%);
+  --aura-gradient-glass-border: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(120, 87, 255, 0.3) 100%);
+
+  /* DesignCode Inner Shadows & Specular Bevels */
+  --aura-bevel-highlight: inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+  --aura-bevel-shadow: inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
+  --aura-glow-primary: 0 0 30px -5px rgba(120, 87, 255, 0.55);
+  --aura-glow-accent: 0 0 30px -5px rgba(255, 91, 121, 0.55);
+  --aura-glow-cyber: 0 0 30px -5px rgba(0, 242, 254, 0.55);
 
   /* motion */
   --aura-ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
   --aura-dur-fast: 120ms;
   --aura-dur: 240ms;
+  --aura-dur-slow: 600ms;
   --aura-perspective: 1000px;
-  --aura-tilt-max: 12deg;
+  --aura-perspective-near: 600px;
+  --aura-perspective-far: 2000px;
 
   /* raio */
-  --aura-radius: 0.75rem;
+  --aura-radius: 0.875rem;
 
   /* mapeamento opcional Toolspace (--ts-*) */
   --ts-color-primary: hsl(var(--aura-primary));
@@ -44,11 +80,14 @@
 }
 
 .dark {
-  --aura-surface: 222 47% 7%;
+  --aura-surface: 232 31% 8%; /* #0B0C15 Dark Space */
   --aura-surface-foreground: 210 40% 98%;
-  --aura-muted: 217 33% 17%;
-  --aura-muted-foreground: 215 20% 65%;
-  --aura-border: 217 33% 22%;
-  --aura-primary: 217 91% 60%;
-  --aura-accent: 262 83% 65%;
+  --aura-muted: 230 25% 15%;
+  --aura-muted-foreground: 220 15% 65%;
+  --aura-border: 230 20% 20%;
+  --aura-primary: 252 100% 67%;
+  --aura-accent: 348 100% 68%;
+  --aura-success: 160 84% 45%;
+  --aura-warning: 38 92% 55%;
+  --aura-glass-alpha: 0.7;
 }

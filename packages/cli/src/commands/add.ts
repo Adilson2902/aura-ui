@@ -18,8 +18,11 @@ export async function addCommand(components: string[], options: AddOptions) {
 
   const config = await fs.readJson(configPath);
   const registry = await loadRegistry();
-  const names =
-    options.all ? registry.items.map((i) => i.name) : components.length ? components : [];
+  const names = options.all
+    ? registry.items.map((i) => i.name)
+    : components.length
+      ? components
+      : [];
 
   if (!names.length) {
     p.log.error("Informe componentes: aura add button card");

@@ -30,11 +30,7 @@ export async function loadRegistry(): Promise<Registry> {
   return fs.readJson(path.join(root, "registry/index.json"));
 }
 
-export async function resolveRegistryItem(
-  registry: Registry,
-  name: string,
-  resolved: Set<string>
-) {
+export async function resolveRegistryItem(registry: Registry, name: string, resolved: Set<string>) {
   if (resolved.has(name)) return;
   const item = registry.items.find((i) => i.name === name);
   if (!item) throw new Error(`Registry item not found: ${name}`);
