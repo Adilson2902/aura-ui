@@ -25,7 +25,12 @@ function run(cmd, cwd) {
 
 function published(name, version) {
   try {
-    return execSync(`npm view ${name}@${version} version`, { encoding: "utf8" }).trim() === version;
+    // stderr ignorado: versão inédita responde 404, que é o caso esperado aqui
+    const out = execSync(`npm view ${name}@${version} version`, {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"]
+    });
+    return out.trim() === version;
   } catch {
     return false;
   }
