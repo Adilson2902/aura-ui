@@ -9,7 +9,8 @@
       "aura-ui-effects",
       "aura-ui-three",
       "aura-ui-tailwind",
-      "aura-ui-cli"
+      "aura-ui-cli",
+      "aura-ui-mcp"
     ]
   ],
   "linked": [],

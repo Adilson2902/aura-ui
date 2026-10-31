@@ -6,7 +6,7 @@
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "build": "pnpm build:all",
-    "build:all": "pnpm --filter aura-ui-core build && pnpm --filter aura-ui-components build && pnpm --filter aura-ui-effects build && pnpm --filter aura-ui-tailwind build && pnpm --filter aura-ui-three build && pnpm --filter aura-ui-cli build",
+    "build:all": "pnpm --filter aura-ui-core build && pnpm --filter aura-ui-components build && pnpm --filter aura-ui-effects build && pnpm --filter aura-ui-tailwind build && pnpm --filter aura-ui-three build && pnpm --filter aura-ui-cli build && pnpm --filter aura-ui-mcp build",
     "dev": "turbo run dev",
     "lint": "turbo run lint && eslint .",
     "lint:eslint": "eslint .",

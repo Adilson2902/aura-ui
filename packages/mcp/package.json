@@ -1,0 +1,58 @@
+{
+  "name": "aura-ui-mcp",
+  "version": "0.2.1",
+  "description": "Servidor MCP do Aura UI — catálogo, código-fonte, temas, tokens e setup dos componentes para assistentes de IA (Claude, Cursor, VS Code)",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "aura-ui-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "scripts": {
+    "catalog": "node scripts/build-catalog.mjs",
+    "build": "node scripts/build-catalog.mjs && tsup src/index.ts --format esm --clean",
+    "dev": "tsup src/index.ts --format esm --watch",
+    "lint": "tsc --noEmit",
+    "test": "node scripts/build-catalog.mjs && vitest run",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adilson2902/aura-ui.git",
+    "directory": "packages/mcp"
+  },
+  "homepage": "https://github.com/Adilson2902/aura-ui/tree/master/packages/mcp#readme",
+  "bugs": {
+    "url": "https://github.com/Adilson2902/aura-ui/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "claude",
+    "cursor",
+    "design-system",
+    "react",
+    "components",
+    "tailwind"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

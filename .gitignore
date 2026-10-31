@@ -16,3 +16,6 @@ storybook-static
 
 # registry copiado para dentro do pacote do CLI no build
 packages/cli/registry/
+
+# catálogo gerado no build do MCP (scripts/build-catalog.mjs)
+packages/mcp/data/

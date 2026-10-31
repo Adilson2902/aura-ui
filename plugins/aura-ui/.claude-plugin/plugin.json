@@ -1,0 +1,13 @@
+{
+  "name": "aura-ui",
+  "version": "0.2.1",
+  "description": "Constrói interfaces com o Aura UI: skill com as regras do design system + servidor MCP com catálogo, código, temas e setup dos 96 componentes.",
+  "author": {
+    "name": "Adilson2902",
+    "url": "https://github.com/Adilson2902"
+  },
+  "homepage": "https://github.com/Adilson2902/aura-ui",
+  "repository": "https://github.com/Adilson2902/aura-ui",
+  "license": "MIT",
+  "keywords": ["react", "design-system", "tailwind", "ui", "components", "mcp", "aura-ui"]
+}

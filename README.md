@@ -13,7 +13,8 @@ Design system **3D standalone** — modelo shadcn (código no seu repo) + DaisyU
 | `aura-ui-effects` | suíte de efeitos 3D/motion (CSS-first) |
 | `aura-ui-three` | cenas WebGL opcionais (React Three Fiber) |
 | `aura-ui-tailwind` | preset Tailwind v4 + utilities 3D |
-| `aura-ui-cli` | CLI (`init`, `add`, `diff`, `theme`) — bin `aura` / `aura-ui` |
+| `aura-ui-cli` | CLI (`init`, `add`, `diff`, `theme`) — bin `aura-ui-cli` / `aura` / `aura-ui` |
+| `aura-ui-mcp` | servidor MCP p/ assistentes de IA (catálogo, código, temas, setup) |
 
 ```bash
 pnpm add aura-ui-core aura-ui-components aura-ui-effects aura-ui-tailwind tailwindcss
@@ -158,6 +159,31 @@ No monorepo: `pnpm --filter aura-ui-cli build` e `node packages/cli/dist/index.j
 O `add` resolve as dependências entre componentes (ex.: `combobox` → `popover` + `command`) e mostra o `pnpm add` com os pacotes npm necessários.
 
 O registry (`registry/`) é gerado a partir de `packages/*/src` — depois de mexer em componentes rode `pnpm registry:sync` (o `release` falha via `pnpm registry:check` se estiver desatualizado).
+
+## IA: MCP, plugin e skills
+
+Para o seu assistente de IA gerar telas com o Aura UI usando a API real (sem inventar props):
+
+**Claude Code** — plugin com o servidor MCP + skill com as regras do design system:
+
+```text
+/plugin marketplace add Adilson2902/aura-ui
+/plugin install aura-ui@aura-ui
+```
+
+**Qualquer cliente MCP** (Claude Desktop, Cursor, VS Code…):
+
+```json
+{ "mcpServers": { "aura-ui": { "command": "npx", "args": ["-y", "aura-ui-mcp@latest"] } } }
+```
+
+O servidor expõe `list_components`, `get_component`, `get_setup`, `list_themes` e `get_design_tokens` — detalhes em [`packages/mcp`](packages/mcp/README.md).
+
+| Onde | O que é |
+| --- | --- |
+| `packages/mcp` | servidor MCP `aura-ui-mcp` (npm) — catálogo gerado do `registry/` no build |
+| `.claude-plugin/marketplace.json` + `plugins/aura-ui` | marketplace e plugin do Claude Code (MCP + skill `aura-ui`) |
+| `.claude/skills/aura-ui-contrib` | skill de projeto p/ quem contribui com este repositório |
 
 ## Roadmap
 

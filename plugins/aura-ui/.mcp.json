@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "aura-ui": {
+      "command": "npx",
+      "args": ["-y", "aura-ui-mcp@latest"]
+    }
+  }
+}

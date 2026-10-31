@@ -15,7 +15,8 @@ const order = [
   ["packages/ui", "aura-ui-components"],
   ["packages/effects", "aura-ui-effects"],
   ["packages/three", "aura-ui-three"],
-  ["packages/cli", "aura-ui-cli"]
+  ["packages/cli", "aura-ui-cli"],
+  ["packages/mcp", "aura-ui-mcp"]
 ];
 
 function run(cmd, cwd) {
