@@ -5,14 +5,16 @@
   "license": "MIT",
   "type": "module",
   "bin": {
+    "aura-ui-cli": "./dist/index.js",
     "aura-ui": "./dist/index.js",
     "aura": "./dist/index.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "registry"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts --clean",
+    "build": "tsup src/index.ts --format esm --dts --clean && node scripts/bundle-registry.mjs",
     "dev": "tsup src/index.ts --format esm --watch",
     "lint": "tsc --noEmit"
   },

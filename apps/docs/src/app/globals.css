@@ -1,4 +1,6 @@
 @import "aura-ui-tailwind";
+@import "aura-ui-components/tailwind.css";
+@import "aura-ui-effects/tailwind.css";
 
 :root {
   --aura-primary: 162 77% 25%;

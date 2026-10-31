@@ -2,6 +2,10 @@
 
 ## 0.2.0
 
+### Correções de empacotamento (npm)
+
+- Novo `aura-ui-components/tailwind.css` com `@source` dos componentes, para o Tailwind v4 gerar as classes quando instalado como pacote.
+
 ### Minor Changes
 
 - 0c74e60: Catálogo v2 — 33 temas, 51 componentes e blocos de página

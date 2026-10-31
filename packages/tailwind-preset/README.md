@@ -12,8 +12,17 @@ npm install aura-ui-core aura-ui-tailwind tailwindcss
 
 ```css
 @import "aura-ui-tailwind";
-/* já puxa tokens.css + primitives.css + themes.css */
+/* já puxa tailwindcss + tokens.css + primitives.css + themes.css */
+
+/* Componentes instalados como pacote: o Tailwind v4 não escaneia node_modules,
+   então registre cada pacote que você usa (o @source é relativo ao pacote,
+   funciona com npm, pnpm e yarn): */
+@import "aura-ui-components/tailwind.css";
+@import "aura-ui-effects/tailwind.css";
+@import "aura-ui-three/tailwind.css";
 ```
+
+Componentes copiados com o CLI (`npx aura add button`) ficam no seu `src/` e são detectados automaticamente — não precisam dessas linhas.
 
 Ou monte na mão:
 
@@ -22,8 +31,8 @@ Ou monte na mão:
 @import "aura-ui-core/styles/tokens.css";
 @import "aura-ui-core/styles/themes.css";
 @import "aura-ui-core/styles/primitives.css";
-@source "../node_modules/aura-ui-components";
-@source "../node_modules/aura-ui-effects";
+@import "aura-ui-components/tailwind.css";
+@import "aura-ui-effects/tailwind.css";
 
 @theme {
   --color-aura-primary: hsl(var(--aura-primary));

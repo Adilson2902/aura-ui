@@ -1,0 +1,6 @@
+/*
+ * Registra as classes do aura-ui-three no scanner do Tailwind v4
+ * (node_modules não é escaneado). Uso: @import "aura-ui-three/tailwind.css";
+ * O caminho é relativo a este arquivo, então funciona com npm, pnpm e no monorepo.
+ */
+@source "./dist";

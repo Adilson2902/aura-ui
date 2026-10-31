@@ -4,12 +4,15 @@
   "description": "Componentes Aura UI (copiados via CLI)",
   "license": "MIT",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./tailwind.css": "./tailwind.css",
     "./badge": {
       "types": "./dist/badge.d.ts",
       "import": "./dist/badge.js"
@@ -305,7 +308,8 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "tailwind.css"
   ],
   "scripts": {
     "build": "tsup",

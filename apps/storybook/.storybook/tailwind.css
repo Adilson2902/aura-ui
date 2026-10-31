@@ -1,0 +1,4 @@
+/* Entrada Tailwind do Storybook — mesmo contrato de um app consumidor. */
+@import "aura-ui-tailwind";
+@import "aura-ui-components/tailwind.css";
+@import "aura-ui-effects/tailwind.css";

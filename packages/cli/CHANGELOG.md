@@ -2,6 +2,12 @@
 
 ## 0.2.0
 
+### Correções de empacotamento (npm)
+
+- O registry é empacotado junto (`registry/` no pacote) — antes `aura add` procurava a raiz do monorepo e falhava instalado do npm (e até no build local).
+- Novo bin `aura-ui-cli`, para `npx aura-ui-cli init` funcionar; `--version` lê a versão do package.json.
+- `aura init` gera só `@import "aura-ui-tailwind"` (o preset já inclui tokens/primitivas) e sugere `npx aura-ui-cli add`.
+
 ### Patch Changes
 
 - 364dc9c: Catálogo v3 — 22 componentes novos, overlays animados e APIs mais flexíveis

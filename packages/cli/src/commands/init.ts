@@ -24,9 +24,8 @@ const DEFAULT_CONFIG = {
   }
 };
 
-const TOKENS_SNIPPET = `@import "aura-ui-core/styles/tokens.css";
-@import "aura-ui-core/styles/primitives.css";
-@import "aura-ui-tailwind";
+/** O preset já traz Tailwind + tokens + primitivas 3D + temas do aura-ui-core. */
+const TOKENS_SNIPPET = `@import "aura-ui-tailwind";
 `;
 
 export async function initCommand() {
@@ -50,9 +49,9 @@ export async function initCommand() {
 
   p.note(
     [
-      "pnpm add aura-ui-core aura-ui-tailwind class-variance-authority tailwind-merge clsx",
-      "Importe aura-tokens.css no seu globals.css",
-      "npx aura add button card card-3d"
+      "pnpm add aura-ui-core aura-ui-tailwind class-variance-authority",
+      'No globals.css, troque @import "tailwindcss" por @import "./styles/aura-tokens.css"',
+      "npx aura-ui-cli add button card card-3d"
     ].join("\n"),
     "Próximos passos"
   );

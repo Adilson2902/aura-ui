@@ -4,12 +4,15 @@
   "description": "Efeitos 3D e motion do Aura UI",
   "license": "MIT",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./tailwind.css": "./tailwind.css",
     "./card-3d": {
       "types": "./dist/card-3d.d.ts",
       "import": "./dist/card-3d.js"
@@ -105,7 +108,8 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "tailwind.css"
   ],
   "scripts": {
     "build": "tsup",

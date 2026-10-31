@@ -1,11 +1,19 @@
 @import "tailwindcss";
-@import "../../core/styles/tokens.css";
-@import "../../core/styles/primitives.css";
-@import "../../core/styles/themes.css";
+@import "aura-ui-core/styles/tokens.css";
+@import "aura-ui-core/styles/primitives.css";
+@import "aura-ui-core/styles/themes.css";
 
-/* Escaneia os componentes da lib em busca de classes */
-@source "../../ui/src";
-@source "../../effects/src";
+/*
+ * Fontes de classes: o Tailwind v4 não escaneia node_modules. Ao consumir os
+ * componentes como pacote, registre-os no seu CSS (cada pacote aponta p/ si):
+ *
+ *   @import "aura-ui-tailwind";
+ *   @import "aura-ui-components/tailwind.css";
+ *   @import "aura-ui-effects/tailwind.css";
+ *   @import "aura-ui-three/tailwind.css";
+ *
+ * Componentes copiados via `aura add` ficam no seu src/ e já são detectados.
+ */
 
 @theme {
   --color-aura-surface: hsl(var(--aura-surface));

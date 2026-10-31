@@ -1,13 +1,17 @@
 #!/usr/bin/env node
+import { createRequire } from "node:module";
 import { Command } from "commander";
 import { initCommand } from "./commands/init.js";
 import { addCommand } from "./commands/add.js";
 import { diffCommand } from "./commands/diff.js";
 import { themeCommand } from "./commands/theme.js";
 
+// dist/index.js e src/index.ts ficam ambos um nível abaixo do package.json
+const { version } = createRequire(import.meta.url)("../package.json") as { version: string };
+
 const program = new Command();
 
-program.name("aura").description("Aura UI CLI — design system 3D (modelo shadcn)").version("0.1.0");
+program.name("aura").description("Aura UI CLI — design system 3D (modelo shadcn)").version(version);
 
 program
   .command("init")

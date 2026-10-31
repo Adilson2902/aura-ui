@@ -2,6 +2,11 @@
 
 ## 0.2.0
 
+### Correções de empacotamento (npm)
+
+- `preset.css` importa o core por nome de pacote (`aura-ui-core/styles/*`) em vez de caminhos do monorepo (`../../core/...`) — antes o preset quebrava instalado do npm; `aura-ui-core` virou dependência.
+- Removidos os `@source` relativos ao monorepo: cada pacote de componentes agora traz seu `tailwind.css` (`@import "aura-ui-components/tailwind.css"`).
+
 ### Patch Changes
 
 - 0c74e60: Catálogo v2 — 33 temas, 51 componentes e blocos de página

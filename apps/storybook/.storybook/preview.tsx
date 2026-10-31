@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { Preview, Decorator } from "@storybook/react";
 import { ThemeProvider } from "@aura/core/client";
-import "@aura/tailwind-preset";
+import "./tailwind.css";
 import "./preview.css";
 
 /** Sincroniza a classe `.dark` no <html> com o seletor de tema da toolbar. */

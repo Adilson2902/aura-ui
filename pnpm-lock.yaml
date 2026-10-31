@@ -237,6 +237,10 @@ importers:
         version: 5.9.3
 
   packages/tailwind-preset:
+    dependencies:
+      aura-ui-core:
+        specifier: workspace:*
+        version: link:../core
     devDependencies:
       tailwindcss:
         specifier: ^4.0.0

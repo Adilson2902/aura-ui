@@ -4,15 +4,19 @@
   "description": "Cenas 3D opcionais do Aura UI com React Three Fiber",
   "license": "MIT",
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./tailwind.css": "./tailwind.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "tailwind.css"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean --external react --external react-dom --external three --external @react-three/fiber --external aura-ui-core --external aura-ui-core/client",

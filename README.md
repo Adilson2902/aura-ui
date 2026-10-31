@@ -16,10 +16,20 @@ Design system **3D standalone** — modelo shadcn (código no seu repo) + DaisyU
 | `aura-ui-cli` | CLI (`init`, `add`, `diff`, `theme`) — bin `aura` / `aura-ui` |
 
 ```bash
-pnpm add aura-ui-core aura-ui-components aura-ui-effects
+pnpm add aura-ui-core aura-ui-components aura-ui-effects aura-ui-tailwind tailwindcss
 # opcional, só se quiser WebGL:
 pnpm add aura-ui-three three @react-three/fiber
 ```
+
+No CSS do app (substitui o `@import "tailwindcss"`):
+
+```css
+@import "aura-ui-tailwind"; /* Tailwind + tokens + primitivas 3D + temas */
+@import "aura-ui-components/tailwind.css"; /* registra as classes dos componentes */
+@import "aura-ui-effects/tailwind.css";
+```
+
+O Tailwind v4 não escaneia `node_modules`, por isso cada pacote traz um `tailwind.css` com `@source` relativo a ele mesmo (funciona com npm, pnpm e yarn).
 
 ### Suíte 3D (effects)
 
@@ -139,10 +149,11 @@ aura-ui/
 ## CLI
 
 ```bash
-pnpm --filter aura build
-node packages/cli/dist/index.js init
-node packages/cli/dist/index.js add button card card-3d
+npx aura-ui-cli init
+npx aura-ui-cli add button card card-3d
 ```
+
+No monorepo: `pnpm --filter aura-ui-cli build` e `node packages/cli/dist/index.js add button`. O build copia o `registry/` para dentro do pacote do CLI, que é o que vai para o npm.
 
 O `add` resolve as dependências entre componentes (ex.: `combobox` → `popover` + `command`) e mostra o `pnpm add` com os pacotes npm necessários.
 

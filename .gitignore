@@ -13,3 +13,6 @@ storybook-static
 # configs de agente/IDE com credenciais locais (MCP keys)
 .cursor/
 .devin/
+
+# registry copiado para dentro do pacote do CLI no build
+packages/cli/registry/

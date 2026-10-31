@@ -20,13 +20,26 @@ export type Registry = {
   items: RegistryItem[];
 };
 
-function monorepoRoot() {
+/**
+ * Pasta que contém `registry/index.json`. Ordem de busca:
+ * - pacote publicado / build local: `dist/../registry` (copiado no build)
+ * - código-fonte rodando via tsx: `src/lib/../../../../registry` (raiz do monorepo)
+ */
+function registryRoot() {
   const here = path.dirname(fileURLToPath(import.meta.url));
-  return path.resolve(here, "../../../..");
+  const candidates = [path.resolve(here, ".."), path.resolve(here, "../../../..")];
+  const root = candidates.find((dir) => fs.existsSync(path.join(dir, "registry/index.json")));
+  if (!root) {
+    throw new Error(
+      `registry/index.json não encontrado (procurado em: ${candidates.join(", ")}). ` +
+        "Rode o build do aura-ui-cli para empacotar o registry."
+    );
+  }
+  return root;
 }
 
 export async function loadRegistry(): Promise<Registry> {
-  const root = monorepoRoot();
+  const root = registryRoot();
   return fs.readJson(path.join(root, "registry/index.json"));
 }
 
@@ -56,7 +69,7 @@ export function collectDependencies(registry: Registry, names: Iterable<string>)
 }
 
 export async function copyRegistryFiles(item: RegistryItem, config: AuraConfig, cwd: string) {
-  const root = monorepoRoot();
+  const root = registryRoot();
 
   for (const file of item.files) {
     const src = path.join(root, file.path);
