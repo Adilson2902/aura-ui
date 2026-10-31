@@ -46,7 +46,10 @@ import { AuraCanvas, FloatingMesh, ParticleField, useAuraPointer } from "aura-ui
 ## Notas
 
 - Peer deps: `three`, `@react-three/fiber`, `react`
+- Com Tailwind v4: `@import "aura-ui-three/tailwind.css";` no CSS do app
 - Respeita `prefers-reduced-motion` (fallback estático)
 - SSR-safe: WebGL só no client
+
+[Repositório e documentação](https://github.com/Adilson2902/aura-ui)
 
 **MIT**

@@ -22,7 +22,7 @@ npm install aura-ui-core aura-ui-tailwind tailwindcss
 @import "aura-ui-three/tailwind.css";
 ```
 
-Componentes copiados com o CLI (`npx aura add button`) ficam no seu `src/` e são detectados automaticamente — não precisam dessas linhas.
+Componentes copiados com o CLI (`npx aura-ui-cli add button`) ficam no seu `src/` e são detectados automaticamente — não precisam dessas linhas.
 
 Ou monte na mão:
 
@@ -45,14 +45,18 @@ Ou monte na mão:
 ## O que o preset expõe
 
 - Cores: `bg-aura-primary`, `text-aura-muted-foreground`, `border-aura-border`…
-- Sombras: `shadow-aura-1..3`, `shadow-aura-glow-primary`
+- Sombras: `shadow-aura-1..5`, `shadow-aura-glow-primary`
 - Radius: `rounded-aura`
 - Ease: `ease-aura-spring`
 
 ## Temas
 
-Troque `data-theme` no `<html>`:
+Troque `data-theme` no `<html>` (33 temas):
 
-`aura` · `midnight` · `ocean` · `forest` · `sunset` · `cyber` · `rose` · `nord` · `mocha` · `synthwave`
+Claros: `aura` · `ocean` · `forest` · `sunset` · `rose` · `nord` · `mocha` · `amber` · `emerald` · `cherry` · `lavender` · `arctic` · `desert` · `mint` · `steel` · `peach` · `indigo` · `lime` · `sakura` · `aqua` · `candy` · `mono` · `bubblegum` · `caramel`
+
+Escuros: `midnight` · `cyber` · `synthwave` · `matrix` · `volcano` · `grape` · `obsidian` · `solar` · `terminal`
+
+[Repositório e documentação](https://github.com/Adilson2902/aura-ui)
 
 **MIT**

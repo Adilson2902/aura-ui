@@ -1,6 +1,6 @@
 {
   "name": "aura-ui-cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "CLI Aura UI — init, add, diff, theme",
   "license": "MIT",
   "type": "module",
@@ -32,12 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aura-ui/aura-ui.git",
+    "url": "git+https://github.com/Adilson2902/aura-ui.git",
     "directory": "packages/cli"
   },
-  "homepage": "https://github.com/aura-ui/aura-ui#readme",
+  "homepage": "https://github.com/Adilson2902/aura-ui/tree/master/packages/cli#readme",
   "bugs": {
-    "url": "https://github.com/aura-ui/aura-ui.git/issues"
+    "url": "https://github.com/Adilson2902/aura-ui/issues"
   },
   "keywords": [
     "cli",

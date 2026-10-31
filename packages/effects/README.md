@@ -8,10 +8,16 @@ Efeitos **3D / motion** do Aura UI — Magic UI + Aceternity, tokenizados, SSR-s
 npm install aura-ui-core aura-ui-effects
 ```
 
+```css
+/* CSS do app (Tailwind v4) */
+@import "aura-ui-tailwind";
+@import "aura-ui-effects/tailwind.css";
+```
+
+Sem Tailwind, importe só o CSS do core: `aura-ui-core/styles/tokens.css` e `aura-ui-core/styles/primitives.css`.
+
 ```tsx
 import { Card3D, LayeredCard, BentoGrid, HeroParallax } from "aura-ui-effects";
-import "aura-ui-core/styles/tokens.css";
-import "aura-ui-core/styles/primitives.css";
 ```
 
 Importes granulares:
@@ -80,5 +86,7 @@ export function Hero() {
 - Anima só `transform` / `opacity`
 - Sem JS no primeiro paint (SSR-safe)
 - Degrada com `prefers-reduced-motion`
+
+[Repositório e documentação](https://github.com/Adilson2902/aura-ui)
 
 **MIT**

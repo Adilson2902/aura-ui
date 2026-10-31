@@ -1,7 +1,7 @@
 {
   "$schema": "./schema.json",
   "name": "aura",
-  "homepage": "https://aura-ui.dev",
+  "homepage": "https://github.com/Adilson2902/aura-ui",
   "items": [
     {
       "name": "button",

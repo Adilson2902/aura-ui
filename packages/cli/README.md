@@ -12,13 +12,13 @@ npx aura-ui-cli diff button
 npx aura-ui-cli theme
 ```
 
-Binários: `aura` e `aura-ui` (mesmo CLI).
+Binários: `aura-ui-cli`, `aura` e `aura-ui` (mesmo CLI). O `add` resolve dependências entre componentes e mostra o `pnpm add` com os pacotes npm necessários.
 
 ## Comandos
 
 | Comando | O que faz |
 | --- | --- |
-| `init` | Cria `aura.config.json`, injeta tokens + preset |
+| `init` | Cria `aura.config.json` e `src/styles/aura-tokens.css` (preset Tailwind v4) |
 | `add [componentes...]` | Copia componentes do registry para o seu repo |
 | `add --all` | Tudo |
 | `diff <componente>` | Mostra diferenças vs. registry |
@@ -36,5 +36,7 @@ Os arquivos caem no seu projeto (ownership do código — você edita).
 ## Registro
 
 Category: `registry:ui` · `registry:effect` · `registry:lib`
+
+[Repositório e documentação](https://github.com/Adilson2902/aura-ui)
 
 **MIT**

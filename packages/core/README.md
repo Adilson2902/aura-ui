@@ -20,13 +20,13 @@ pnpm add aura-ui-core
 @import "aura-ui-core/styles/primitives.css";
 ```
 
-### Temas (10 + light/dark)
+### Temas (33 + light/dark)
 
 ```tsx
 import { ThemeProvider, useTheme } from "aura-ui-core/client";
 import { AURA_THEMES } from "aura-ui-core";
 
-// No <html>: data-theme="ocean" | midnight | forest | sunset | cyber | rose | nord | mocha | synthwave | aura
+// No <html>: data-theme="ocean" (lista completa em AURA_THEMES; escuros em AURA_DARK_THEMES)
 <ThemeProvider defaultTheme="system" defaultColorScheme="aura">
   <App />
 </ThemeProvider>;
@@ -59,6 +59,10 @@ Classes utilitárias: `.aura-surface` · `.aura-glass` · `.aura-glass-specular`
 - `aura-ui-three` — cenas WebGL (R3F)
 - `aura-ui-tailwind` — preset Tailwind v4
 - `aura-ui-cli` — CLI `npx aura-ui-cli`
+
+Com Tailwind v4, prefira o preset [`aura-ui-tailwind`](https://www.npmjs.com/package/aura-ui-tailwind), que já importa esses três arquivos.
+
+[Repositório e documentação](https://github.com/Adilson2902/aura-ui)
 
 ## Licença
 

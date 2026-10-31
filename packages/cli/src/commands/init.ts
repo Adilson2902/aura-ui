@@ -4,7 +4,6 @@ import * as p from "@clack/prompts";
 import pc from "picocolors";
 
 const DEFAULT_CONFIG = {
-  $schema: "https://aura-ui.dev/schema.json",
   style: "default",
   rsc: true,
   tsx: true,

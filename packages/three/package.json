@@ -1,6 +1,6 @@
 {
   "name": "aura-ui-three",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Cenas 3D opcionais do Aura UI com React Three Fiber",
   "license": "MIT",
   "type": "module",
@@ -59,8 +59,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/aura-ui/aura-ui.git",
+    "url": "git+https://github.com/Adilson2902/aura-ui.git",
     "directory": "packages/three"
+  },
+  "homepage": "https://github.com/Adilson2902/aura-ui/tree/master/packages/three#readme",
+  "bugs": {
+    "url": "https://github.com/Adilson2902/aura-ui/issues"
   },
   "publishConfig": {
     "access": "public"

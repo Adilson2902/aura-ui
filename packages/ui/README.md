@@ -1,89 +1,95 @@
 # aura-ui-components
 
-Componentes React do **Aura UI** — paridade com o Toolspace + extras 3D + charts em SVG.
+73 componentes React do **Aura UI**: Radix acessível, tokens `--aura-*`, 33 temas, variantes limpas/glass/3D e overlays animados (com `prefers-reduced-motion`).
 
 ## Instalação
 
 ```bash
-npm install aura-ui-core aura-ui-components react react-dom
+npm install aura-ui-components aura-ui-core aura-ui-tailwind tailwindcss react react-dom
+```
+
+No CSS do app (no lugar do `@import "tailwindcss"`):
+
+```css
+@import "aura-ui-tailwind"; /* Tailwind v4 + tokens + primitivas 3D + temas */
+@import "aura-ui-components/tailwind.css"; /* registra as classes dos componentes */
 ```
 
 ```tsx
-import { Button, Stat, DonutChart, ThemeSwitcher } from "aura-ui-components";
-import "aura-ui-core/styles/tokens.css";
-import "aura-ui-core/styles/themes.css";
-import "aura-ui-core/styles/primitives.css";
+import { Button, Card, Field, FieldLabel, FieldControl, Input } from "aura-ui-components";
+// ou por componente:
+import { DatePicker } from "aura-ui-components/date-picker";
 ```
 
 ## O que tem
 
-**Formulário:** Input · Textarea · Label · Checkbox · Switch · Select · Slider · RadioGroup
+**Formulários:** Button · ButtonGroup · Input · InputGroup · InputOTP · NumberInput · Textarea · Field · Label · Checkbox · RadioGroup / RadioGroupCard · Switch · Select · Combobox · Slider · Toggle / ToggleGroup · TagsInput · Rating · FileUpload · CopyButton
 
-**Layout / dados:** Card · Table · DataTable · Separator · Badge · Skeleton · Kbd · Breadcrumb · Pagination · Progress · Spinner · Stat · EmptyState · Avatar
+**Datas:** Calendar (single/range) · DatePicker · DateRangePicker — sem libs de data, nomes via `Intl`
 
-**Overlay / nav:** Dialog · Sheet · Tooltip · Popover · DropdownMenu · Tabs · Accordion · Navbar · Toast
+**Overlays:** Dialog · AlertDialog · Sheet · Drawer · Popover · HoverCard · Tooltip · DropdownMenu · ContextMenu · Command / CommandDialog · Toast
 
-**Charts (SVG zero-dep):** `BarChart` · `LineChart` · `MultiLineChart` · `DonutChart` · `Sparkline` · `RadialProgress` · `ChartFrame`
+**Layout / dados:** Card · Table · DataTable · Tabs · Accordion · Collapsible · Carousel · AspectRatio · ScrollArea · Separator · Avatar / AvatarGroup · Badge · Kbd · Breadcrumb · Pagination · Progress · Meter · Spinner · Skeleton · Stat · Steps · Timeline · EmptyState · Alert · Typography (Heading / Text / Prose) · CodeBlock · Blockquote
 
-**Tema:** `ThemeSwitcher`
+**Blocos de página:** Navbar · Hero · Section / Container · FeatureGrid · PricingCard · CallToAction · TestimonialCard / TestimonialGrid · LogoCloud · Banner · Footer · Sidebar / AppShell
+
+**Charts (SVG, zero deps):** BarChart · LineChart · MultiLineChart · DonutChart · Sparkline · RadialProgress · ChartFrame
+
+**Tema:** ThemeSwitcher
 
 ## Exemplos
 
-### Botão 3D
+### Botões
 
 ```tsx
-import { Button } from "aura-ui-components";
-
-<Button variant="3d">Criar</Button>
-<Button variant="glass">Glass</Button>
-<Button variant="gradient">Gradient</Button>
+<Button variant="gradient" leftIcon={<SparklesIcon />}>Gerar</Button>
+<Button loading loadingText="Salvando…">Salvar</Button>
+<Button variant="destructive" size="sm">Excluir</Button>
+<Button asChild variant="link"><a href="/docs">Docs</a></Button>
 ```
 
-### KPI com tilt
+### Formulário com validação (react-hook-form + zod)
 
 ```tsx
-import { Stat } from "aura-ui-components";
-
-<Stat label="Receita" value="R$ 12.480" delta="+12%" deltaDirection="up" variant="elevated" />;
+<Field invalid={!!errors.email} required>
+  <FieldLabel>E-mail</FieldLabel>
+  <FieldControl>
+    <Input {...register("email")} />
+  </FieldControl>
+  <FieldError>{errors.email?.message}</FieldError>
+</Field>
 ```
 
-### Chart
-
-```tsx
-import { DonutChart, BarChart } from "aura-ui-components";
-
-<DonutChart
-  title="Mix de planos"
-  data={[
-    { label: "Pro", value: 48 },
-    { label: "Team", value: 32 },
-    { label: "Starter", value: 20 }
-  ]}
-/>
-
-<BarChart title="Canais" data={[{ label: "Direct", value: 42 }, { label: "Organic", value: 68 }]} />
-```
+`FieldControl` liga `id`, `aria-describedby`, `aria-invalid` e `aria-required` automaticamente.
 
 ### Toast
 
 ```tsx
-import { ToastProvider, useToast } from "aura-ui-components";
-
-<ToastProvider>
+<ToastProvider position="top-right">
   <App />
 </ToastProvider>;
 
 const { toast } = useToast();
-toast({ title: "Salvo", description: "Tudo certo", variant: "success" });
+toast.success("Alterações salvas");
+toast({ title: "Movido p/ lixeira", action: { label: "Desfazer", onClick: undo } });
+```
+
+### Data e combobox
+
+```tsx
+<DatePicker value={date} onValueChange={setDate} />
+<Combobox multiple options={frameworks} value={stack} onValueChange={setStack} />
 ```
 
 ## Acessibilidade
 
-Radix UI, foco visível, `prefers-reduced-motion`, tokens de tema trocáveis.
+Primitivas Radix (foco preso, teclado, ARIA), foco visível em tudo, animações de overlay desligadas com `prefers-reduced-motion`, textos acessíveis customizáveis (`closeLabel`, `labels`…) com padrão em português.
 
 ## Ver também
 
-- `aura-ui-effects` — efeitos 3D/motion
-- `aura-ui-core` — tokens e ThemeProvider
+- [`aura-ui-tailwind`](https://www.npmjs.com/package/aura-ui-tailwind) — preset Tailwind v4
+- [`aura-ui-effects`](https://www.npmjs.com/package/aura-ui-effects) — efeitos 3D/motion
+- [`aura-ui-cli`](https://www.npmjs.com/package/aura-ui-cli) — copie os componentes para o seu repo (`npx aura-ui-cli add button`)
+- [Repositório e documentação](https://github.com/Adilson2902/aura-ui)
 
 **MIT**
