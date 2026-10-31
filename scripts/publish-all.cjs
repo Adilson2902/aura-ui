@@ -1,21 +1,34 @@
 /**
- * Publica os pacotes @aura-ui na ordem de dependência.
- * Pré-requisito: npm login e org/usuário dono do escopo @aura-ui.
+ * Publica os pacotes aura-ui-* na ordem de dependência.
+ * Pré-requisito: npm login (dono dos pacotes aura-ui-*).
+ *
+ * Usa `pnpm publish` (não `npm publish`): só o pnpm troca `workspace:*`
+ * pela versão real no package.json publicado. Com `npm publish` o pacote
+ * vai com `"aura-ui-core": "workspace:*"` e quebra a instalação do usuário.
+ * Versões já existentes no npm são puladas.
  */
 const { execSync } = require("child_process");
 
 const order = [
-  ["packages/core", "@aura-ui/core"],
-  ["packages/tailwind-preset", "@aura-ui/tailwind-preset"],
-  ["packages/ui", "@aura-ui/ui"],
-  ["packages/effects", "@aura-ui/effects"],
-  ["packages/three", "@aura-ui/three"],
-  ["packages/cli", "@aura-ui/cli"]
+  ["packages/core", "aura-ui-core"],
+  ["packages/tailwind-preset", "aura-ui-tailwind"],
+  ["packages/ui", "aura-ui-components"],
+  ["packages/effects", "aura-ui-effects"],
+  ["packages/three", "aura-ui-three"],
+  ["packages/cli", "aura-ui-cli"]
 ];
 
 function run(cmd, cwd) {
   console.log("\n$ " + cmd + (cwd ? "  (in " + cwd + ")" : ""));
   execSync(cmd, { stdio: "inherit", cwd });
+}
+
+function published(name, version) {
+  try {
+    return execSync(`npm view ${name}@${version} version`, { encoding: "utf8" }).trim() === version;
+  } catch {
+    return false;
+  }
 }
 
 try {
@@ -26,13 +39,14 @@ try {
   process.exit(1);
 }
 
-console.log(
-  "\nIMPORTANTE: o escopo @aura-ui deve ser seu (org 'aura-ui' no npm ou publish sob @seuusuario).\n"
-);
-
 for (const [dir, name] of order) {
-  console.log("\n=== publish " + name + " ===");
-  run("npm publish --access public", dir);
+  const { version } = require(require("path").resolve(dir, "package.json"));
+  if (published(name, version)) {
+    console.log(`\n=== ${name}@${version} já está no npm — pulando ===`);
+    continue;
+  }
+  console.log(`\n=== publish ${name}@${version} ===`);
+  run("pnpm publish --access public", dir);
 }
 
 console.log("\n✅ Todos os pacotes enviados. Confira em https://www.npmjs.com/");

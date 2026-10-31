@@ -1,6 +1,6 @@
 {
   "name": "aura-ui-tailwind",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Preset Tailwind v4 + utilitários 3D do Aura UI",
   "license": "MIT",
   "type": "module",

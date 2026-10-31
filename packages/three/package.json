@@ -1,6 +1,6 @@
 {
   "name": "aura-ui-three",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Cenas 3D opcionais do Aura UI com React Three Fiber",
   "license": "MIT",
   "type": "module",
@@ -20,11 +20,13 @@
     "lint": "tsc --noEmit"
   },
   "peerDependencies": {
-    "aura-ui-core": "workspace:^",
     "@react-three/fiber": "^9.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
     "three": "^0.171.0"
+  },
+  "dependencies": {
+    "aura-ui-core": "workspace:*"
   },
   "peerDependenciesMeta": {
     "@react-three/fiber": {

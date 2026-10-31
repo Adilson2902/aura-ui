@@ -251,7 +251,7 @@ importers:
   packages/three:
     dependencies:
       aura-ui-core:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       react-dom:
         specifier: ^18.0.0 || ^19.0.0
