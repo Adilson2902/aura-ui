@@ -46,3 +46,36 @@ export const Default: Story = {
     </Tabs>
   )
 };
+
+/** Os 5 estilos de lista (`pill`, `underline`, `outline`, `glass`, `3d`). */
+export const Variants: Story = {
+  render: () => (
+    <div className="flex w-[460px] flex-col gap-6">
+      {(["pill", "underline", "outline", "glass", "3d"] as const).map((variant) => (
+        <Tabs key={variant} defaultValue="geral">
+          <TabsList variant={variant} fullWidth>
+            <TabsTrigger value="geral">Geral</TabsTrigger>
+            <TabsTrigger value="equipe">Equipe</TabsTrigger>
+            <TabsTrigger value="cobranca">Cobrança</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      ))}
+    </div>
+  )
+};
+
+/** Orientação vertical — lista à esquerda, conteúdo ao lado. */
+export const Vertical: Story = {
+  render: () => (
+    <Tabs defaultValue="perfil" orientation="vertical" className="w-[480px]">
+      <TabsList variant="underline">
+        <TabsTrigger value="perfil">Perfil</TabsTrigger>
+        <TabsTrigger value="seguranca">Segurança</TabsTrigger>
+        <TabsTrigger value="avisos">Avisos</TabsTrigger>
+      </TabsList>
+      <TabsContent value="perfil" className="aura-surface p-4 text-sm">Dados do perfil.</TabsContent>
+      <TabsContent value="seguranca" className="aura-surface p-4 text-sm">Senha e 2FA.</TabsContent>
+      <TabsContent value="avisos" className="aura-surface p-4 text-sm">Preferências de e-mail.</TabsContent>
+    </Tabs>
+  )
+};

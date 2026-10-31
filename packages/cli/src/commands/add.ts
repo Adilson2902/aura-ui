@@ -2,7 +2,12 @@ import path from "node:path";
 import fs from "fs-extra";
 import * as p from "@clack/prompts";
 import pc from "picocolors";
-import { loadRegistry, resolveRegistryItem, copyRegistryFiles } from "../lib/registry.js";
+import {
+  loadRegistry,
+  resolveRegistryItem,
+  copyRegistryFiles,
+  collectDependencies
+} from "../lib/registry.js";
 
 type AddOptions = { all?: boolean };
 
@@ -44,5 +49,11 @@ export async function addCommand(components: string[], options: AddOptions) {
   }
 
   spinner.stop(pc.green(`${resolved.size} item(ns) adicionado(s).`));
+
+  const deps = collectDependencies(registry, resolved);
+  if (deps.length) {
+    p.note(`pnpm add ${deps.join(" ")}`, "Dependências necessárias");
+  }
+
   p.outro("Componentes copiados para o seu projeto (ownership total).");
 }

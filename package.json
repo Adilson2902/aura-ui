@@ -15,9 +15,11 @@
     "test": "pnpm -r --filter \"./packages/*\" test",
     "storybook": "pnpm --filter @adilsonmatos/storybook dev",
     "build:storybook": "pnpm --filter @adilsonmatos/storybook build",
+    "registry:sync": "node scripts/sync-registry.cjs",
+    "registry:check": "node scripts/sync-registry.cjs --check",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm build:all && changeset publish",
+    "release": "pnpm registry:check && pnpm build:all && changeset publish",
     "publish:all": "pnpm build:all && node scripts/publish-all.cjs",
     "prepublishOnly": "pnpm build:all"
   },

@@ -19,6 +19,7 @@
   --color-aura-border: hsl(var(--aura-border));
   --color-aura-ring: hsl(var(--aura-ring));
   --color-aura-destructive: hsl(var(--aura-destructive));
+  --color-aura-destructive-foreground: hsl(var(--aura-destructive-foreground));
   --color-aura-success: hsl(var(--aura-success));
   --color-aura-success-foreground: hsl(var(--aura-success-foreground));
   --color-aura-warning: hsl(var(--aura-warning));
@@ -33,6 +34,8 @@
   --shadow-aura-1: var(--aura-elevation-1);
   --shadow-aura-2: var(--aura-elevation-2);
   --shadow-aura-3: var(--aura-elevation-3);
+  --shadow-aura-4: var(--aura-elevation-4);
+  --shadow-aura-5: var(--aura-elevation-5);
   --shadow-aura-glow-primary: var(--aura-glow-primary);
   --shadow-aura-glow-accent: var(--aura-glow-accent);
   --shadow-aura-glow-cyber: var(--aura-glow-cyber);

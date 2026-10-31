@@ -13,8 +13,8 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority",
-        "@radix-ui/react-slot"
+        "@radix-ui/react-slot",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -29,6 +29,10 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -41,6 +45,9 @@
           "path": "registry/ui/input.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -58,11 +65,11 @@
     },
     {
       "name": "card-3d",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/card-3d.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -71,11 +78,11 @@
     },
     {
       "name": "spotlight",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/spotlight.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -84,11 +91,11 @@
     },
     {
       "name": "shine-border",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/shine-border.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -97,11 +104,11 @@
     },
     {
       "name": "animated-shiny-text",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/animated-shiny-text.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -110,11 +117,11 @@
     },
     {
       "name": "aurora-background",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/aurora-background.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -123,11 +130,11 @@
     },
     {
       "name": "glow-orb",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/glow-orb.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -136,11 +143,11 @@
     },
     {
       "name": "marquee",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/marquee.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -149,11 +156,11 @@
     },
     {
       "name": "border-beam",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/border-beam.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -162,11 +169,11 @@
     },
     {
       "name": "shimmer-button",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/shimmer-button.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -175,11 +182,11 @@
     },
     {
       "name": "blur-fade",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/blur-fade.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -188,11 +195,11 @@
     },
     {
       "name": "number-ticker",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/number-ticker.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -201,11 +208,11 @@
     },
     {
       "name": "ripple",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/ripple.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -221,6 +228,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -234,6 +244,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -246,6 +259,9 @@
           "path": "registry/ui/skeleton.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -261,8 +277,8 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority",
-        "@radix-ui/react-slot"
+        "@radix-ui/react-slot",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -276,6 +292,9 @@
           "path": "registry/ui/navbar.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -307,7 +326,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-switch"
+        "@radix-ui/react-switch",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -323,7 +343,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-tabs"
+        "@radix-ui/react-tabs",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -339,7 +360,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-dialog"
+        "@radix-ui/react-dialog",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -355,7 +377,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-tooltip"
+        "@radix-ui/react-tooltip",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -371,7 +394,8 @@
         }
       ],
       "dependencies": [
-        "@radix-ui/react-select"
+        "@radix-ui/react-select",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -394,11 +418,11 @@
     },
     {
       "name": "layered-card",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/layered-card.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -407,11 +431,11 @@
     },
     {
       "name": "glass-card",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/glass-card.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -420,11 +444,11 @@
     },
     {
       "name": "moving-border",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/moving-border.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -433,11 +457,11 @@
     },
     {
       "name": "orbiting-circles",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/orbiting-circles.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -446,11 +470,11 @@
     },
     {
       "name": "meteors",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/meteors.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -459,11 +483,11 @@
     },
     {
       "name": "perspective-grid",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/perspective-grid.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -472,11 +496,11 @@
     },
     {
       "name": "bento-grid",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/bento-grid.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -485,11 +509,11 @@
     },
     {
       "name": "animated-beam",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/animated-beam.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -498,11 +522,11 @@
     },
     {
       "name": "hero-parallax",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/hero-parallax.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -511,11 +535,11 @@
     },
     {
       "name": "sticky-scroll",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/sticky-scroll.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -524,11 +548,11 @@
     },
     {
       "name": "float",
-      "type": "registry:effect",
+      "type": "registry:ui",
       "files": [
         {
           "path": "registry/effects/float.tsx",
-          "type": "registry:effect"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": [
@@ -544,11 +568,12 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-accordion"
       ]
     },
     {
@@ -559,6 +584,9 @@
           "path": "registry/ui/alert.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -573,11 +601,12 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "@radix-ui/react-avatar",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-avatar"
       ]
     },
     {
@@ -602,11 +631,12 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "@radix-ui/react-checkbox",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-checkbox"
       ]
     },
     {
@@ -618,11 +648,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "utils"
-      ],
       "dependencies": [
         "@radix-ui/react-dropdown-menu"
+      ],
+      "registryDependencies": [
+        "utils"
       ]
     },
     {
@@ -646,6 +676,9 @@
           "path": "registry/ui/kbd.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -673,11 +706,12 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "@radix-ui/react-popover",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-popover"
       ]
     },
     {
@@ -689,11 +723,11 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-progress"
       ]
     },
     {
@@ -705,11 +739,12 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "@radix-ui/react-radio-group",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-radio-group"
       ]
     },
     {
@@ -721,11 +756,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "utils"
-      ],
       "dependencies": [
         "@radix-ui/react-scroll-area"
+      ],
+      "registryDependencies": [
+        "utils"
       ]
     },
     {
@@ -737,11 +772,12 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
-      ],
-      "dependencies": [
-        "@radix-ui/react-dialog"
       ]
     },
     {
@@ -753,11 +789,11 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "utils"
-      ],
       "dependencies": [
         "@radix-ui/react-slider"
+      ],
+      "registryDependencies": [
+        "utils"
       ]
     },
     {
@@ -768,6 +804,9 @@
           "path": "registry/ui/spinner.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -782,6 +821,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -795,6 +837,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -807,6 +852,9 @@
           "path": "registry/ui/toast.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -857,6 +905,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -869,6 +920,9 @@
           "path": "registry/ui/hero.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -883,6 +937,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -895,6 +952,9 @@
           "path": "registry/ui/feature-grid.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -909,6 +969,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -921,6 +984,9 @@
           "path": "registry/ui/footer.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -935,6 +1001,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -947,6 +1016,9 @@
           "path": "registry/ui/timeline.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -961,6 +1033,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -973,6 +1048,9 @@
           "path": "registry/ui/rating.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -987,6 +1065,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -999,6 +1080,9 @@
           "path": "registry/ui/meter.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"
@@ -1013,6 +1097,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -1026,6 +1113,9 @@
           "type": "registry:ui"
         }
       ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "registryDependencies": [
         "utils"
       ]
@@ -1038,6 +1128,369 @@
           "path": "registry/ui/toggle.tsx",
           "type": "registry:ui"
         }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-alert-dialog",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "banner",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/banner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-collapsible"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils",
+        "popover",
+        "command"
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "cmdk"
+      ],
+      "registryDependencies": [
+        "utils",
+        "dialog"
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-context-menu"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "popover",
+        "calendar"
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "label"
+      ]
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/file-upload.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-hover-card",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "logo-cloud",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/logo-cloud.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "number-input",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/number-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "testimonial",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/testimonial.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "registry/ui/typography.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils"

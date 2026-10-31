@@ -1,7 +1,8 @@
 import * as React from "react";
 import { cn } from "aura-ui-core";
 
-export interface EmptyStateProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface EmptyStateProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   /** Ícone / ilustração no topo. */
   icon?: React.ReactNode;
   /** Título curto. */

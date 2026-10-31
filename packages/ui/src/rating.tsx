@@ -17,7 +17,8 @@ const ratingVariants = cva("inline-flex items-center gap-0.5", {
     },
     variant: {
       solid: "[&_svg]:text-aura-primary",
-      gradient: "[&_svg]:aura-text-gradient-primary",
+      gradient:
+        "[&_svg]:text-aura-primary [--aura-star-from:hsl(var(--aura-primary))] [--aura-star-to:hsl(var(--aura-accent))]",
       glow: "[&_svg]:text-aura-primary [&_svg]:drop-shadow-[0_0_6px_hsl(var(--aura-primary)/0.6)]",
       muted: "[&_svg]:text-aura-muted-foreground",
       pulse:
@@ -50,7 +51,8 @@ function Star({ fill, className }: { fill: number; className?: string }) {
     <svg viewBox="0 0 16 16" aria-hidden="true" className={cn("h-[1em] w-[1em]", className)}>
       <defs>
         <linearGradient id={id}>
-          <stop offset={`${fill * 100}%`} stopColor="currentColor" />
+          <stop offset="0%" style={{ stopColor: "var(--aura-star-from, currentColor)" }} />
+          <stop offset={`${fill * 100}%`} style={{ stopColor: "var(--aura-star-to, currentColor)" }} />
           <stop offset={`${fill * 100}%`} stopColor="transparent" />
         </linearGradient>
       </defs>

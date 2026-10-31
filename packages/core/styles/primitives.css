@@ -148,6 +148,125 @@
   overflow: hidden;
 }
 
+/*
+ * ===== Overlays (Radix) — entrada/saída por data-state =====
+ * Seletores de atributo (não utilities) => funcionam com ou sem Tailwind.
+ * Radix Presence espera o `animationend` antes de desmontar, então a saída
+ * também anima. Reduced-motion zera tudo (Presence desmonta na hora).
+ */
+@keyframes aura-fade-in {
+  from { opacity: 0; }
+}
+@keyframes aura-fade-out {
+  to { opacity: 0; }
+}
+@keyframes aura-pop-in {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--aura-pop-x, 0), var(--aura-pop-y, 0), 0) scale(0.96);
+  }
+}
+@keyframes aura-pop-out {
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+@keyframes aura-slide-in {
+  from { transform: translate3d(var(--aura-slide-x, 0), var(--aura-slide-y, 0), 0); }
+}
+@keyframes aura-slide-out {
+  to { transform: translate3d(var(--aura-slide-x, 0), var(--aura-slide-y, 0), 0); }
+}
+@keyframes aura-expand {
+  from { height: 0; opacity: 0; }
+  to { height: var(--aura-content-height); opacity: 1; }
+}
+@keyframes aura-collapse {
+  from { height: var(--aura-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+@keyframes aura-toast-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--aura-toast-y, 12px), 0) scale(0.96);
+  }
+}
+@keyframes aura-toast-out {
+  to {
+    opacity: 0;
+    transform: translate3d(var(--aura-toast-x, 24px), 0, 0) scale(0.96);
+  }
+}
+
+/* Backdrop de Dialog/Sheet/AlertDialog/Drawer */
+.aura-overlay[data-state="open"] {
+  animation: aura-fade-in var(--aura-dur) ease-out;
+}
+.aura-overlay[data-state="closed"] {
+  animation: aura-fade-out var(--aura-dur-fast) ease-in forwards;
+}
+
+/* Conteúdo flutuante: Dialog, Popover, Menu, Select, Tooltip, HoverCard… */
+.aura-pop[data-state="open"],
+.aura-pop[data-state="delayed-open"],
+.aura-pop[data-state="instant-open"] {
+  animation: aura-pop-in var(--aura-dur) var(--aura-ease-spring);
+}
+.aura-pop[data-state="closed"] {
+  animation: aura-pop-out var(--aura-dur-fast) ease-in forwards;
+}
+/* Desliza a partir do lado em que o popper abriu */
+.aura-pop[data-side="top"] { --aura-pop-y: 6px; }
+.aura-pop[data-side="bottom"] { --aura-pop-y: -6px; }
+.aura-pop[data-side="left"] { --aura-pop-x: 6px; }
+.aura-pop[data-side="right"] { --aura-pop-x: -6px; }
+
+/* Painéis laterais (Sheet/Drawer) — `data-side` definido pelo componente */
+.aura-sheet[data-state="open"] {
+  animation: aura-slide-in calc(var(--aura-dur) * 1.5) var(--aura-ease-spring);
+}
+.aura-sheet[data-state="closed"] {
+  animation: aura-slide-out var(--aura-dur) ease-in forwards;
+}
+.aura-sheet[data-side="top"] { --aura-slide-y: -100%; }
+.aura-sheet[data-side="bottom"] { --aura-slide-y: 100%; }
+.aura-sheet[data-side="left"] { --aura-slide-x: -100%; }
+.aura-sheet[data-side="right"] { --aura-slide-x: 100%; }
+
+/* Conteúdo expansível (Accordion/Collapsible) — altura medida pelo Radix */
+.aura-expandable {
+  overflow: hidden;
+  --aura-content-height: var(
+    --radix-accordion-content-height,
+    var(--radix-collapsible-content-height, auto)
+  );
+}
+.aura-expandable[data-state="open"] {
+  animation: aura-expand var(--aura-dur) var(--aura-ease-spring);
+}
+.aura-expandable[data-state="closed"] {
+  animation: aura-collapse var(--aura-dur-fast) ease-in;
+}
+
+/* Toasts (ToastProvider) — `data-state` controlado pelo provider */
+.aura-toast[data-state="open"] {
+  animation: aura-toast-in var(--aura-dur) var(--aura-ease-spring);
+}
+.aura-toast[data-state="closed"] {
+  animation: aura-toast-out var(--aura-dur-fast) ease-in forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aura-overlay,
+  .aura-pop,
+  .aura-sheet,
+  .aura-expandable,
+  .aura-toast {
+    animation: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [style*="aura-aurora-drift"],
   [style*="aura-pulse-glow"],

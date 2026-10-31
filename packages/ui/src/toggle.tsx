@@ -21,7 +21,7 @@ const toggleVariants = cva(
         glass:
           "aura-glass-dc border border-white/15 text-white hover:bg-white/10 data-[pressed=true]:bg-white/20 aura-press",
         gradient:
-          "border border-aura-border/60 data-[pressed=true]:aura-gradient-primary data-[pressed=true]:aura-bevel data-[pressed=true]:text-aura-primary-foreground data-[pressed=true]:shadow-aura-2 aura-press",
+          "border border-aura-border/60 data-[pressed=true]:border-white/20 data-[pressed=true]:[background:var(--aura-gradient-primary)] data-[pressed=true]:text-aura-primary-foreground data-[pressed=true]:shadow-aura-glow-primary aura-press",
         "3d":
           "border border-aura-border bg-aura-muted text-aura-surface-foreground shadow-[0_3px_0_0_hsl(var(--aura-border))] aura-bevel data-[pressed=true]:bg-aura-primary data-[pressed=true]:text-aura-primary-foreground data-[pressed=true]:shadow-[0_1px_0_0_hsl(var(--aura-border))] data-[pressed=true]:translate-y-[2px] hover:shadow-[0_2px_0_0_hsl(var(--aura-border))]"
       },

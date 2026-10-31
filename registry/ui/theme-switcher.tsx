@@ -2,27 +2,18 @@
 
 import * as React from "react";
 import { cn } from "aura-ui-core";
-import { useTheme, AURA_THEMES, type AuraThemeName } from "aura-ui-core/client";
+import { useTheme, AURA_THEMES, AURA_THEME_LABELS, type AuraThemeName } from "aura-ui-core/client";
 
 export interface ThemeSwitcherProps {
   className?: string;
   /** Mostra o toggle light/dark junto (padrão true). */
   showModeToggle?: boolean;
-  /** Labels amigáveis. */
+  /** Labels amigáveis (padrão: catálogo `AURA_THEME_LABELS` do core). */
   labels?: Partial<Record<AuraThemeName | "light" | "dark", string>>;
 }
 
 const DEFAULT_LABELS: Record<string, string> = {
-  aura: "Aura",
-  midnight: "Midnight",
-  ocean: "Ocean",
-  forest: "Forest",
-  sunset: "Sunset",
-  cyber: "Cyber",
-  rose: "Rose",
-  nord: "Nord",
-  mocha: "Mocha",
-  synthwave: "Synthwave",
+  ...AURA_THEME_LABELS,
   light: "Claro",
   dark: "Escuro"
 };

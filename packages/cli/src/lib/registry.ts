@@ -42,8 +42,18 @@ export async function resolveRegistryItem(registry: Registry, name: string, reso
 }
 
 type AuraConfig = {
-  aliases: { ui: string; effects: string; utils: string };
+  aliases: { ui: string; effects: string; utils: string; lib?: string };
 };
+
+/** Pacotes npm exigidos pelos itens resolvidos (para o `pnpm add` sugerido). */
+export function collectDependencies(registry: Registry, names: Iterable<string>) {
+  const deps = new Set<string>();
+  for (const name of names) {
+    const item = registry.items.find((i) => i.name === name);
+    for (const dep of item?.dependencies ?? []) deps.add(dep);
+  }
+  return [...deps].sort();
+}
 
 export async function copyRegistryFiles(item: RegistryItem, config: AuraConfig, cwd: string) {
   const root = monorepoRoot();
@@ -51,7 +61,12 @@ export async function copyRegistryFiles(item: RegistryItem, config: AuraConfig, 
   for (const file of item.files) {
     const src = path.join(root, file.path);
     const isEffect = file.path.includes("/effects/");
-    const alias = isEffect ? config.aliases.effects : config.aliases.ui;
+    const isLib = file.type === "registry:lib";
+    const alias = isLib
+      ? (config.aliases.lib ?? "@/lib")
+      : isEffect
+        ? config.aliases.effects
+        : config.aliases.ui;
     const destDir = path.join(cwd, alias.replace("@/", "src/"));
     await fs.ensureDir(destDir);
     const dest = path.join(destDir, path.basename(file.path));

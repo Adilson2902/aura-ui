@@ -27,12 +27,14 @@ function pathFromPoints(
   points: { x: number; y: number }[],
   smooth: number
 ): string {
-  if (points.length === 0) return "";
-  if (points.length === 1) return `M ${points[0].x} ${points[0].y}`;
-  let d = `M ${points[0].x} ${points[0].y}`;
+  const first = points[0];
+  if (!first) return "";
+  if (points.length === 1) return `M ${first.x} ${first.y}`;
+  let d = `M ${first.x} ${first.y}`;
   for (let i = 1; i < points.length; i++) {
     const prev = points[i - 1];
     const curr = points[i];
+    if (!prev || !curr) continue;
     const dx = (curr.x - prev.x) * smooth;
     d += ` C ${prev.x + dx} ${prev.y}, ${curr.x - dx} ${curr.y}, ${curr.x} ${curr.y}`;
   }
@@ -49,13 +51,14 @@ const DEFAULT_PALETTE = [
 
 /* ---------- Chart frame ---------- */
 
-export interface ChartFrameProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ChartFrameProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   title?: React.ReactNode;
   description?: React.ReactNode;
   /** Altura do SVG em px (padrão 220). */
   height?: number;
   /** Legenda embaixo. */
-  legend?: { name: string; color: string }[];
+  legend?: { name: string; color?: string }[];
   action?: React.ReactNode;
 }
 

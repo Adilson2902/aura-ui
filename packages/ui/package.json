@@ -213,6 +213,94 @@
     "./toggle": {
       "types": "./dist/toggle.d.ts",
       "import": "./dist/toggle.js"
+    },
+    "./alert-dialog": {
+      "types": "./dist/alert-dialog.d.ts",
+      "import": "./dist/alert-dialog.js"
+    },
+    "./aspect-ratio": {
+      "types": "./dist/aspect-ratio.d.ts",
+      "import": "./dist/aspect-ratio.js"
+    },
+    "./banner": {
+      "types": "./dist/banner.d.ts",
+      "import": "./dist/banner.js"
+    },
+    "./button-group": {
+      "types": "./dist/button-group.d.ts",
+      "import": "./dist/button-group.js"
+    },
+    "./calendar": {
+      "types": "./dist/calendar.d.ts",
+      "import": "./dist/calendar.js"
+    },
+    "./carousel": {
+      "types": "./dist/carousel.d.ts",
+      "import": "./dist/carousel.js"
+    },
+    "./collapsible": {
+      "types": "./dist/collapsible.d.ts",
+      "import": "./dist/collapsible.js"
+    },
+    "./combobox": {
+      "types": "./dist/combobox.d.ts",
+      "import": "./dist/combobox.js"
+    },
+    "./command": {
+      "types": "./dist/command.d.ts",
+      "import": "./dist/command.js"
+    },
+    "./context-menu": {
+      "types": "./dist/context-menu.d.ts",
+      "import": "./dist/context-menu.js"
+    },
+    "./copy-button": {
+      "types": "./dist/copy-button.d.ts",
+      "import": "./dist/copy-button.js"
+    },
+    "./date-picker": {
+      "types": "./dist/date-picker.d.ts",
+      "import": "./dist/date-picker.js"
+    },
+    "./drawer": {
+      "types": "./dist/drawer.d.ts",
+      "import": "./dist/drawer.js"
+    },
+    "./field": {
+      "types": "./dist/field.d.ts",
+      "import": "./dist/field.js"
+    },
+    "./file-upload": {
+      "types": "./dist/file-upload.d.ts",
+      "import": "./dist/file-upload.js"
+    },
+    "./hover-card": {
+      "types": "./dist/hover-card.d.ts",
+      "import": "./dist/hover-card.js"
+    },
+    "./input-group": {
+      "types": "./dist/input-group.d.ts",
+      "import": "./dist/input-group.js"
+    },
+    "./input-otp": {
+      "types": "./dist/input-otp.d.ts",
+      "import": "./dist/input-otp.js"
+    },
+    "./logo-cloud": {
+      "types": "./dist/logo-cloud.d.ts",
+      "import": "./dist/logo-cloud.js"
+    },
+    "./number-input": {
+      "types": "./dist/number-input.d.ts",
+      "import": "./dist/number-input.js"
+    },
+    "./testimonial": {
+      "types": "./dist/testimonial.d.ts",
+      "import": "./dist/testimonial.js"
+    },
+    "./typography": {
+      "types": "./dist/typography.d.ts",
+      "import": "./dist/typography.js"
     }
   },
   "files": [
@@ -231,12 +319,15 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "aura-ui-core": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.20",
+    "@radix-ui/react-alert-dialog": "^1.2.1",
     "@radix-ui/react-avatar": "^1.2.6",
     "@radix-ui/react-checkbox": "^1.3.11",
+    "@radix-ui/react-collapsible": "^1.2.1",
+    "@radix-ui/react-context-menu": "^2.4.1",
     "@radix-ui/react-dialog": "^1.1.17",
     "@radix-ui/react-dropdown-menu": "^2.1.24",
+    "@radix-ui/react-hover-card": "^1.2.1",
     "@radix-ui/react-label": "^2.1.10",
     "@radix-ui/react-popover": "^1.1.23",
     "@radix-ui/react-progress": "^1.1.16",
@@ -248,7 +339,9 @@
     "@radix-ui/react-switch": "^1.3.1",
     "@radix-ui/react-tabs": "^1.1.15",
     "@radix-ui/react-tooltip": "^1.2.10",
-    "class-variance-authority": "^0.7.1"
+    "aura-ui-core": "workspace:*",
+    "class-variance-authority": "^0.7.1",
+    "cmdk": "^1.1.1"
   },
   "devDependencies": {
     "@types/react": "^19.0.2",

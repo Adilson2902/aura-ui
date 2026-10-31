@@ -35,9 +35,27 @@ Todos: tipados, SSR-safe, `prefers-reduced-motion`, cores só via tokens `--aura
 
 `.aura-scene` · `.aura-layer` · `.aura-depth-1..5` · `.aura-glass` · `.aura-glass-specular` · `.aura-elevated` · `.aura-tilt` · `.aura-press`
 
-### UI Kit (paridade Toolspace + extras — 51 componentes)
+### UI Kit (paridade shadcn/Toolspace + extras — 73 componentes)
 
-`Accordion` · `Alert` · `Avatar` · `Badge` · `Blockquote` · `Breadcrumb` · `Button` · `Card` · `Checkbox` · `CodeBlock` · `DataTable` · `Dialog` · `DropdownMenu` · `EmptyState` · `Input` · `Kbd` · `Label` · `Meter` · `Navbar` · `Pagination` · `Popover` · `Progress` · `RadioGroup` · `Rating` · `ScrollArea` · `Select` · `Separator` · `Sheet` · `Sidebar`/`AppShell` · `Skeleton` · `Slider` · `Spinner` · `Stat` · `Steps` · `Switch` · `Table` · `Tabs` · `TagsInput` · `Textarea` · `Timeline` · `Toast` · `Toggle`/`ToggleGroup` · `Tooltip` — todos com tokens `--aura-*` e elevação 3D opcional.
+`Accordion` · `Alert` · `AlertDialog` · `AspectRatio` · `Avatar`/`AvatarGroup` · `Badge` · `Banner` · `Blockquote` · `Breadcrumb` · `Button` · `ButtonGroup` · `Calendar` · `Card` · `Carousel` · `Checkbox` · `CodeBlock` · `Collapsible` · `Combobox` · `Command` · `ContextMenu` · `CopyButton` · `DataTable` · `DatePicker`/`DateRangePicker` · `Dialog` · `Drawer` · `DropdownMenu` · `EmptyState` · `Field` · `FileUpload` · `HoverCard` · `Input` · `InputGroup` · `InputOTP` · `Kbd` · `Label` · `Meter` · `Navbar` · `NumberInput` · `Pagination` · `Popover` · `Progress` · `RadioGroup`/`RadioGroupCard` · `Rating` · `ScrollArea` · `Select` · `Separator` · `Sheet` · `Sidebar`/`AppShell` · `Skeleton` · `Slider` · `Spinner` · `Stat` · `Steps` · `Switch` · `Table` · `Tabs` · `TagsInput` · `Textarea` · `Timeline` · `Toast` · `Toggle`/`ToggleGroup` · `Tooltip` · `Typography` (`Heading`/`Text`/`Prose`) — todos com tokens `--aura-*` e elevação 3D opcional.
+
+**Novidades da v3**
+
+- **Overlays animados de verdade** — Dialog, Sheet, Drawer, Popover, Tooltip, Select, menus e HoverCard animam entrada **e saída** via classes do core (`aura-pop`, `aura-overlay`, `aura-sheet`), sem plugin extra e respeitando `prefers-reduced-motion`.
+- **Formulários** — `Field` liga label/descrição/erro com ARIA automático (pronto p/ react-hook-form + zod); `InputGroup`, `InputOTP`, `NumberInput`, `FileUpload`, `Combobox` (simples/múltiplo) e `DatePicker` sem dependências de data.
+- **APIs mais maleáveis** — `Button` com `loading`, `leftIcon`/`rightIcon`, `fullWidth`, 8 tamanhos e variantes `destructive`/`accent`/`link`; `Card` com `padding`, `interactive`, `asChild` e `CardAction`; `size` em Input/Select/Badge/Switch/Checkbox/Radio; `Tabs` com 5 estilos e orientação vertical; `Accordion` com 4 estilos; `Toast` com 6 posições, ações e `toast.success()`.
+
+```tsx
+<Field invalid={!!errors.email} required>
+  <FieldLabel>E-mail</FieldLabel>
+  <FieldControl>
+    <Input {...register("email")} />
+  </FieldControl>
+  <FieldError>{errors.email?.message}</FieldError>
+</Field>
+
+<Button loading={isSubmitting} loadingText="Salvando…" leftIcon={<SaveIcon />}>Salvar</Button>
+```
 
 **Cada componente tem ≥5 variantes** misturando estilos limpos, 3D e animados. Exemplos: Button (9), Card (9), Input/Textarea (7 incl. `3d` com bevel físico), Table (6 incl. `glass` e `3d`), Spinner (5), Separator (5), Kbd (5), Avatar (5 anéis).
 
@@ -45,7 +63,7 @@ Todos: tipados, SSR-safe, `prefers-reduced-motion`, cores só via tokens `--aura
 
 Monte uma landing/dashboard em minutos compondo:
 
-`Hero` · `Section`/`Container`/`SectionHeading` · `FeatureGrid`/`FeatureCard` · `PricingCard`/`PricingGrid` · `CallToAction` · `Footer` (+ colunas/links) · `Steps` · `Timeline` · `Sidebar`/`AppShell` — todos com ≥5 variantes (clean, gradient, glass, aurora, glow, 3D…).
+`Hero` · `Section`/`Container`/`SectionHeading` · `FeatureGrid`/`FeatureCard` · `PricingCard`/`PricingGrid` · `CallToAction` · `TestimonialCard`/`TestimonialGrid` · `LogoCloud` (grid ou marquee) · `Banner` · `Footer` (+ colunas/links) · `Steps` · `Timeline` · `Sidebar`/`AppShell` — todos com ≥5 variantes (clean, gradient, glass, aurora, glow, 3D…).
 
 ```tsx
 import { Hero, HeroContent, HeroTitle, HeroActions, Button, FeatureGrid, FeatureCard, CallToAction } from "aura-ui-components";
@@ -125,6 +143,10 @@ pnpm --filter aura build
 node packages/cli/dist/index.js init
 node packages/cli/dist/index.js add button card card-3d
 ```
+
+O `add` resolve as dependências entre componentes (ex.: `combobox` → `popover` + `command`) e mostra o `pnpm add` com os pacotes npm necessários.
+
+O registry (`registry/`) é gerado a partir de `packages/*/src` — depois de mexer em componentes rode `pnpm registry:sync` (o `release` falha via `pnpm registry:check` se estiver desatualizado).
 
 ## Roadmap
 

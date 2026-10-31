@@ -8,7 +8,7 @@ import { cn } from "aura-ui-core";
  * `3d` tem bevel físico (borda inferior grossa + depressão no foco).
  */
 const inputVariants = cva(
-  "flex h-10 w-full rounded-[var(--aura-radius)] px-3.5 py-2 text-sm transition-all duration-150 placeholder:text-aura-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-aura-destructive aria-[invalid=true]:focus-visible:ring-aura-destructive/40",
+  "flex w-full min-w-0 rounded-[var(--aura-radius)] py-2 transition-all duration-150 placeholder:text-aura-muted-foreground file:mr-3 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-aura-surface-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-aura-destructive aria-[invalid=true]:focus-visible:ring-aura-destructive/40",
   {
     variants: {
       variant: {
@@ -26,10 +26,17 @@ const inputVariants = cva(
           "border border-aura-primary/40 bg-aura-muted/50 text-aura-surface-foreground focus-visible:border-aura-primary focus-visible:shadow-[var(--aura-glow-primary)] focus-visible:ring-aura-primary/40",
         "3d":
           "border border-aura-border bg-aura-surface text-aura-surface-foreground shadow-[0_3px_0_0_hsl(var(--aura-border))] aura-bevel focus-visible:shadow-[0_1px_0_0_hsl(var(--aura-border))] focus-visible:translate-y-[2px] focus-visible:ring-aura-ring"
+      },
+      size: {
+        sm: "h-8 px-2.5 text-xs",
+        md: "h-10 px-3.5 text-sm",
+        lg: "h-12 px-4 text-base"
       }
     },
+    compoundVariants: [{ variant: "underline", class: "px-1" }],
     defaultVariants: {
-      variant: "default"
+      variant: "default",
+      size: "md"
     }
   }
 );
@@ -38,12 +45,12 @@ export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
     VariantProps<typeof inputVariants> {}
 
-/** Campo de texto Aura — 7 variantes (limpas, glass, glow e 3D com bevel físico). */
+/** Campo de texto Aura — 7 variantes (limpas, glass, glow e 3D com bevel físico) e 3 tamanhos. */
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, variant, type, ...props }, ref) => (
+  ({ className, variant, size, type, ...props }, ref) => (
     <input
       type={type}
-      className={cn(inputVariants({ variant, className }))}
+      className={cn(inputVariants({ variant, size, className }))}
       ref={ref}
       {...props}
     />

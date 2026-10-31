@@ -42,7 +42,7 @@ const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "aura-glass aura-elevated z-50 min-w-[8rem] overflow-hidden rounded-[var(--aura-radius)] p-1",
+      "aura-pop aura-glass aura-elevated z-50 min-w-[8rem] overflow-hidden rounded-[var(--aura-radius)] p-1 origin-(--radix-dropdown-menu-content-transform-origin)",
       className
     )}
     {...props}
@@ -59,7 +59,7 @@ const DropdownMenuContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        "aura-glass aura-elevated z-50 min-w-[10rem] overflow-hidden rounded-[var(--aura-radius)] p-1",
+        "aura-pop aura-glass aura-elevated z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[10rem] overflow-y-auto overflow-x-hidden rounded-[var(--aura-radius)] p-1 origin-(--radix-dropdown-menu-content-transform-origin)",
         className
       )}
       {...props}
@@ -72,13 +72,17 @@ const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
     inset?: boolean;
+    /** `destructive` pinta o item (e o foco) com o token de perigo. */
+    variant?: "default" | "destructive";
   }
->(({ className, inset, ...props }, ref) => (
+>(({ className, inset, variant = "default", ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
+    data-variant={variant}
     className={cn(
-      "relative flex cursor-default select-none items-center gap-2 rounded-md px-2.5 py-2 text-sm outline-none transition-colors",
+      "relative flex cursor-default select-none items-center gap-2 rounded-md px-2.5 py-2 text-sm outline-none transition-colors [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
       "focus:bg-aura-muted focus:text-aura-surface-foreground",
+      "data-[variant=destructive]:text-aura-destructive data-[variant=destructive]:focus:bg-aura-destructive/10 data-[variant=destructive]:focus:text-aura-destructive",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       inset && "pl-8",
       className

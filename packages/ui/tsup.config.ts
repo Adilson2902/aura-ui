@@ -35,6 +35,11 @@ export default defineConfig({
     "@radix-ui/react-progress",
     "@radix-ui/react-radio-group",
     "@radix-ui/react-scroll-area",
-    "@radix-ui/react-slider"
+    "@radix-ui/react-slider",
+    "@radix-ui/react-alert-dialog",
+    "@radix-ui/react-hover-card",
+    "@radix-ui/react-context-menu",
+    "@radix-ui/react-collapsible",
+    "cmdk"
   ]
 });

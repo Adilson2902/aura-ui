@@ -5,10 +5,10 @@ import { cn } from "aura-ui-core";
 
 /**
  * Variantes visuais do badge — cores 100% dos tokens `--aura-*`
- * (semânticas `success`/`warning` incluídas).
+ * (semânticas `success`/`warning` incluídas) + 3 tamanhos.
  */
 const badgeVariants = cva(
-  "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-aura-ring",
+  "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-aura-ring [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3",
   {
     variants: {
       variant: {
@@ -16,6 +16,7 @@ const badgeVariants = cva(
         soft: "border-transparent bg-aura-primary/10 text-aura-primary",
         outline: "border-aura-border text-aura-surface-foreground",
         muted: "border-transparent bg-aura-muted text-aura-muted-foreground",
+        accent: "border-transparent bg-aura-accent/10 text-aura-accent",
         success: "border-transparent bg-aura-success/10 text-aura-success",
         warning: "border-transparent bg-aura-warning/10 text-aura-warning",
         destructive: "border-transparent bg-aura-destructive/10 text-aura-destructive",
@@ -23,9 +24,14 @@ const badgeVariants = cva(
           "border-white/20 aura-gradient-primary text-aura-primary-foreground font-semibold aura-bevel",
         glow: "border-white/20 aura-glass-dc text-aura-primary-foreground font-semibold shadow-aura-glow-primary",
         cyber: "border-white/20 aura-gradient-cyber text-aura-contrast font-semibold"
+      },
+      size: {
+        sm: "px-2 py-0 text-[0.6875rem]",
+        md: "px-2.5 py-0.5 text-xs",
+        lg: "px-3 py-1 text-sm [&_svg:not([class*='size-'])]:size-3.5"
       }
     },
-    defaultVariants: { variant: "soft" }
+    defaultVariants: { variant: "soft", size: "md" }
   }
 );
 
@@ -33,13 +39,26 @@ export interface BadgeProps
   extends React.HTMLAttributes<HTMLSpanElement>, VariantProps<typeof badgeVariants> {
   /** Renderiza como filho via Radix Slot. */
   asChild?: boolean;
+  /** Ponto de status antes do texto (herda a cor do texto). */
+  dot?: boolean;
 }
 
-/** Badge/chip Aura — 10 variantes, foco visível e `asChild`. */
+/** Badge/chip Aura — 11 variantes, 3 tamanhos, `dot`, foco visível e `asChild`. */
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, variant, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, dot = false, asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : "span";
-    return <Comp ref={ref} className={cn(badgeVariants({ variant, className }))} {...props} />;
+    return (
+      <Comp ref={ref} className={cn(badgeVariants({ variant, size, className }))} {...props}>
+        {asChild ? (
+          children
+        ) : (
+          <>
+            {dot && <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-current" />}
+            {children}
+          </>
+        )}
+      </Comp>
+    );
   }
 );
 Badge.displayName = "Badge";

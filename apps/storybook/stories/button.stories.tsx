@@ -16,10 +16,28 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["solid", "soft", "outline", "ghost", "glass", "gradient", "glow", "cyber", "3d"]
+      options: [
+        "solid",
+        "soft",
+        "outline",
+        "ghost",
+        "glass",
+        "gradient",
+        "glow",
+        "cyber",
+        "3d",
+        "accent",
+        "destructive",
+        "link"
+      ]
     },
-    size: { control: "select", options: ["sm", "md", "lg", "icon"] },
-    disabled: { control: "boolean" }
+    size: {
+      control: "select",
+      options: ["xs", "sm", "md", "lg", "xl", "icon", "icon-sm", "icon-lg"]
+    },
+    disabled: { control: "boolean" },
+    loading: { control: "boolean" },
+    fullWidth: { control: "boolean" }
   }
 };
 
@@ -72,7 +90,10 @@ export const Variants: Story = {
       "gradient",
       "glow",
       "cyber",
-      "3d"
+      "3d",
+      "accent",
+      "destructive",
+      "link"
     ] as const;
     return (
       <div className="flex flex-col gap-4">
@@ -111,6 +132,38 @@ export const DesignCodeSuite: Story = {
       <Button variant="glass" size="lg">
         Frosted Glass <Arrow />
       </Button>
+    </div>
+  )
+};
+
+/** Estado de carregamento, ícones (inclusive com `asChild`) e largura total. */
+export const LoadingAndIcons: Story = {
+  render: () => (
+    <div className="flex w-80 flex-col gap-3">
+      <Button loading>Salvando</Button>
+      <Button loading loadingText="Enviando…" variant="gradient">
+        Enviar
+      </Button>
+      <Button leftIcon={<Sparkles />} variant="soft">
+        Gerar com IA
+      </Button>
+      <Button rightIcon={<Arrow />} variant="outline" fullWidth>
+        Continuar
+      </Button>
+      <Button asChild variant="link" rightIcon={<Arrow />}>
+        <a href="#docs">Ler a documentação</a>
+      </Button>
+      <div className="flex items-center gap-2">
+        <Button size="icon-sm" variant="ghost" aria-label="Favoritar">
+          <Sparkles />
+        </Button>
+        <Button size="icon" variant="soft" aria-label="Favoritar">
+          <Sparkles />
+        </Button>
+        <Button size="icon-lg" variant="3d" aria-label="Favoritar">
+          <Sparkles />
+        </Button>
+      </div>
     </div>
   )
 };
