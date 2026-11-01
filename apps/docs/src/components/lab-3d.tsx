@@ -64,8 +64,8 @@ export function Lab3D() {
             Lab <span className="aura-text-gradient-primary">3D</span>
           </h1>
           <p className="lab-sub">
-            Toque, incline, role. A suíte de profundidade (Daisy tokens + Magic motion +
-            Aceternity wow) em um só lugar.
+            Toque, incline, role. A suíte de profundidade (Daisy tokens + Magic motion + Aceternity
+            wow) em um só lugar.
           </p>
         </div>
         <div className="lab-actions">
@@ -87,9 +87,7 @@ export function Lab3D() {
           <h2>
             Profundidade que se <em>sente</em>.
           </h2>
-          <p>
-            Tokens de elevação, luz direcional e camadas em Z — não sombras aleatórias.
-          </p>
+          <p>Tokens de elevação, luz direcional e camadas em Z — não sombras aleatórias.</p>
           <AnimatedShinyText>Mova o mouse nos cards abaixo</AnimatedShinyText>
         </div>
       </section>
@@ -99,7 +97,9 @@ export function Lab3D() {
         <article className="lab-block">
           <header>
             <h3>LayeredCard</h3>
-            <p>Camadas em <code>data-depth</code> com parallax real.</p>
+            <p>
+              Camadas em <code>data-depth</code> com parallax real.
+            </p>
           </header>
           <LayeredCard className="lab-layered">
             <div data-depth="1" className="lab-chip">
@@ -258,7 +258,11 @@ export function Lab3D() {
               </div>
             ))}
           </div>
-          <div data-parallax-row data-parallax-speed="0.85" className="lab-parallax-row lab-parallax-row-b">
+          <div
+            data-parallax-row
+            data-parallax-speed="0.85"
+            className="lab-parallax-row lab-parallax-row-b"
+          >
             {["Tokens 3D", "Glass + Bevel", "Scenes"].map((t) => (
               <div key={t} className="lab-parallax-card aura-surface">
                 {t}
@@ -279,7 +283,10 @@ export function Lab3D() {
       <section className="lab-block">
         <header>
           <h3>UI Kit — paridade Toolspace + extras 3D</h3>
-          <p>Accordion, Alert, Avatar, Breadcrumb, Checkbox, Pagination, Progress, Slider, Stat, Table, Toast…</p>
+          <p>
+            Accordion, Alert, Avatar, Breadcrumb, Checkbox, Pagination, Progress, Slider, Stat,
+            Table, Toast…
+          </p>
         </header>
 
         <div className="lab-grid-2">
@@ -319,7 +326,9 @@ export function Lab3D() {
           <div className="lab-ui-col">
             <Alert variant="success" elevation="soft">
               <AlertTitle>Tudo certo</AlertTitle>
-              <AlertDescription>Componentes alinhados aos tokens <code>--ts-*</code> / <code>--aura-*</code>.</AlertDescription>
+              <AlertDescription>
+                Componentes alinhados aos tokens <code>--ts-*</code> / <code>--aura-*</code>.
+              </AlertDescription>
             </Alert>
             <Alert variant="warning">
               <AlertTitle>Atenção</AlertTitle>
@@ -330,13 +339,15 @@ export function Lab3D() {
               <AccordionItem value="a">
                 <AccordionTrigger>Como funciona o 3D?</AccordionTrigger>
                 <AccordionContent>
-                  Profundidade vem de tokens (<code>--aura-depth-*</code>, elevações, luz), não de sombras soltas.
+                  Profundidade vem de tokens (<code>--aura-depth-*</code>, elevações, luz), não de
+                  sombras soltas.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="b">
                 <AccordionTrigger>É acessível?</AccordionTrigger>
                 <AccordionContent>
-                  Sim — Radix, foco visível e <code>prefers-reduced-motion</code> em todos os efeitos.
+                  Sim — Radix, foco visível e <code>prefers-reduced-motion</code> em todos os
+                  efeitos.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -450,7 +461,13 @@ export function Lab3D() {
             />
             <div className="lab-row" style={{ justifyContent: "space-around" }}>
               <RadialProgress value={72} size={96} label="72%" sublabel="Lighthouse" />
-              <RadialProgress value={41} size={96} label="41%" sublabel="Meta mês" color="hsl(var(--aura-accent))" />
+              <RadialProgress
+                value={41}
+                size={96}
+                label="41%"
+                sublabel="Meta mês"
+                color="hsl(var(--aura-accent))"
+              />
             </div>
           </div>
         </div>

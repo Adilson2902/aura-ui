@@ -2,6 +2,7 @@
   "name": "@adilsonmatos/example-landing",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "Exemplo landing — Fase 4",
   "scripts": {
     "dev": "echo \"Use apps/docs por enquanto\"",
