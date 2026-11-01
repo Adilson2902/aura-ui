@@ -4,6 +4,10 @@ on:
   push:
     branches: [master]
   pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
@@ -17,8 +21,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9.15.0
 
       - uses: actions/setup-node@v4
         with:
@@ -41,7 +43,7 @@ jobs:
         run: pnpm registry:check
 
       - name: Build estático do docs
-        run: pnpm --filter @adilsonmatos/docs build
+        run: pnpm --filter "@adilsonmatos/docs" build
 
       - name: Instalar o Chromium do Playwright
         run: pnpm exec playwright install --with-deps chromium
