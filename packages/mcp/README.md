@@ -63,6 +63,16 @@ Em clientes que não acham o `npx` no Windows, use `"command": "cmd"` e `"args":
 - "Adicione um formulário de cadastro com validação usando os componentes Field do Aura UI."
 - "Troque o tema para `ocean` e use a cor da marca #0EA5E9."
 
+## Bundle MCPB (local, sem publicar)
+
+`packages/mcp/manifest.json` descreve o servidor stdio no formato MCPB (`name` `aura-ui-mcp`, versão `0.2.1`, entry point `dist/index.js`). Para gerar o `.mcpb` usado pelo Smithery, sem enviar nada ao registry:
+
+```bash
+pnpm mcpb:pack
+```
+
+O comando builda o servidor, embute as dependências no `dist/index.js` do bundle, valida o manifest e grava `packages/mcp/aura-ui-mcp.mcpb`. Não publica no npm nem no Smithery.
+
 ## Versão
 
 A versão do `aura-ui-mcp` acompanha a dos pacotes `aura-ui-*` (o catálogo é gerado do mesmo código publicado).

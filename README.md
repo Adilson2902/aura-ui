@@ -1,20 +1,33 @@
 # Aura UI
 
+[![npm aura-ui-core](https://img.shields.io/npm/v/aura-ui-core?label=aura-ui-core)](https://www.npmjs.com/package/aura-ui-core)
+[![npm aura-ui-components](https://img.shields.io/npm/v/aura-ui-components?label=aura-ui-components)](https://www.npmjs.com/package/aura-ui-components)
+[![npm aura-ui-effects](https://img.shields.io/npm/v/aura-ui-effects?label=aura-ui-effects)](https://www.npmjs.com/package/aura-ui-effects)
+[![npm aura-ui-three](https://img.shields.io/npm/v/aura-ui-three?label=aura-ui-three)](https://www.npmjs.com/package/aura-ui-three)
+[![npm aura-ui-tailwind](https://img.shields.io/npm/v/aura-ui-tailwind?label=aura-ui-tailwind)](https://www.npmjs.com/package/aura-ui-tailwind)
+[![npm aura-ui-cli](https://img.shields.io/npm/v/aura-ui-cli?label=aura-ui-cli)](https://www.npmjs.com/package/aura-ui-cli)
+[![npm aura-ui-mcp](https://img.shields.io/npm/v/aura-ui-mcp?label=aura-ui-mcp)](https://www.npmjs.com/package/aura-ui-mcp)
+[![licença MIT](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+
 Design system **3D standalone** — modelo shadcn (código no seu repo) + DaisyUI (temas por CSS vars) + efeitos Magic UI / Aceternity tokenizados.
+
+**Demo:** [https://aura-ui.vercel.app/demo](https://aura-ui.vercel.app/demo) — o host `https://aura-ui.vercel.app` é um placeholder a confirmar depois do deploy.
+
+[![Demo do Aura UI: efeitos CSS e cenas WebGL](docs/assets/demo.gif)](https://aura-ui.vercel.app/demo)
 
 > Projeto separado do Toolspace. Plano completo em [`PLANO-DESIGN-SYSTEM-3D.md`](./PLANO-DESIGN-SYSTEM-3D.md).
 
 ## Pacotes npm
 
-| Pacote | O que é |
-| --- | --- |
-| `aura-ui-core` | tokens 3D, temas, `cn`, ThemeProvider, `useReducedMotion` |
-| `aura-ui-components` | primitivos + charts (Button, Stat, DonutChart, Toast, …) |
-| `aura-ui-effects` | suíte de efeitos 3D/motion (CSS-first) |
-| `aura-ui-three` | cenas WebGL opcionais (React Three Fiber) |
-| `aura-ui-tailwind` | preset Tailwind v4 + utilities 3D |
-| `aura-ui-cli` | CLI (`init`, `add`, `diff`, `theme`) — bin `aura-ui-cli` / `aura` / `aura-ui` |
-| `aura-ui-mcp` | servidor MCP p/ assistentes de IA (catálogo, código, temas, setup) |
+| Pacote               | O que é                                                                       |
+| -------------------- | ----------------------------------------------------------------------------- |
+| `aura-ui-core`       | tokens 3D, temas, `cn`, ThemeProvider, `useReducedMotion`                     |
+| `aura-ui-components` | primitivos + charts (Button, Stat, DonutChart, Toast, …)                      |
+| `aura-ui-effects`    | suíte de efeitos 3D/motion (CSS-first)                                        |
+| `aura-ui-three`      | cenas WebGL opcionais (React Three Fiber)                                     |
+| `aura-ui-tailwind`   | preset Tailwind v4 + utilities 3D                                             |
+| `aura-ui-cli`        | CLI (`init`, `add`, `diff`, `theme`) — bin `aura-ui-cli` / `aura` / `aura-ui` |
+| `aura-ui-mcp`        | servidor MCP p/ assistentes de IA (catálogo, código, temas, setup)            |
 
 ```bash
 pnpm add aura-ui-core aura-ui-components aura-ui-effects aura-ui-tailwind tailwindcss
@@ -77,14 +90,25 @@ Monte uma landing/dashboard em minutos compondo:
 `Hero` · `Section`/`Container`/`SectionHeading` · `FeatureGrid`/`FeatureCard` · `PricingCard`/`PricingGrid` · `CallToAction` · `TestimonialCard`/`TestimonialGrid` · `LogoCloud` (grid ou marquee) · `Banner` · `Footer` (+ colunas/links) · `Steps` · `Timeline` · `Sidebar`/`AppShell` — todos com ≥5 variantes (clean, gradient, glass, aurora, glow, 3D…).
 
 ```tsx
-import { Hero, HeroContent, HeroTitle, HeroActions, Button, FeatureGrid, FeatureCard, CallToAction } from "aura-ui-components";
+import {
+  Hero,
+  HeroContent,
+  HeroTitle,
+  HeroActions,
+  Button,
+  FeatureGrid,
+  FeatureCard,
+  CallToAction
+} from "aura-ui-components";
 
 <Hero variant="aurora">
   <HeroContent>
     <HeroTitle gradient>Sites em minutos</HeroTitle>
-    <HeroActions><Button variant="3d">Começar</Button></HeroActions>
+    <HeroActions>
+      <Button variant="3d">Começar</Button>
+    </HeroActions>
   </HeroContent>
-</Hero>
+</Hero>;
 ```
 
 ### Charts (SVG zero-dep)
@@ -94,7 +118,13 @@ import { Hero, HeroContent, HeroTitle, HeroActions, Button, FeatureGrid, Feature
 ```tsx
 import { DonutChart, ThemeSwitcher } from "aura-ui-components";
 
-<DonutChart title="Mix" data={[{ label: "Pro", value: 48 }, { label: "Team", value: 32 }]} />;
+<DonutChart
+  title="Mix"
+  data={[
+    { label: "Pro", value: 48 },
+    { label: "Team", value: 32 }
+  ]}
+/>;
 ```
 
 ### Temas (33 + light/dark)
@@ -118,11 +148,13 @@ import { ThemeProvider, useTheme } from "aura-ui-core/client";
 ```bash
 cd ~/Documents/aura-ui
 pnpm install
-pnpm build
+pnpm build   # pacotes + export estático do docs em apps/docs/out
 pnpm dev
 ```
 
-Docs: [http://localhost:3000](http://localhost:3000)
+Docs: [http://localhost:3000](http://localhost:3000) · demo: [http://localhost:3000/demo](http://localhost:3000/demo)
+
+Na Vercel, o **Root Directory** do projeto é `apps/docs`. O `apps/docs/vercel.json` instala e roda `pnpm build` na raiz do monorepo e publica a pasta `out`.
 
 Storybook: [http://localhost:6006](http://localhost:6006)
 
@@ -179,11 +211,13 @@ Para o seu assistente de IA gerar telas com o Aura UI usando a API real (sem inv
 
 O servidor expõe `list_components`, `get_component`, `get_setup`, `list_themes` e `get_design_tokens` — detalhes em [`packages/mcp`](packages/mcp/README.md).
 
-| Onde | O que é |
-| --- | --- |
-| `packages/mcp` | servidor MCP `aura-ui-mcp` (npm) — catálogo gerado do `registry/` no build |
-| `.claude-plugin/marketplace.json` + `plugins/aura-ui` | marketplace e plugin do Claude Code (MCP + skill `aura-ui`) |
-| `.claude/skills/aura-ui-contrib` | skill de projeto p/ quem contribui com este repositório |
+Bundle local MCPB (Smithery), sem publicar: `pnpm mcpb:pack` valida `packages/mcp/manifest.json` e gera `packages/mcp/aura-ui-mcp.mcpb` com o entry point buildado (`dist/index.js`) e as dependências embutidas.
+
+| Onde                                                  | O que é                                                                    |
+| ----------------------------------------------------- | -------------------------------------------------------------------------- |
+| `packages/mcp`                                        | servidor MCP `aura-ui-mcp` (npm) — catálogo gerado do `registry/` no build |
+| `.claude-plugin/marketplace.json` + `plugins/aura-ui` | marketplace e plugin do Claude Code (MCP + skill `aura-ui`)                |
+| `.claude/skills/aura-ui-contrib`                      | skill de projeto p/ quem contribui com este repositório                    |
 
 ## Roadmap
 
@@ -192,12 +226,12 @@ O servidor expõe `list_components`, `get_component`, `get_setup`, `list_themes`
 | 0 — Fundação monorepo + tokens          | ✅     |
 | 1 — Primitivos + 5 efeitos + CLI mínima | ✅     |
 | 2 — Cobertura shadcn completa           | ✅     |
-| 3 — Efeitos avançados + aura-ui-three     | ✅     |
+| 3 — Efeitos avançados + aura-ui-three   | ✅     |
 | 4 — Docs MDX + playground + diff        | 🔲     |
-| 5 — CI visual + npm publish             | 🧪     |
+| 5 — CI + npm publish                    | ✅     |
 
 > **Fase 3** entregou a suíte 3D (`LayeredCard`, `GlassCard`, `MovingBorder`, `BentoGrid`, `OrbitingCircles`, `AnimatedBeam`, `HeroParallax`, `StickyScroll`, `Meteors`, `PerspectiveGrid`, `Float`) + `aura-ui-three` (`AuraCanvas`, `FloatingMesh`, `ParticleField`, `HeroScene`).
-> **Fase 5** está em preparação: metadata npm, Changesets, multi-entry exports e `npm pack` validado. Publish real depende de `npm login` + escopo no registry.
+> **Fase 5** publicada: os pacotes `aura-ui-*` **0.2.1** já estão no npm — `aura-ui-core`, `aura-ui-components`, `aura-ui-effects`, `aura-ui-three`, `aura-ui-tailwind`, `aura-ui-cli` e `aura-ui-mcp`. O CI cobre lint, typecheck, testes, `registry:check`, build do docs e Playwright com axe na demo.
 
 ## Licença
 

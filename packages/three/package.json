@@ -21,7 +21,8 @@
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean --external react --external react-dom --external three --external @react-three/fiber --external aura-ui-core --external aura-ui-core/client",
     "dev": "tsup src/index.ts --format esm --watch --external react --external react-dom --external three --external @react-three/fiber --external aura-ui-core --external aura-ui-core/client",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "@react-three/fiber": "^9.0.0",

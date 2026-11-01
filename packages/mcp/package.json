@@ -9,14 +9,17 @@
   },
   "files": [
     "dist",
-    "data"
+    "data",
+    "manifest.json"
   ],
   "scripts": {
     "catalog": "node scripts/build-catalog.mjs",
     "build": "node scripts/build-catalog.mjs && tsup src/index.ts --format esm --clean",
     "dev": "tsup src/index.ts --format esm --watch",
     "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "test": "node scripts/build-catalog.mjs && vitest run",
+    "mcpb:pack": "node scripts/pack-mcpb.mjs",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
@@ -24,6 +27,7 @@
     "zod": "^4.0.0"
   },
   "devDependencies": {
+    "@anthropic-ai/mcpb": "^2.1.2",
     "@types/node": "^22.10.2",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",

@@ -507,7 +507,7 @@ export function HomeDemo() {
       <header className="topbar">
         <a href="#" className="brand" aria-label="Aura UI, início">
           <span className="brand-mark">a</span>aura<span className="brand-ui">ui</span>
-          <span className="version">v0.1</span>
+          <span className="version">v0.2.1</span>
         </a>
         <nav aria-label="Navegação principal">
           <a className="active" href="#catalog" onClick={() => choose("Todos")}>
@@ -516,6 +516,7 @@ export function HomeDemo() {
           <a href="#catalog" onClick={() => choose("Efeitos")}>
             Efeitos
           </a>
+          <a href="/demo/">Demo 3D</a>
           <button type="button" onClick={() => setGuide(true)}>
             Documentação
           </button>
@@ -785,8 +786,8 @@ export function HomeDemo() {
             <code>{"pnpm install\npnpm build\npnpm --filter @aura/docs dev"}</code>
           </pre>
           <p className="text-sm text-aura-muted-foreground">
-            Nos apps deste workspace, importe componentes de <code>aura-ui-components</code> e efeitos de{" "}
-            <code>aura-ui-effects</code>. O tema usa <code>ThemeProvider</code> de{" "}
+            Nos apps deste workspace, importe componentes de <code>aura-ui-components</code> e
+            efeitos de <code>aura-ui-effects</code>. O tema usa <code>ThemeProvider</code> de{" "}
             <code>aura-ui-core/client</code> e os estilos de <code>aura-ui-tailwind</code>.
           </p>
           <Button onClick={() => copy("pnpm install\npnpm build\npnpm --filter @aura/docs dev")}>

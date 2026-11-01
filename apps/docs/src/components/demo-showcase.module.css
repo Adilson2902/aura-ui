@@ -1,0 +1,462 @@
+.page {
+  --ink: #14211c;
+  --muted: #3d4f47;
+  --line: #d5ddd8;
+  --paper: #f4faf7;
+  --card: #ffffff;
+  --green: #0f5c42;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+:global(.dark) .page {
+  --ink: #e7f3ec;
+  --muted: #c5d5cc;
+  --line: #2c3b34;
+  --paper: #101714;
+  --card: #18211c;
+  --green: #8fd7b8;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -40px;
+  z-index: 20;
+  background: var(--card);
+  color: var(--ink);
+  padding: 8px 12px;
+}
+
+.skip:focus {
+  top: 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 18px 32px;
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  font-size: 1.15rem;
+}
+
+.brand span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--green);
+  color: #f4faf7;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.header nav {
+  display: flex;
+  gap: 18px;
+}
+
+.header nav a {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.header nav a:hover {
+  color: var(--ink);
+}
+
+.themeButton {
+  margin-left: auto;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: 36px;
+  align-items: center;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 56px 0 28px;
+}
+
+.kicker {
+  margin: 0 0 8px;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heroCopy h1,
+.sectionHead h2,
+.card h3,
+.layered h3,
+.movingInner h3,
+.spotlightCopy h3,
+.aurora h3,
+.orbitCard h3 {
+  margin: 0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.heroCopy h1 {
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  line-height: 1.05;
+}
+
+.lead,
+.card p,
+.layered p,
+.movingInner p,
+.spotlightCopy p,
+.aurora p,
+.orbitCard p,
+.particleCaption,
+.glowRow p,
+.footer p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.lead {
+  font-size: 1.05rem;
+  max-width: 46ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin: 22px 0;
+}
+
+.secondary {
+  color: var(--ink);
+  font-weight: 650;
+  border-bottom: 1px solid var(--green);
+}
+
+.stats {
+  display: flex;
+  gap: 22px;
+  margin: 8px 0 0;
+}
+
+.stats div {
+  min-width: 88px;
+}
+
+.stats dt {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.stats dd {
+  margin: 2px 0 0;
+  font-size: 1.8rem;
+  font-weight: 750;
+  color: var(--ink);
+}
+
+.heroVisual,
+.sceneFallback {
+  position: relative;
+  min-height: 420px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      color-mix(in srgb, var(--green) 22%, transparent),
+      transparent 55%
+    ),
+    var(--card);
+}
+
+.heroCanvas,
+.particleCanvas {
+  position: absolute;
+  inset: 0;
+}
+
+.heroCaption,
+.particleCaption {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.heroCaption {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  max-width: 260px;
+  padding: 14px 16px;
+  border-radius: 12px;
+}
+
+.heroCaption p {
+  margin: 0;
+  color: var(--ink);
+}
+
+.heroCaption p + p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.sceneFallback {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+
+.marqueeWrap {
+  border-block: 1px solid var(--line);
+  background: var(--card);
+  padding: 14px 0;
+}
+
+.marqueeItem {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  color: var(--ink);
+  background: var(--paper);
+  font-weight: 650;
+}
+
+.section {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 56px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sectionHead h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.grid,
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card,
+.movingInner,
+.spotlight,
+.aurora,
+.orbitCard,
+.layered {
+  min-height: 180px;
+  border-radius: 16px;
+}
+
+.card h3,
+.layered h3,
+.movingInner h3,
+.spotlightCopy h3,
+.aurora h3,
+.orbitCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.movingInner,
+.spotlightCopy,
+.aurora,
+.orbitCard {
+  padding: 22px;
+}
+
+.movingInner,
+.orbitCard {
+  background: var(--card);
+}
+
+.shine {
+  height: 100%;
+}
+
+.spotlight {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+}
+
+.spotlightCopy {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  border-radius: 14px;
+}
+
+.aurora {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.floatBadge {
+  display: inline-flex;
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.orbitStage {
+  min-height: 230px;
+  display: grid;
+  place-items: center;
+}
+
+.orbitCore,
+.orbitItem {
+  display: grid;
+  place-items: center;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.orbitCore {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  font-size: 1.3rem;
+}
+
+.orbitItem {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+
+.glowRow {
+  position: relative;
+  overflow: hidden;
+  min-height: 120px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+}
+
+.glow {
+  left: 50%;
+  top: 50%;
+}
+
+.glowRow p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 46ch;
+  text-align: center;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--card) 86%, transparent);
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+
+.particleFrame {
+  display: grid;
+  gap: 12px;
+}
+
+.particleCanvas {
+  position: relative;
+  height: 420px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(
+      circle at 70% 30%,
+      color-mix(in srgb, var(--green) 25%, transparent),
+      transparent 50%
+    ),
+    var(--card);
+}
+
+.particleCaption {
+  justify-self: start;
+  padding: 12px 14px;
+  border-radius: 12px;
+  max-width: 62ch;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 22px 0 40px;
+  border-top: 1px solid var(--line);
+}
+
+.footer a {
+  color: var(--green);
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .grid,
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

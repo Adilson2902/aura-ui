@@ -11,7 +11,10 @@ export default tseslint.config(
       "**/.turbo/**",
       "**/storybook-static/**",
       "**/pnpm-lock.yaml",
-      "**/next-env.d.ts"
+      "**/next-env.d.ts",
+      "**/out/**",
+      "tmp/**",
+      "packages/cli/registry/**"
     ]
   },
   ...tseslint.configs.recommended,
@@ -26,6 +29,12 @@ export default tseslint.config(
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }
       ],
       "@typescript-eslint/no-explicit-any": "warn"
+    }
+  },
+  {
+    files: ["**/*.cjs"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off"
     }
   }
 );

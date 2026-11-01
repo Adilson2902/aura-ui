@@ -18,6 +18,7 @@
   "scripts": {
     "build": "tsup src/plugin.ts --format esm --dts",
     "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {

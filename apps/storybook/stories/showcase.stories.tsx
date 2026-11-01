@@ -88,7 +88,7 @@ function Hero() {
       <div className="mx-auto max-w-3xl text-center">
         <span className="aura-glass mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-aura-muted-foreground">
           <Icon path={icons.sparkles} className="h-3.5 w-3.5 text-aura-primary" />
-          Design System 3D · v0.1
+          Design System 3D · v0.2.1
         </span>
         <h1 className="text-balance text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
           Interfaces com <AnimatedShinyText>profundidade real</AnimatedShinyText>,
@@ -108,7 +108,7 @@ function Hero() {
           </Button>
         </div>
         <p className="mt-4 text-xs text-aura-muted-foreground">
-          50+ componentes · 30+ efeitos · light/dark · prefers-reduced-motion
+          73 componentes · 23 efeitos · light/dark · prefers-reduced-motion
         </p>
       </div>
     </AuroraBackground>
