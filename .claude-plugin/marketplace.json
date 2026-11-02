@@ -6,16 +6,24 @@
   },
   "metadata": {
     "description": "Plugins oficiais do Aura UI — design system React + Tailwind v4 com efeitos 3D.",
-    "version": "0.2.1"
+    "version": "0.3.0"
   },
   "plugins": [
     {
       "name": "aura-ui",
       "source": "./plugins/aura-ui",
-      "description": "Constrói interfaces com o Aura UI: skill com as regras do design system + servidor MCP com catálogo, código, temas e setup dos 96 componentes.",
-      "version": "0.2.1",
+      "description": "Constrói interfaces com o Aura UI: skill com as regras do design system + servidor MCP com catálogo, código, temas e setup dos componentes web e React Native.",
+      "version": "0.3.0",
       "category": "development",
-      "keywords": ["react", "design-system", "tailwind", "ui", "components", "mcp", "aura-ui"],
+      "keywords": [
+        "react",
+        "design-system",
+        "tailwind",
+        "ui",
+        "components",
+        "mcp",
+        "aura-ui"
+      ],
       "homepage": "https://github.com/Adilson2902/aura-ui",
       "repository": "https://github.com/Adilson2902/aura-ui",
       "license": "MIT"

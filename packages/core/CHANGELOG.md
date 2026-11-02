@@ -1,5 +1,24 @@
 # aura-ui-core
 
+## 0.3.0
+
+### Minor Changes
+
+- 0cc6fce: Aura UI para React Native (`aura-ui-native`)
+
+  - Novo pacote **aura-ui-native**: design system React Native sem dependências nativas (Expo Go e bare, RN ≥ 0.79). `AuraProvider` com os 33 temas do web (paletas geradas do CSS do core), modo claro/escuro/sistema, `overrides` de cores/raio/fontes e `LinearGradient`/`BlurView` plugáveis.
+  - Layout por tokens (`Box`, `VStack`/`HStack`, `Screen`, `Divider`), `Text`/`Heading`, `Button` (9 variantes), `Card`, formulários (`Input`, `Switch`, `Checkbox`, `RadioGroup`, `SegmentedControl`, `Chip`, `OTPInput`, `Select`), exibição (`Badge`, `Avatar`, `Alert`, `Progress`, `Skeleton`, `ListItem`, `EmptyState`) e overlays (`Dialog`, `BottomSheet`, `ActionSheet`, `Toast`).
+  - `makeStyles`/`useStyles`/`useAura` para estilos próprios que seguem o tema.
+  - **aura-ui-mcp**: catálogo inclui os componentes nativos (`category: "native"`, `platform: "native"`) e `get_setup` ganha `mode: "native"`.
+  - Storybook: galeria "Native/\*" renderizada via react-native-web numa moldura de celular.
+
+### Patch Changes
+
+- 9958ed8: Temas escuros mantêm a própria superfície com `.dark`
+
+  - **Fix**: ao escolher `midnight`, `cyber`, `synthwave`, `matrix`, `volcano`, `grape`, `obsidian` ou `terminal` pelo `ThemeProvider`, a classe `.dark` no `<html>` sobrescrevia `--aura-surface`, `--aura-muted`, `--aura-border` e os foregrounds do tema com o escuro genérico. Os blocos desses temas agora também casam com `.dark[data-theme="…"]` e vencem o `.dark` genérico; temas claros no modo escuro continuam iguais
+  - `registry/lib/themes.css` sincronizado; teste novo resolve a cascata de `data-theme` + `.dark` no mesmo elemento
+
 ## 0.2.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "aura-ui-mcp",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Servidor MCP do Aura UI — catálogo, código-fonte, temas, tokens e setup dos componentes para assistentes de IA (Claude, Cursor, VS Code)",
   "license": "MIT",
   "type": "module",

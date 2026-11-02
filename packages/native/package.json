@@ -1,6 +1,6 @@
 {
   "name": "aura-ui-native",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Aura UI para React Native — design system com 33 temas, modo escuro e componentes prontos, sem dependências nativas (funciona no Expo Go)",
   "license": "MIT",
   "type": "module",
