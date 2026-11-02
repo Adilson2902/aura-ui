@@ -23,7 +23,8 @@
 }
 
 /* ===== midnight (deep space indigo) ===== */
-[data-theme="midnight"] {
+[data-theme="midnight"],
+.dark[data-theme="midnight"] {
   --aura-surface: 226 41% 8%;
   --aura-surface-foreground: 220 40% 96%;
   --aura-muted: 228 32% 14%;
@@ -80,7 +81,8 @@
 }
 
 /* ===== cyber (aqua / violet) ===== */
-[data-theme="cyber"] {
+[data-theme="cyber"],
+.dark[data-theme="cyber"] {
   --aura-surface: 232 31% 8%;
   --aura-surface-foreground: 190 100% 92%;
   --aura-muted: 230 28% 14%;
@@ -149,7 +151,8 @@
 }
 
 /* ===== synthwave (dark neon) ===== */
-[data-theme="synthwave"] {
+[data-theme="synthwave"],
+.dark[data-theme="synthwave"] {
   --aura-surface: 282 40% 10%;
   --aura-surface-foreground: 280 80% 94%;
   --aura-muted: 282 32% 16%;
@@ -231,7 +234,8 @@
 }
 
 /* ===== matrix (dark green terminal) ===== */
-[data-theme="matrix"] {
+[data-theme="matrix"],
+.dark[data-theme="matrix"] {
   --aura-surface: 120 20% 5%;
   --aura-surface-foreground: 120 60% 92%;
   --aura-muted: 120 16% 11%;
@@ -293,7 +297,8 @@
 }
 
 /* ===== volcano (dark lava) ===== */
-[data-theme="volcano"] {
+[data-theme="volcano"],
+.dark[data-theme="volcano"] {
   --aura-surface: 12 28% 7%;
   --aura-surface-foreground: 20 85% 94%;
   --aura-muted: 12 24% 13%;
@@ -315,7 +320,8 @@
 }
 
 /* ===== grape (dark purple wine) ===== */
-[data-theme="grape"] {
+[data-theme="grape"],
+.dark[data-theme="grape"] {
   --aura-surface: 270 32% 9%;
   --aura-surface-foreground: 268 70% 94%;
   --aura-muted: 270 26% 15%;
@@ -441,7 +447,8 @@
 }
 
 /* ===== obsidian (dark neutral) ===== */
-[data-theme="obsidian"] {
+[data-theme="obsidian"],
+.dark[data-theme="obsidian"] {
   --aura-surface: 0 0% 7%;
   --aura-surface-foreground: 0 0% 96%;
   --aura-muted: 0 0% 13%;
@@ -534,7 +541,8 @@
 }
 
 /* ===== terminal (retro phosphor) ===== */
-[data-theme="terminal"] {
+[data-theme="terminal"],
+.dark[data-theme="terminal"] {
   --aura-surface: 140 12% 6%;
   --aura-surface-foreground: 140 55% 88%;
   --aura-muted: 140 10% 12%;
@@ -595,7 +603,8 @@
   --aura-glow-primary: 0 0 28px -5px rgba(146, 64, 14, 0.45);
 }
 
-/* Escuro genérico para temas claros */
+/* Escuro genérico para temas claros. Os temas escuros repetem o seletor com
+   `.dark` (especificidade 0,2,0) para manter a própria superfície com esta classe. */
 .dark {
   --aura-surface: 232 31% 8%;
   --aura-surface-foreground: 210 40% 98%;

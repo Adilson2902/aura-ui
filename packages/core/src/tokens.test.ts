@@ -101,3 +101,66 @@ describe("themes.css + themes.ts (catálogo de 33 temas)", () => {
     }
   });
 });
+
+/** Especificidade de um seletor simples (`:root`, `.dark`, `[data-theme]`) se ele casa com o <html>; senão -1. */
+function specificityOn(selector: string, theme: string, dark: boolean) {
+  const parts = selector.match(/:root|\.[\w-]+|\[[^\]]+\]/g) ?? [];
+  if (parts.join("") !== selector) return -1;
+  const matches = parts.every(
+    (p) => p === ":root" || (p === ".dark" && dark) || p === `[data-theme="${theme}"]`
+  );
+  return matches ? parts.length : -1;
+}
+
+/** Cascata mínima (especificidade, depois ordem) p/ `<html data-theme={theme} class={dark ? "dark" : ""}>`. */
+function resolveVars(css: string, theme: string, dark: boolean) {
+  const winners = new Map<string, { specificity: number; value: string }>();
+  for (const m of css.replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    const specificity = Math.max(
+      -1,
+      ...m[1].split(",").map((s) => specificityOn(s.trim(), theme, dark))
+    );
+    if (specificity < 0) continue;
+    for (const v of m[2].matchAll(/(--aura-[\w-]+):\s*([^;]+);/g)) {
+      const prev = winners.get(v[1]);
+      if (!prev || specificity >= prev.specificity) {
+        winners.set(v[1], { specificity, value: v[2].trim() });
+      }
+    }
+  }
+  return Object.fromEntries([...winners].map(([name, w]) => [name, w.value]));
+}
+
+describe("modo escuro com data-theme e .dark no mesmo <html> (ThemeProvider)", () => {
+  const css = tokens + themesCss; // ordem de primitives.css
+  const surfaceTokens = [
+    "--aura-surface",
+    "--aura-surface-foreground",
+    "--aura-muted",
+    "--aura-muted-foreground",
+    "--aura-border"
+  ];
+
+  it("temas escuros mantêm a própria superfície com .dark", () => {
+    for (const theme of AURA_DARK_THEMES) {
+      const own = resolveVars(css, theme, false);
+      const withDark = resolveVars(css, theme, true);
+      for (const token of surfaceTokens) {
+        expect(withDark[token], `${theme} + .dark: ${token}`).toBe(own[token]);
+      }
+    }
+  });
+
+  it("temas claros com .dark recebem as superfícies escuras genéricas", () => {
+    const genericBlock = themesCss.match(/(?:^|\n)\.dark\s*{([^}]*)}/)![1];
+    const generic = Object.fromEntries(
+      [...genericBlock.matchAll(/(--aura-[\w-]+):\s*([^;]+);/g)].map((v) => [v[1], v[2].trim()])
+    );
+    for (const theme of AURA_THEMES.filter((t) => !isDarkTheme(t))) {
+      const withDark = resolveVars(css, theme, true);
+      for (const token of surfaceTokens) {
+        expect(withDark[token], `${theme} + .dark: ${token}`).toBe(generic[token]);
+      }
+    }
+  });
+});
