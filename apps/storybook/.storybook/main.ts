@@ -37,10 +37,28 @@ const config: StorybookConfig = {
           "@aura/core/client": path.join(root, "packages/core/src/client.ts"),
           "@aura/tailwind-preset": path.join(root, "packages/tailwind-preset/src/preset.css"),
           "@aura/core/styles/tokens.css": path.join(root, "packages/core/styles/tokens.css"),
-          "@aura/core/styles/primitives.css": path.join(root, "packages/core/styles/primitives.css"),
-          "@aura/core/styles/themes.css": path.join(root, "packages/core/styles/themes.css")
-        }
-      }
+          "@aura/core/styles/primitives.css": path.join(
+            root,
+            "packages/core/styles/primitives.css"
+          ),
+          "@aura/core/styles/themes.css": path.join(root, "packages/core/styles/themes.css"),
+          // Stories "Native/*": componentes React Native renderizados via react-native-web
+          "aura-ui-native": path.join(root, "packages/native/src/index.ts"),
+          "react-native": "react-native-web"
+        },
+        extensions: [
+          ".web.tsx",
+          ".web.ts",
+          ".web.js",
+          ".tsx",
+          ".ts",
+          ".mjs",
+          ".js",
+          ".jsx",
+          ".json"
+        ]
+      },
+      define: { __DEV__: "true" }
     });
   }
 };

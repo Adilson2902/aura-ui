@@ -15,6 +15,7 @@ Design system **3D standalone** — modelo shadcn (código no seu repo) + DaisyU
 | `aura-ui-tailwind` | preset Tailwind v4 + utilities 3D |
 | `aura-ui-cli` | CLI (`init`, `add`, `diff`, `theme`) — bin `aura-ui-cli` / `aura` / `aura-ui` |
 | `aura-ui-mcp` | servidor MCP p/ assistentes de IA (catálogo, código, temas, setup) |
+| `aura-ui-native` | **React Native / Expo** — mesmos 33 temas, sem dependências nativas |
 
 ```bash
 pnpm add aura-ui-core aura-ui-components aura-ui-effects aura-ui-tailwind tailwindcss
@@ -159,6 +160,27 @@ No monorepo: `pnpm --filter aura-ui-cli build` e `node packages/cli/dist/index.j
 O `add` resolve as dependências entre componentes (ex.: `combobox` → `popover` + `command`) e mostra o `pnpm add` com os pacotes npm necessários.
 
 O registry (`registry/`) é gerado a partir de `packages/*/src` — depois de mexer em componentes rode `pnpm registry:sync` (o `release` falha via `pnpm registry:check` se estiver desatualizado).
+
+## Mobile: React Native / Expo
+
+`aura-ui-native` traz o Aura UI para apps — mesmos 33 temas e cores do web, modo escuro e componentes mobile prontos, **sem dependências nativas** (funciona no Expo Go).
+
+```bash
+npx expo install aura-ui-native
+```
+
+```tsx
+import { AuraProvider, Screen, Text, Button } from "aura-ui-native";
+
+<AuraProvider theme="ocean" defaultMode="system">
+  <Screen>
+    <Text variant="h1">Olá 👋</Text>
+    <Button fullWidth onPress={entrar}>Entrar</Button>
+  </Screen>
+</AuraProvider>
+```
+
+Layout por tokens (`<Box p={4} bg="muted" radius="lg">`), `Button` com 9 variantes, `Input`, `Select`, `Switch`, `BottomSheet`, `Toast`, `ListItem` e mais — detalhes em [`packages/native`](packages/native/README.md). A galeria roda no Storybook (seção **Native**), via react-native-web.
 
 ## IA: MCP, plugin e skills
 

@@ -118,3 +118,46 @@ describe("servidor MCP", () => {
     expect(tokens.text).toContain("bg-/text-/border-/ring-aura-primary");
   });
 });
+
+describe("React Native (aura-ui-native)", () => {
+  it("catálogo traz os componentes nativos com resumo e sem helpers internos", () => {
+    const native = catalog.components.filter((c) => c.kind === "native");
+    expect(native.length).toBeGreaterThanOrEqual(20);
+    expect(native.map((c) => c.name)).not.toContain("overlay");
+    expect(native.map((c) => c.name)).not.toContain("form-utils");
+    for (const c of native) expect(c.summary.length, c.name).toBeGreaterThan(10);
+  });
+
+  it("platform separa web e native com o mesmo nome", async () => {
+    const web = await call("get_component", { name: "button", include_source: false });
+    expect(web.text).toContain('from "aura-ui-components/button"');
+    const native = await call("get_component", {
+      name: "button",
+      platform: "native",
+      include_source: false
+    });
+    expect(native.text).toContain('from "aura-ui-native"');
+    expect(native.text).toContain("AuraProvider");
+    // export que só existe no nativo é achado sem platform
+    const sheet = await call("get_component", { name: "BottomSheet", include_source: false });
+    expect(sheet.text).toContain("aura-ui-native");
+  });
+
+  it("dependências nativas resolvem na mesma plataforma", async () => {
+    const { text } = await call("get_component", {
+      name: "select",
+      platform: "native",
+      include_dependencies: true
+    });
+    expect(text).toContain("# bottom-sheet");
+    expect(text).not.toContain("aura-ui-components/popover");
+  });
+
+  it("list_components filtra a categoria native e get_setup tem o modo native", async () => {
+    const list = await call("list_components", { category: "native" });
+    expect(list.text).toContain("**bottom-sheet**");
+    const setup = await call("get_setup", { mode: "native" });
+    expect(setup.text).toContain("npx expo install aura-ui-native");
+    expect(setup.text).toContain("<AuraProvider");
+  });
+});

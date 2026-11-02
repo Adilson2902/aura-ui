@@ -4,7 +4,7 @@ export type CatalogFile = { path: string; content: string };
 
 export type CatalogComponent = {
   name: string;
-  kind: "ui" | "effect" | "lib";
+  kind: "ui" | "effect" | "lib" | "native";
   category: string;
   summary: string;
   description: string;
@@ -35,6 +35,7 @@ export const CATEGORY_LABELS: Record<string, string> = {
   blocks: "Blocos de página",
   effects: "Efeitos 3D/motion",
   lib: "Utilitários",
+  native: "React Native (aura-ui-native)",
   outros: "Outros"
 };
 
@@ -90,15 +91,30 @@ function editDistance(a: string, b: string) {
   return dp[a.length]![b.length]!;
 }
 
-/** Acha o componente pelo nome do registry ou por um export (ex.: "DatePicker"). */
-export function findComponent(catalog: Catalog, name: string) {
+export type Platform = "web" | "native";
+
+const onPlatform = (c: CatalogComponent, platform: Platform) =>
+  (c.kind === "native") === (platform === "native");
+
+/**
+ * Acha o componente pelo nome do registry ou por um export (ex.: "DatePicker").
+ * Sem `platform`, procura no web primeiro e depois no React Native.
+ */
+export function findComponent(
+  catalog: Catalog,
+  name: string,
+  platform?: Platform
+): CatalogComponent | undefined {
+  if (!platform)
+    return findComponent(catalog, name, "web") ?? findComponent(catalog, name, "native");
+  const pool = catalog.components.filter((c) => onPlatform(c, platform));
   const raw = name.trim();
   const n = normalize(raw);
   // "DatePicker" -> "date-picker" (antes de normalizar, que perde as maiúsculas)
   const kebab = normalize(raw.replace(/([a-z0-9])([A-Z])/g, "$1-$2"));
   return (
-    catalog.components.find((c) => c.name === n || c.name === kebab) ??
-    catalog.components.find((c) => c.exports.some((e) => normalize(e) === n))
+    pool.find((c) => c.name === n || c.name === kebab) ??
+    pool.find((c) => c.exports.some((e) => normalize(e) === n))
   );
 }
 
@@ -122,7 +138,10 @@ export function resolveWithDependencies(catalog: Catalog, root: CatalogComponent
     if (seen.has(c.name)) return;
     seen.add(c.name);
     for (const dep of c.registryDependencies) {
-      const d = catalog.components.find((x) => x.name === dep);
+      // dependência na mesma plataforma (web e native têm nomes iguais, ex.: button)
+      const d = catalog.components.find(
+        (x) => x.name === dep && (x.kind === "native") === (c.kind === "native")
+      );
       if (d) visit(d);
     }
     out.push(c);

@@ -8,10 +8,10 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "aura-ui-components": "workspace:*",
     "aura-ui-core": "workspace:*",
     "aura-ui-effects": "workspace:*",
     "aura-ui-tailwind": "workspace:*",
-    "aura-ui-components": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -23,6 +23,8 @@
     "@tailwindcss/vite": "^4.0.0",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
+    "aura-ui-native": "workspace:^",
+    "react-native-web": "^0.21",
     "storybook": "^8.6.18",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2",

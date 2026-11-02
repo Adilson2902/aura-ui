@@ -1,11 +1,11 @@
 ---
 name: aura-ui
-description: Constrói e edita interfaces React com o design system Aura UI (pacotes aura-ui-components, aura-ui-effects, aura-ui-core, aura-ui-tailwind ou componentes copiados via aura-ui-cli). Use quando o projeto tiver dependências aura-ui-*, quando o usuário citar Aura UI, ou pedir telas, landing pages, dashboards, formulários, temas ou efeitos 3D com esses componentes.
+description: Constrói e edita interfaces com o design system Aura UI — web (aura-ui-components, aura-ui-effects, aura-ui-core, aura-ui-tailwind, aura-ui-cli) e React Native/Expo (aura-ui-native). Use quando o projeto tiver dependências aura-ui-*, quando o usuário citar Aura UI, ou pedir telas, landing pages, dashboards, formulários, apps mobile, temas ou efeitos 3D com esses componentes.
 ---
 
 # Aura UI
 
-Design system React + Tailwind CSS v4: 73 componentes (Radix, acessíveis), 23 efeitos 3D/motion, 33 temas, tokens `--aura-*`.
+Design system React + Tailwind CSS v4: 73 componentes (Radix, acessíveis), 23 efeitos 3D/motion, 33 temas, tokens `--aura-*`. Para mobile, `aura-ui-native` (React Native) tem os mesmos temas e cores — veja a seção **React Native** abaixo.
 
 ## Antes de escrever código
 
@@ -46,3 +46,13 @@ Design system React + Tailwind CSS v4: 73 componentes (Radix, acessíveis), 23 e
 | Efeito 3D                  | `aura-ui-effects`: `Card3D`, `BentoGrid`, `Spotlight`, `Meteors`, `AuroraBackground`…                    |
 
 Receitas completas (landing, dashboard, formulário com validação): [references/recipes.md](references/recipes.md).
+
+## React Native (aura-ui-native)
+
+Se o `package.json` tiver `react-native`/`expo` e `aura-ui-native`, as regras de Tailwind acima **não valem** — é React Native puro:
+
+- Tudo importa de `"aura-ui-native"`; o app precisa de `<AuraProvider theme="…" defaultMode="system">` na raiz (setup: `get_setup` com `mode: "native"`).
+- Descubra componentes com `list_components` (`category: "native"`) e a API real com `get_component` (`platform: "native"`) — os nomes coincidem com os do web (button, card…) mas as props são de React Native (`onPress`, `style`).
+- Cores e espaços pelo tema, nunca hex: `<Box p={4} bg="muted" radius="lg">`, `<Text tone="muted">`, `useAura().colors.primary`, `makeStyles((t) => …)` (escala `t.space(n)` = n×4px).
+- Telas com `<Screen>` (fundo + rolagem + teclado); listas de ajustes com `ListSection` + `ListItem`; ações em massa com `ActionSheet`; escolhas com `Select`/`SegmentedControl`; feedback com `useToast()` (precisa de `<ToastProvider>`).
+- Variantes `gradient`/`glass` só ficam completas com `components={{ LinearGradient, BlurView }}` no provider (expo-linear-gradient / expo-blur); sem isso viram cor sólida/translúcida.

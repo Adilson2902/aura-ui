@@ -1,12 +1,12 @@
 ---
 name: aura-ui-contrib
-description: Convenções para contribuir com o monorepo Aura UI — criar ou alterar componentes em packages/ui ou packages/effects, tokens/temas no core, registry do CLI, catálogo do MCP, stories, testes e release no npm. Use ao editar qualquer coisa em packages/, registry/, scripts/ ou plugins/ deste repositório.
+description: Convenções para contribuir com o monorepo Aura UI — criar ou alterar componentes em packages/ui, packages/effects ou packages/native (React Native), tokens/temas no core, registry do CLI, catálogo do MCP, stories, testes e release no npm. Use ao editar qualquer coisa em packages/, registry/, scripts/ ou plugins/ deste repositório.
 ---
 
 # Contribuindo com o Aura UI
 
 Monorepo pnpm (Node ≥ 20). Pacotes publicados (versão única, grupo `fixed` do changesets):
-`aura-ui-core` · `aura-ui-components` (packages/ui) · `aura-ui-effects` · `aura-ui-three` · `aura-ui-tailwind` (packages/tailwind-preset) · `aura-ui-cli` · `aura-ui-mcp`.
+`aura-ui-core` · `aura-ui-components` (packages/ui) · `aura-ui-effects` · `aura-ui-three` · `aura-ui-tailwind` (packages/tailwind-preset) · `aura-ui-cli` · `aura-ui-mcp` · `aura-ui-native` (React Native).
 
 ## Novo componente em packages/ui
 
@@ -26,11 +26,21 @@ Monorepo pnpm (Node ≥ 20). Pacotes publicados (versão única, grupo `fixed` d
 
 Efeitos seguem o mesmo fluxo em `packages/effects/src` (exports por arquivo no `package.json` do effects).
 
+## Componente React Native (packages/native)
+
+- `packages/native/src/components/<nome>.tsx`; só `react` + `react-native` (zero deps nativas — Expo Go). Exporte em `src/index.ts`.
+- Tema via `useAura()` (`t.colors`, `t.space(n)` = n×4px, `t.radius`, `t.shadow(0–5)`, `t.alpha`); nada de hex.
+- Com ref: `export const X: RefComponent<XProps> = React.forwardRef<ViewRef, XProps>(…)` + `displayName` — sem a anotação, o .d.ts vaza tipos internos do RN (`grep -c ReactNativeElement dist/index.d.ts` tem que dar 0).
+- Acessibilidade com `role`/`aria-*`, alvo de toque ≥ 44px, `NATIVE_DRIVER` em todo `Animated`, estado controlado/não-controlado com `useControllableState` (`form-utils`).
+- As paletas vêm do CSS do core (`pnpm --filter aura-ui-native themes` regenera `palettes.generated.ts`) — mudou tema no core, rode isso.
+- Testes: `src/**/*.test.tsx` (react-native-web + jsdom); story em `apps/storybook/stories/native/` com o decorator `withPhone`.
+- Novo arquivo → resumo em `NATIVE_SUMMARIES` do `packages/mcp/scripts/build-catalog.mjs` (helpers internos ficam fora do catálogo).
+
 ## Verificar
 
 ```bash
 pnpm --filter aura-ui-components lint      # tsc
-pnpm test                                  # core, ui, effects, mcp
+pnpm test                                  # core, ui, effects, mcp, native
 pnpm registry:check
 pnpm --filter aura-ui-mcp build            # regenera o catálogo do MCP
 pnpm storybook                             # conferência visual (porta 6006)

@@ -1,4 +1,58 @@
-export type SetupMode = "package" | "cli";
+export type SetupMode = "package" | "cli" | "native";
+
+const NATIVE_GUIDE = `# Aura UI — React Native / Expo (aura-ui-native)
+
+Sem dependências nativas: funciona no Expo Go e em apps bare (React Native ≥ 0.79). Mesmos 33 temas e cores do web.
+
+## 1. Instalar
+
+\`\`\`bash
+npx expo install aura-ui-native
+# opcionais p/ as variantes gradient e glass:
+npx expo install expo-linear-gradient expo-blur
+\`\`\`
+
+## 2. Provider na raiz
+
+\`\`\`tsx
+import { AuraProvider } from "aura-ui-native";
+import { LinearGradient } from "expo-linear-gradient"; // opcional
+import { BlurView } from "expo-blur";                  // opcional
+
+export default function App() {
+  return (
+    <AuraProvider theme="aura" defaultMode="system" components={{ LinearGradient, BlurView }}>
+      <Home />
+    </AuraProvider>
+  );
+}
+\`\`\`
+
+- \`theme\`: um dos 33 temas (veja \`list_themes\`); \`mode\`/\`defaultMode\`: "light" | "dark" | "system".
+- Marca própria: \`overrides={{ colors: { primary: "#0ea5e9" }, radius: 16, fonts: { regular: "Inter_400Regular", bold: "Inter_700Bold" } }}\`.
+- Sem \`LinearGradient\`/\`BlurView\`, as variantes \`gradient\`/\`glass\` caem em cor sólida/superfície translúcida.
+
+## 3. Usar
+
+\`\`\`tsx
+import { Screen, VStack, Text, Button, Card, CardTitle, Input, useAura } from "aura-ui-native";
+
+function Home() {
+  const t = useAura(); // t.colors, t.space(4), t.radius.lg, t.setTheme("ocean"), t.toggleMode()
+  return (
+    <Screen>
+      <Text variant="h1">Olá</Text>
+      <Card variant="elevated"><CardTitle>Resumo</CardTitle></Card>
+      <Input label="E-mail" keyboardType="email-address" />
+      <Button fullWidth onPress={() => {}}>Continuar</Button>
+    </Screen>
+  );
+}
+\`\`\`
+
+- Layout por tokens: \`<Box p={4} bg="muted" radius="lg" shadow={2}>\`, \`<HStack space={2}>\` (escala de 4px).
+- Estilos próprios que seguem o tema: \`const useStyles = makeStyles((t) => ({ card: { backgroundColor: t.colors.surface } }))\`.
+- Componentes: \`list_components\` com \`category: "native"\`; API e código: \`get_component\` com \`platform: "native"\`.`;
 export type Framework = "next" | "vite" | "other";
 
 const tailwindStep: Record<Framework, string> = {
@@ -58,6 +112,7 @@ createRoot(document.getElementById("root")!).render(
 };
 
 export function setupGuide(mode: SetupMode, framework: Framework): string {
+  if (mode === "native") return NATIVE_GUIDE;
   if (mode === "cli") {
     return `# Aura UI — modo CLI (código copiado p/ o seu repo, estilo shadcn)
 

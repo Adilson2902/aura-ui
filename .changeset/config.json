@@ -10,7 +10,8 @@
       "aura-ui-three",
       "aura-ui-tailwind",
       "aura-ui-cli",
-      "aura-ui-mcp"
+      "aura-ui-mcp",
+      "aura-ui-native"
     ]
   ],
   "linked": [],

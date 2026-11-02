@@ -11,9 +11,10 @@ import {
 } from "./catalog.js";
 import { setupGuide } from "./setup.js";
 
-const INSTRUCTIONS = `Aura UI é um design system React + Tailwind CSS v4 (Radix, 73 componentes, 23 efeitos 3D, 33 temas).
+const INSTRUCTIONS = `Aura UI é um design system React + Tailwind CSS v4 (Radix, 73 componentes, 23 efeitos 3D, 33 temas) com versão React Native (aura-ui-native: mesmos temas, sem dependências nativas).
 Fluxo recomendado:
-1. get_setup antes de instalar (modo "package" = importar do npm; modo "cli" = copiar o código p/ o repo).
+1. get_setup antes de instalar (modo "package" = importar do npm; "cli" = copiar o código p/ o repo; "native" = React Native/Expo).
+   Em apps React Native use list_components com category "native" e get_component com platform "native".
 2. list_components (com query/categoria) para achar o componente certo.
 3. get_component para ver a API real (exports, variantes, props) e o código antes de usar — não invente props.
 4. list_themes / get_design_tokens para tema, cores e classes (bg-aura-primary, aura-glass…).
@@ -25,6 +26,13 @@ const READ_ONLY = { readOnlyHint: true, openWorldHint: false } as const;
 function usage(c: CatalogComponent) {
   const lines: string[] = [];
   const named = c.exports.filter((e) => /^[A-Z]/.test(e)).slice(0, 6);
+  if (c.kind === "native") {
+    lines.push(`**Importar:** \`import { ${named.join(", ")} } from "aura-ui-native";\``);
+    lines.push(
+      '**Requer:** `<AuraProvider>` na raiz do app (veja `get_setup` com `mode: "native"`).'
+    );
+    return lines.join("\n");
+  }
   if (c.kind === "lib") {
     if (c.importPath) lines.push(`**Pacote:** \`${c.importPath}\``);
   } else if (c.importPath) {
@@ -119,6 +127,12 @@ export function createServer(catalog: Catalog) {
         name: z
           .string()
           .describe("Nome do componente, ex.: 'button', 'combobox', 'card-3d' ou 'DatePicker'"),
+        platform: z
+          .enum(["web", "native"])
+          .optional()
+          .describe(
+            "web (React + Tailwind) ou native (React Native, aura-ui-native). Sem isso, procura no web primeiro"
+          ),
         include_source: z.boolean().optional().describe("Incluir o código-fonte (padrão true)"),
         include_dependencies: z
           .boolean()
@@ -129,8 +143,8 @@ export function createServer(catalog: Catalog) {
       },
       annotations: READ_ONLY
     },
-    async ({ name, include_source = true, include_dependencies = false }) => {
-      const c = findComponent(catalog, name);
+    async ({ name, platform, include_source = true, include_dependencies = false }) => {
+      const c = findComponent(catalog, name, platform);
       if (!c) {
         return {
           isError: true,
@@ -154,9 +168,12 @@ export function createServer(catalog: Catalog) {
     {
       title: "Instalação e configuração",
       description:
-        "Passo a passo para instalar o Aura UI num projeto: dependências, Tailwind CSS v4, CSS global (preset + tailwind.css dos pacotes), ThemeProvider e uso. `mode`: 'package' (importar do npm, padrão) ou 'cli' (copiar o código, estilo shadcn).",
+        "Passo a passo para instalar o Aura UI num projeto: dependências, Tailwind CSS v4, CSS global (preset + tailwind.css dos pacotes), ThemeProvider e uso. `mode`: 'package' (importar do npm, padrão), 'cli' (copiar o código, estilo shadcn) ou 'native' (React Native/Expo com aura-ui-native).",
       inputSchema: {
-        mode: z.enum(["package", "cli"]).optional().describe("package (padrão) ou cli"),
+        mode: z
+          .enum(["package", "cli", "native"])
+          .optional()
+          .describe("package (padrão), cli ou native (React Native/Expo)"),
         framework: z
           .enum(["next", "vite", "other"])
           .optional()

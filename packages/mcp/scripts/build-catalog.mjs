@@ -6,7 +6,7 @@
  * Fonte da verdade: /registry (sincronizado do src de cada pacote por
  * scripts/sync-registry.cjs), packages/core e packages/tailwind-preset.
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -204,6 +204,38 @@ const SUMMARIES = {
   "themes-css": "CSS dos 33 temas (data-theme)."
 };
 
+/** Resumo por arquivo de packages/native/src/components (React Native). */
+const NATIVE_SUMMARIES = {
+  layout:
+    "Box (props de token: p, bg, radius, shadow…), VStack/HStack/Stack, Spacer, Divider e Screen (fundo + rolagem + teclado).",
+  text: "Text com escala tipográfica (display, h1–h3, title, body, label, caption), tons semânticos e Heading.",
+  button:
+    "Button com 9 variantes (solid, soft, outline, ghost, accent, destructive, link, gradient, glass), 5 tamanhos, loading e ícones + IconButton.",
+  card: "Card com 6 superfícies, padding por token, versão tocável e CardHeader/Title/Description/Content/Footer.",
+  surfaces:
+    "Gradient e Glass: usam LinearGradient/BlurView plugados no AuraProvider ou caem em cor sólida/translúcida.",
+  pressable: "PressableScale: Pressable com feedback físico (encolhe ao tocar).",
+  input:
+    "Input com label, descrição, erro, adornos, 4 variantes, 3 tamanhos e mostrar/ocultar senha + TextArea.",
+  switch: "Switch animado com 3 tamanhos, variante success e label.",
+  checkbox: "Checkbox com estado indeterminado, label e descrição.",
+  radio: "RadioGroup + RadioGroupItem (padrão ou em cartão).",
+  "segmented-control": "Controle segmentado com indicador deslizante animado (bom p/ abas).",
+  chip: "Chip selecionável/removível e ChipGroup (seleção única ou múltipla).",
+  "otp-input": "Código OTP em casas separadas, com colar e preenchimento automático de SMS.",
+  badge: "Badge com variantes semânticas, 2 tamanhos e ponto de status.",
+  avatar: "Avatar com imagem ou iniciais, status online e AvatarGroup com contador +N.",
+  alert: "Alerta de status (info, success, warning, destructive) com título, descrição e fechar.",
+  progress: "Progress (determinado ou indeterminado), Spinner e Skeleton com pulso.",
+  "list-item": "ListItem (título, subtítulo, ícones, chevron) e ListSection agrupada estilo iOS.",
+  "empty-state": "Estado vazio com ícone, título, descrição e ação.",
+  dialog: "Dialog modal animado e AlertDialog de confirmação (inclusive destrutiva).",
+  "bottom-sheet": "BottomSheet que sobe animado, com alça e arrastar para fechar.",
+  "action-sheet": "ActionSheet: lista de ações num BottomSheet com Cancelar.",
+  select: "Select: gatilho estilo input que abre a lista num BottomSheet, com busca opcional.",
+  toast: "ToastProvider + useToast: toast.success/error/warning/info, ações, topo ou base."
+};
+
 const firstSentence = (text) => (text.split(/(?<=[.!?])\s/)[0] ?? "").trim();
 
 /**
@@ -318,6 +350,41 @@ const components = registry.items.map((item) => {
     files
   };
 });
+
+// ---------- React Native (aura-ui-native) ----------
+// Um item por arquivo de packages/native/src/components; tudo importa de "aura-ui-native".
+const nativeDir = "packages/native/src/components";
+const nativeFiles = readdirSync(path.join(root, nativeDir))
+  // helpers internos (form-utils, overlay) não são componentes públicos
+  .filter(
+    (f) => f.endsWith(".tsx") && !f.includes(".test.") && !/^(form-utils|overlay)\.tsx$/.test(f)
+  )
+  .sort();
+const nativeNames = new Set(nativeFiles.map((f) => f.replace(/\.tsx$/, "")));
+for (const file of nativeFiles) {
+  const name = file.replace(/\.tsx$/, "");
+  const code = read(`${nativeDir}/${file}`);
+  const { values, types } = exportsOf(code);
+  const details = description(code);
+  const localDeps = [...code.matchAll(/from "\.\/([\w-]+)"/g)]
+    .map((m) => m[1])
+    .filter((d) => nativeNames.has(d));
+  if (!NATIVE_SUMMARIES[name])
+    console.warn(`aviso: native "${name}" sem resumo em NATIVE_SUMMARIES`);
+  components.push({
+    name,
+    kind: "native",
+    category: "native",
+    summary: NATIVE_SUMMARIES[name] ?? firstSentence(details),
+    description: details,
+    exports: values,
+    types,
+    dependencies: [],
+    registryDependencies: [...new Set(localDeps)],
+    importPath: "aura-ui-native",
+    files: [{ path: `aura-ui-native/src/components/${file}`, content: code }]
+  });
+}
 
 // ---------- temas ----------
 const themesSrc = read("packages/core/src/themes.ts");
